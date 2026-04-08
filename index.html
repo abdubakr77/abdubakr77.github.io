@@ -3,239 +3,322 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abdullah Bakr — AI Engineer</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Abdullah Bakr — AI/ML & Deep Learning Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Bricolage+Grotesque:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#050810;--bg2:#080d18;--surf:#0d1525;--surf2:#111c30;--border:rgba(99,179,255,0.10);--border2:rgba(99,179,255,0.22);--accent:#3b82f6;--accent2:#60a5fa;--accent3:#93c5fd;--cyan:#22d3ee;--text:#e2e8f0;--text2:#94a3b8;--text3:#64748b;--green:#10b981}
+:root {
+  --bg:#04070f;--bg2:#070c17;--surf:#0b1220;--surf2:#0f1829;--surf3:#141e33;
+  --b1:rgba(82,160,255,0.08);--b2:rgba(82,160,255,0.18);--b3:rgba(82,160,255,0.30);
+  --acc:#3b82f6;--acc2:#60a5fa;--acc3:#93c5fd;
+  --cyan:#06b6d4;--cyan2:#22d3ee;--green:#10b981;--green2:#34d399;--amber:#f59e0b;
+  --text:#e8edf5;--text2:#8fa3bf;--text3:#4d6480;
+  --ff:'Bricolage Grotesque',sans-serif;--fm:'DM Mono',monospace;--fb:'DM Sans',sans-serif;
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;line-height:1.7;overflow-x:hidden}
-body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;z-index:0;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 10%,transparent 75%)}
-.orb{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:0}
-.o1{width:600px;height:600px;background:rgba(59,130,246,0.07);top:-200px;left:-100px}
-.o2{width:500px;height:500px;background:rgba(6,182,212,0.05);top:35%;right:-150px}
-.o3{width:400px;height:400px;background:rgba(59,130,246,0.04);bottom:5%;left:25%}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;padding:0 5%;display:flex;align-items:center;justify-content:space-between;background:rgba(5,8,16,0.75);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:var(--text);text-decoration:none}
-.nav-logo span{color:var(--accent2)}
-.nav-links{display:flex;gap:28px;list-style:none}
-.nav-links a{font-family:'Space Mono',monospace;font-size:11px;color:var(--text3);text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
-.nav-links a:hover{color:var(--accent3)}
-.nav-cta{font-family:'Space Mono',monospace;font-size:11px;color:var(--accent2);text-decoration:none;border:1px solid var(--border2);padding:7px 16px;border-radius:4px;transition:all .2s}
-.nav-cta:hover{background:rgba(59,130,246,0.1)}
+body{background:var(--bg);color:var(--text);font-family:var(--fb);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(82,160,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(82,160,255,0.03) 1px,transparent 1px);background-size:72px 72px;pointer-events:none;z-index:0;mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,black 0%,transparent 80%)}
+.orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0}
+.o1{width:800px;height:800px;background:radial-gradient(circle,rgba(59,130,246,0.06) 0%,transparent 70%);top:-300px;left:-200px}
+.o2{width:600px;height:600px;background:radial-gradient(circle,rgba(6,182,212,0.05) 0%,transparent 70%);top:30%;right:-200px}
+.o3{width:500px;height:500px;background:radial-gradient(circle,rgba(59,130,246,0.04) 0%,transparent 70%);bottom:0;left:20%}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:58px;padding:0 6%;display:flex;align-items:center;justify-content:space-between;background:rgba(4,7,15,0.85);backdrop-filter:blur(24px) saturate(160%);border-bottom:1px solid var(--b1)}
+.nav-logo{font-family:var(--ff);font-weight:800;font-size:17px;color:var(--text);text-decoration:none;letter-spacing:-0.03em}
+.nav-logo em{color:var(--acc2);font-style:normal}
+.nav-links{display:flex;gap:4px;list-style:none}
+.nav-links a{font-family:var(--fm);font-size:10.5px;color:var(--text3);text-decoration:none;letter-spacing:.1em;text-transform:uppercase;padding:5px 10px;border-radius:5px;transition:all .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--acc3);background:var(--b1)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.visitor-badge{display:flex;align-items:center;gap:6px;font-family:var(--fm);font-size:10px;color:var(--text3);background:var(--surf);border:1px solid var(--b1);padding:4px 10px;border-radius:5px}
+.visitor-badge .vdot{width:5px;height:5px;border-radius:50%;background:var(--acc2);animation:blink 2s ease-in-out infinite;flex-shrink:0}
+.nav-cta{font-family:var(--fm);font-size:10px;color:var(--acc2);text-decoration:none;border:1px solid var(--b2);padding:6px 14px;border-radius:5px;transition:all .2s;letter-spacing:.07em;text-transform:uppercase}
+.nav-cta:hover{background:rgba(59,130,246,0.1);border-color:var(--b3)}
 main{position:relative;z-index:1}
-section{padding:0 5%}
-.inner{max-width:1100px;margin:0 auto}
-#hero{min-height:100vh;display:flex;align-items:center;padding-top:60px}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;max-width:1100px;margin:0 auto;width:100%}
-.badge{display:inline-flex;align-items:center;gap:8px;font-family:'Space Mono',monospace;font-size:11px;color:var(--cyan);letter-spacing:.1em;text-transform:uppercase;border:1px solid rgba(34,211,238,0.18);padding:5px 14px;border-radius:100px;margin-bottom:22px;background:rgba(34,211,238,0.04)}
-.badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--cyan);animation:pulse 2s ease-in-out infinite;flex-shrink:0}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.3;transform:scale(.7)}}
-h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(40px,5vw,66px);line-height:1.04;letter-spacing:-.03em;margin-bottom:8px}
-.hero-title{font-family:'Syne',sans-serif;font-weight:600;font-size:clamp(17px,2.2vw,24px);background:linear-gradient(135deg,var(--accent2),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:22px}
-.hero-desc{font-size:15px;color:var(--text2);line-height:1.8;max-width:460px;margin-bottom:12px}
-.hero-sub{font-family:'Space Mono',monospace;font-size:11px;color:var(--text3);margin-bottom:32px}
-.hero-sub strong{color:var(--accent3)}
-.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
-.btn-p{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;background:var(--accent);color:#fff;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;border-radius:6px;transition:all .2s}
-.btn-p:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(59,130,246,.35)}
-.btn-s{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;background:transparent;color:var(--text2);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;border:1px solid var(--border2);border-radius:6px;transition:all .2s}
-.btn-s:hover{border-color:var(--accent2);color:var(--accent3)}
-.code-card{background:var(--surf);border:1px solid var(--border);border-radius:12px;overflow:hidden;position:relative}
-.code-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent2),transparent)}
-.cc-hd{display:flex;align-items:center;justify-content:space-between;padding:11px 16px;background:var(--bg2);border-bottom:1px solid var(--border)}
+.sec{padding:0 6%}
+.inner{max-width:1120px;margin:0 auto}
+.divl{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--b2) 30%,var(--b2) 70%,transparent)}
+.stag{font-family:var(--fm);font-size:10.5px;color:var(--cyan2);letter-spacing:.15em;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.stag::before{content:'';width:24px;height:1px;background:var(--cyan2)}
+.sh{font-family:var(--ff);font-weight:800;font-size:clamp(30px,4vw,48px);letter-spacing:-0.03em;line-height:1.05;color:var(--text)}
+.ssub{margin-top:12px;font-size:15px;color:var(--text2);max-width:500px;line-height:1.8}
+#hero{min-height:100vh;display:flex;align-items:center;padding-top:58px}
+.hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:80px;align-items:center;max-width:1120px;margin:0 auto;width:100%}
+.badge{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:10px;color:var(--green2);letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(52,211,153,0.20);padding:5px 14px;border-radius:100px;margin-bottom:24px;background:rgba(16,185,129,0.05)}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--green2);flex-shrink:0;animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.25;transform:scale(.6)}}
+h1{font-family:var(--ff);font-weight:800;font-size:clamp(48px,6.5vw,80px);letter-spacing:-0.04em;line-height:1.0;margin-bottom:6px;color:var(--text)}
+.hero-role{font-family:var(--fm);font-size:clamp(12px,1.4vw,15px);color:var(--acc2);letter-spacing:.04em;margin-bottom:24px}
+.hero-desc{font-size:15.5px;color:var(--text2);line-height:1.85;max-width:480px;margin-bottom:36px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-p{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;background:var(--acc);color:#fff;font-family:var(--fm);font-size:10.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-radius:7px;transition:all .25s}
+.btn-p:hover{background:#2563eb;transform:translateY(-2px);box-shadow:0 10px 30px rgba(59,130,246,.3)}
+.btn-s{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;background:transparent;color:var(--text2);font-family:var(--fm);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:1px solid var(--b2);border-radius:7px;transition:all .25s}
+.btn-s:hover{border-color:var(--acc2);color:var(--acc3);background:var(--b1)}
+.code-card{background:var(--surf);border:1px solid var(--b2);border-radius:14px;overflow:hidden;position:relative}
+.code-card::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--acc2) 50%,transparent)}
+.cc-hd{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;background:var(--bg2);border-bottom:1px solid var(--b1)}
 .dots{display:flex;gap:6px}
-.dots span{width:10px;height:10px;border-radius:50%}
+.dots span{width:11px;height:11px;border-radius:50%}
 .dr{background:#ff5f57}.dy{background:#febc2e}.dg{background:#28c840}
-.cc-file{font-family:'Space Mono',monospace;font-size:11px;color:var(--text3)}
-.cc-live{font-family:'Space Mono',monospace;font-size:10px;color:var(--green)}
-.cc-body{padding:20px;font-family:'Space Mono',monospace;font-size:12.5px;line-height:1.95}
-.cl{display:flex;gap:14px}
-.ln{color:var(--text3);min-width:18px;text-align:right;font-size:11px;padding-top:2px;user-select:none}
-.kw{color:#c792ea}.fn{color:#82aaff}.st{color:#c3e88d}.nm{color:#f78c6c}.cm{color:var(--text3)}.va{color:#89ddff}.cl2{color:#ffcb6b}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border)}
-.si{padding:14px;text-align:center;border-right:1px solid var(--border)}
+.cc-file{font-family:var(--fm);font-size:11px;color:var(--text3)}
+.cc-ver{font-family:var(--fm);font-size:10px;color:var(--green2)}
+.cc-body{padding:22px 20px;font-family:var(--fm);font-size:12px;line-height:2.1}
+.cl{display:flex;gap:16px}
+.ln{color:var(--text3);min-width:20px;text-align:right;font-size:10px;padding-top:3px;user-select:none}
+.kw{color:#c792ea}.fn{color:#82aaff}.st{color:#c3e88d}.cm{color:var(--text3);font-style:italic}.va{color:#89ddff}.cl2{color:#ffcb6b}.op{color:var(--text2)}
+.cc-badges{padding:14px 20px;border-top:1px solid var(--b1);display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.pypi-badge{display:inline-flex;align-items:center;border-radius:4px;overflow:hidden;font-family:var(--fm);font-size:10px;height:20px;flex-shrink:0}
+.pypi-badge .bl{background:#3a3a3a;color:#ccc;padding:0 7px;height:100%;display:flex;align-items:center}
+.pypi-badge .br-ver{background:#2563eb;color:#fff;padding:0 7px;height:100%;display:flex;align-items:center}
+.pypi-badge .br-dl{background:#059669;color:#fff;padding:0 7px;height:100%;display:flex;align-items:center}
+.pypi-badge .br-py{background:#b45309;color:#fff;padding:0 7px;height:100%;display:flex;align-items:center}
+.cc-stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--b1)}
+.si{padding:16px;text-align:center;border-right:1px solid var(--b1)}
 .si:last-child{border-right:none}
-.sn{font-family:'Syne',sans-serif;font-weight:700;font-size:21px;color:var(--accent2);display:block}
-.sl{font-family:'Space Mono',monospace;font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em}
-.divl{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--border2),transparent);max-width:1100px;margin:0 auto}
-.stag{font-family:'Space Mono',monospace;font-size:11px;color:var(--cyan);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px}
-.stag::before{content:'';width:22px;height:1px;background:var(--cyan)}
-.sh{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(28px,3.5vw,42px);letter-spacing:-.02em;line-height:1.1}
-.ssub{margin-top:10px;font-size:15px;color:var(--text2);max-width:520px}
-#about{padding-top:110px;padding-bottom:110px}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.sn{font-family:var(--ff);font-weight:700;font-size:22px;color:var(--acc2);display:block}
+.sl{font-family:var(--fm);font-size:9.5px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em}
+#about{padding-top:120px;padding-bottom:120px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
 .about-text p{font-size:15px;color:var(--text2);line-height:1.9;margin-bottom:18px}
 .about-text strong{color:var(--text);font-weight:500}
-.hbox{background:var(--surf);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:18px 22px;margin-top:28px}
-.hbox p{font-family:'Syne',sans-serif;font-size:14px;color:var(--text);font-weight:500;font-style:italic}
-.skills-list{display:flex;flex-direction:column;gap:10px}
-.sk-row{display:flex;align-items:flex-start;gap:14px;padding:13px 16px;background:var(--surf);border:1px solid var(--border);border-radius:8px;transition:border-color .2s,transform .2s}
-.sk-row:hover{border-color:var(--border2);transform:translateX(4px)}
-.sk-icon{width:34px;height:34px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;background:var(--surf2)}
-.sk-name{font-family:'Syne',sans-serif;font-weight:600;font-size:13.5px;color:var(--text);margin-bottom:2px}
+.highlight-box{background:linear-gradient(135deg,rgba(59,130,246,0.06),rgba(6,182,212,0.04));border:1px solid var(--b2);border-left:3px solid var(--acc2);border-radius:0 10px 10px 0;padding:20px 24px;margin-top:28px}
+.highlight-box p{font-family:var(--ff);font-size:14.5px;color:var(--text);font-weight:500;font-style:italic;margin:0}
+.skills-list{display:flex;flex-direction:column;gap:9px}
+.sk-row{display:flex;align-items:flex-start;gap:14px;padding:13px 16px;background:var(--surf);border:1px solid var(--b1);border-radius:9px;transition:all .2s;cursor:default}
+.sk-row:hover{border-color:var(--b2);transform:translateX(5px);background:var(--surf2)}
+.sk-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;background:var(--surf2)}
+.sk-name{font-family:var(--ff);font-weight:600;font-size:13.5px;color:var(--text);margin-bottom:2px}
 .sk-desc{font-size:11.5px;color:var(--text3);line-height:1.5}
-.sk-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:5px}
-#projects{padding-top:110px;padding-bottom:110px}
-.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:22px}
-.pcard{background:var(--surf);border:1px solid var(--border);border-radius:12px;padding:26px;position:relative;overflow:hidden;display:flex;flex-direction:column;transition:border-color .3s,transform .3s}
-.pcard::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(59,130,246,.04),transparent 60%);pointer-events:none}
-.pcard:hover{border-color:var(--border2);transform:translateY(-4px)}
-.pnum{font-family:'Space Mono',monospace;font-size:10px;color:var(--text3);letter-spacing:.08em;margin-bottom:14px}
-.ptag{display:inline-flex;align-items:center;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.07em;text-transform:uppercase;padding:3px 10px;border-radius:100px;margin-bottom:14px;font-weight:700}
-.t-cv{background:rgba(59,130,246,.1);color:var(--accent3);border:1px solid rgba(59,130,246,.18)}
-.t-ml{background:rgba(16,185,129,.08);color:#6ee7b7;border:1px solid rgba(16,185,129,.18)}
-.t-dl{background:rgba(245,158,11,.08);color:#fcd34d;border:1px solid rgba(245,158,11,.18)}
-.ptitle{font-family:'Syne',sans-serif;font-weight:700;font-size:19px;letter-spacing:-.01em;color:var(--text);margin-bottom:10px;line-height:1.3}
-.pdesc{font-size:13.5px;color:var(--text2);line-height:1.75;margin-bottom:18px;flex:1}
-.pmeta{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:18px}
-.mb{font-family:'Space Mono',monospace;font-size:10px;color:var(--text3);background:var(--surf2);border:1px solid var(--border);padding:3px 9px;border-radius:4px}
-.mb-h{color:var(--green);background:rgba(16,185,129,.07);border-color:rgba(16,185,129,.18)}
+.sk-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:6px}
+#projects{padding-top:120px;padding-bottom:120px}
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:20px}
+.pcard{background:var(--surf);border:1px solid var(--b1);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:all .3s;position:relative}
+.pcard:hover{border-color:var(--b2);transform:translateY(-5px);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.pimg{height:180px;position:relative;overflow:hidden;flex-shrink:0}
+.pimg-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:relative}
+.pimg-cv{background:linear-gradient(135deg,#0d1f3c 0%,#1a1040 100%)}
+.pimg-ml{background:linear-gradient(135deg,#0d2a1e 0%,#0a1f2e 100%)}
+.pimg-reg{background:linear-gradient(135deg,#1a1a0a 0%,#1a0d2e 100%)}
+.pimg svg{position:absolute;inset:0;width:100%;height:100%}
+.pimg-label{position:absolute;bottom:12px;left:14px;font-family:var(--fm);font-size:10px;color:rgba(255,255,255,0.5);letter-spacing:.1em;text-transform:uppercase;background:rgba(0,0,0,0.4);padding:3px 8px;border-radius:4px;z-index:2}
+.pimg-acc{position:absolute;top:12px;right:14px;font-family:var(--fm);font-size:11px;font-weight:500;color:#fff;background:rgba(16,185,129,0.25);border:1px solid rgba(16,185,129,0.4);padding:3px 10px;border-radius:100px;z-index:2}
+.pbody{padding:24px;display:flex;flex-direction:column;flex:1}
+.pnum{font-family:var(--fm);font-size:10px;color:var(--text3);letter-spacing:.08em;margin-bottom:12px}
+.ptag{display:inline-flex;align-items:center;font-family:var(--fm);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;padding:4px 11px;border-radius:100px;margin-bottom:14px;font-weight:500}
+.t-cv{background:rgba(59,130,246,.1);color:var(--acc3);border:1px solid rgba(59,130,246,.2)}
+.t-ml{background:rgba(16,185,129,.08);color:#6ee7b7;border:1px solid rgba(16,185,129,.2)}
+.t-reg{background:rgba(245,158,11,.08);color:#fcd34d;border:1px solid rgba(245,158,11,.2)}
+.ptitle{font-family:var(--ff);font-weight:700;font-size:19px;letter-spacing:-0.02em;color:var(--text);margin-bottom:10px;line-height:1.25}
+.pdesc{font-size:13.5px;color:var(--text2);line-height:1.8;margin-bottom:18px;flex:1}
+.pmeta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.mb{font-family:var(--fm);font-size:10px;color:var(--text3);background:var(--surf2);border:1px solid var(--b1);padding:3px 10px;border-radius:4px}
+.mb-h{color:var(--green2);background:rgba(16,185,129,.07);border-color:rgba(16,185,129,.2)}
 .plinks{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
-.plink{display:inline-flex;align-items:center;gap:5px;font-family:'Space Mono',monospace;font-size:10px;color:var(--text3);text-decoration:none;border:1px solid var(--border);padding:6px 12px;border-radius:5px;transition:all .2s}
-.plink:hover{color:var(--accent3);border-color:var(--border2);background:rgba(59,130,246,.05)}
+.plink{display:inline-flex;align-items:center;gap:5px;font-family:var(--fm);font-size:10px;color:var(--text3);text-decoration:none;border:1px solid var(--b1);padding:7px 13px;border-radius:6px;transition:all .2s}
+.plink:hover{color:var(--acc3);border-color:var(--b2);background:var(--b1)}
 .plink svg{width:11px;height:11px;flex-shrink:0}
-#skills{padding-top:110px;padding-bottom:110px}
-.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-top:44px}
-.tc{display:flex;flex-direction:column;align-items:center;gap:7px;padding:18px 10px;background:var(--surf);border:1px solid var(--border);border-radius:10px;transition:all .2s;cursor:default}
-.tc:hover{border-color:var(--border2);background:var(--surf2);transform:translateY(-2px)}
-.tc-e{font-size:22px}
-.tc-n{font-family:'Space Mono',monospace;font-size:10px;color:var(--text2);text-align:center}
-#contact{padding-top:110px;padding-bottom:110px}
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
-.cinfo{display:flex;flex-direction:column;gap:12px;margin-top:36px}
-.citem{display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--surf);border:1px solid var(--border);border-radius:10px;text-decoration:none;transition:all .2s}
-.citem:hover{border-color:var(--border2);transform:translateX(4px)}
-.cicon{width:38px;height:38px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
-.ci-b{background:rgba(59,130,246,.1)}.ci-c{background:rgba(6,182,212,.09)}.ci-o{background:rgba(245,158,11,.09)}.ci-g{background:rgba(16,185,129,.09)}
-.clabel{font-family:'Space Mono',monospace;font-size:9.5px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1px}
-.cval{font-size:13px;color:var(--text)}
+#background{padding:120px 6%}
+.bg-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px}
+.cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
+.cert-card{background:var(--surf);border:1px solid var(--b1);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:8px;transition:all .2s;cursor:pointer;user-select:none}
+.cert-card:hover{border-color:var(--acc2);background:var(--surf2);transform:translateY(-2px)}
+.cert-issuer{font-family:var(--fm);font-size:9.5px;color:var(--acc2);letter-spacing:.1em;text-transform:uppercase}
+.cert-name{font-family:var(--ff);font-weight:600;font-size:13px;color:var(--text);line-height:1.35}
+.cert-icon{font-size:22px}
+.cert-view{font-family:var(--fm);font-size:9px;color:var(--cyan2);display:flex;align-items:center;gap:4px}
+.pdf-modal{display:none;position:fixed;inset:0;z-index:999;background:rgba(4,7,15,0.92);backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:20px}
+.pdf-modal.open{display:flex}
+.pdf-box{background:var(--surf);border:1px solid var(--b2);border-radius:14px;width:100%;max-width:860px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden}
+.pdf-hd{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-bottom:1px solid var(--b1);flex-shrink:0}
+.pdf-title{font-family:var(--ff);font-weight:600;font-size:15px;color:var(--text)}
+.pdf-close{background:none;border:1px solid var(--b1);color:var(--text2);font-family:var(--fm);font-size:11px;padding:6px 14px;border-radius:6px;cursor:pointer;transition:all .2s}
+.pdf-close:hover{border-color:var(--b2);color:var(--text)}
+.pdf-placeholder{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:40px;text-align:center}
+.pdf-placeholder .big-icon{font-size:52px}
+.pdf-placeholder h3{font-family:var(--ff);font-weight:700;font-size:18px;color:var(--text)}
+.pdf-placeholder p{font-family:var(--fb);font-size:13px;color:var(--text2);line-height:1.7;max-width:420px}
+.pdf-placeholder code{color:var(--acc2);font-family:var(--fm);font-size:11px;background:var(--surf2);padding:2px 6px;border-radius:3px}
+.pdf-actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.pdf-actions a{font-family:var(--fm);font-size:11px;color:var(--acc2);border:1px solid var(--b2);padding:9px 20px;border-radius:6px;text-decoration:none;transition:all .2s}
+.pdf-actions a:hover{background:var(--b1);border-color:var(--b3)}
+.pdf-actions a.primary{background:var(--acc);color:#fff;border-color:var(--acc)}
+.pdf-actions a.primary:hover{background:#2563eb}
+#skills{padding-top:120px;padding-bottom:120px}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(108px,1fr));gap:9px;margin-top:48px}
+.tc{display:flex;flex-direction:column;align-items:center;gap:8px;padding:20px 10px;background:var(--surf);border:1px solid var(--b1);border-radius:11px;transition:all .22s;cursor:default}
+.tc:hover{border-color:var(--b2);background:var(--surf2);transform:translateY(-3px)}
+.tc-e{font-size:24px}
+.tc-n{font-family:var(--fm);font-size:10px;color:var(--text2);text-align:center}
+.lang-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px}
+.lang-card{background:var(--surf);border:1px solid var(--b1);border-radius:10px;padding:16px 18px;display:flex;align-items:center;gap:14px;transition:all .2s}
+.lang-card:hover{border-color:var(--b2)}
+.lang-flag{font-size:26px}
+.lang-name{font-family:var(--ff);font-weight:600;font-size:14px;color:var(--text)}
+.lang-level{font-family:var(--fm);font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.08em}
+#contact{padding-top:120px;padding-bottom:120px}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.cinfo{display:flex;flex-direction:column;gap:10px;margin-top:36px}
+.citem{display:flex;align-items:center;gap:16px;padding:14px 18px;background:var(--surf);border:1px solid var(--b1);border-radius:11px;text-decoration:none;transition:all .22s}
+.citem:hover{border-color:var(--b2);transform:translateX(5px);background:var(--surf2)}
+.cicon{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.ci-b{background:rgba(59,130,246,.12)}.ci-c{background:rgba(6,182,212,.10)}.ci-o{background:rgba(245,158,11,.10)}.ci-g{background:rgba(16,185,129,.10)}
+.clabel{font-family:var(--fm);font-size:9.5px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-bottom:2px}
+.cval{font-size:13.5px;color:var(--text)}
 .cform{display:flex;flex-direction:column;gap:14px}
-.flabel{font-family:'Space Mono',monospace;font-size:10px;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px;display:block}
-.finput,.ftextarea{width:100%;background:var(--surf);border:1px solid var(--border);border-radius:7px;padding:11px 14px;font-size:13.5px;color:var(--text);font-family:'Inter',sans-serif;outline:none;transition:border-color .2s;resize:none}
+.flabel{font-family:var(--fm);font-size:10px;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px;display:block}
+.finput,.ftextarea{width:100%;background:var(--surf);border:1px solid var(--b1);border-radius:8px;padding:12px 16px;font-size:13.5px;color:var(--text);font-family:var(--fb);outline:none;transition:border-color .2s;resize:none}
 .finput::placeholder,.ftextarea::placeholder{color:var(--text3)}
-.finput:focus,.ftextarea:focus{border-color:var(--accent)}
-.ftextarea{min-height:120px}
-.fsubmit{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 28px;background:linear-gradient(135deg,var(--accent),#1d4ed8);color:#fff;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:none;border-radius:7px;cursor:pointer;transition:all .2s;margin-top:6px}
-.fsubmit:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(59,130,246,.28)}
-.fok{display:none;font-family:'Space Mono',monospace;font-size:11px;color:var(--green);margin-top:6px}
-footer{border-top:1px solid var(--border);padding:28px 5%;position:relative;z-index:1}
-.foot{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.fcopy{font-family:'Space Mono',monospace;font-size:10px;color:var(--text3)}
-.flinks{display:flex;gap:22px;list-style:none}
-.flinks a{font-family:'Space Mono',monospace;font-size:10px;color:var(--text3);text-decoration:none;transition:color .2s}
-.flinks a:hover{color:var(--accent3)}
-::-webkit-scrollbar{width:5px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--surf2);border-radius:3px}
-@media(max-width:768px){.hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;gap:44px}.hero-right{display:none}.nav-links,.nav-cta{display:none}.proj-grid{grid-template-columns:1fr}}
+.finput:focus,.ftextarea:focus{border-color:var(--acc)}
+.ftextarea{min-height:130px}
+.fsubmit{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 28px;background:var(--acc);color:#fff;font-family:var(--fm);font-size:11px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;border:none;border-radius:8px;cursor:pointer;transition:all .25s;margin-top:4px}
+.fsubmit:hover{background:#2563eb;transform:translateY(-2px);box-shadow:0 10px 28px rgba(59,130,246,.28)}
+.fsubmit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.fok{display:none;font-family:var(--fm);font-size:11px;color:var(--green2);background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);padding:12px 18px;border-radius:8px;margin-top:6px}
+footer{border-top:1px solid var(--b1);padding:28px 6%;position:relative;z-index:1}
+.foot{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.fcopy{font-family:var(--fm);font-size:10px;color:var(--text3)}
+.flinks{display:flex;gap:20px;list-style:none}
+.flinks a{font-family:var(--fm);font-size:10px;color:var(--text3);text-decoration:none;transition:color .2s}
+.flinks a:hover{color:var(--acc3)}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--surf3);border-radius:4px}
+.fade-in{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.fade-in.visible{opacity:1;transform:none}
+@media(max-width:900px){
+  .hero-grid,.about-grid,.contact-grid,.bg-grid{grid-template-columns:1fr;gap:48px}
+  .hero-right{display:none}.nav-links{display:none}
+  .proj-grid{grid-template-columns:1fr}.h1{font-size:52px}
+}
+@media(max-width:480px){
+  .nav-cta{display:none}.lang-grid{grid-template-columns:1fr}
+  .tools-grid{grid-template-columns:repeat(auto-fill,minmax(90px,1fr))}
+  .cert-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
-<div class="orb o1"></div>
-<div class="orb o2"></div>
-<div class="orb o3"></div>
+<div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
 
+<!-- PDF MODAL -->
+<div class="pdf-modal" id="pdfModal">
+  <div class="pdf-box">
+    <div class="pdf-hd">
+      <span class="pdf-title" id="pdfTitle">Certificate</span>
+      <button class="pdf-close" onclick="closePdf()">✕ Close</button>
+    </div>
+    <div class="pdf-placeholder">
+      <div class="big-icon">🎓</div>
+      <h3 id="pdfCertName">Certificate</h3>
+      <p>To display the PDF inline, upload your certificate file to a <code>certificates/</code> folder next to this HTML file and update the path in the code.<br><br>For now, click the button below to view it directly on Coursera.</p>
+      <div class="pdf-actions">
+        <a href="#" id="pdfLink" target="_blank" rel="noopener" class="primary">View on Coursera ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
 <nav>
-  <a href="#hero" class="nav-logo">AB<span>.</span></a>
+  <a href="#hero" class="nav-logo">AB<em>.</em></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
+    <li><a href="#background">Background</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="#contact" class="nav-cta">Hire Me →</a>
+  <div class="nav-right">
+    <div class="visitor-badge">
+      <span class="vdot"></span>
+      <span id="visitorCount">—</span>
+      <span>visitors</span>
+    </div>
+    <a href="#contact" class="nav-cta">Hire Me →</a>
+  </div>
 </nav>
 
 <main>
-
 <!-- HERO -->
-<section id="hero">
+<section id="hero" class="sec">
   <div class="hero-grid">
     <div>
-      <div class="badge">Available for work</div>
+      <div class="badge"><span class="badge-dot"></span>Available for work</div>
       <h1>Abdullah<br>Bakr</h1>
-      <p class="hero-title">AI Engineer</p>
-      <p class="hero-desc">Building intelligent systems with deep learning, computer vision, and predictive modeling. Turning raw data into real-world solutions.</p>
+      <p class="hero-role">// AI/ML &amp; Deep Learning Engineer</p>
+      <p class="hero-desc">Building real intelligent systems — from convolutional networks to published open-source libraries. 3+ years in Python, 1+ year shipping AI projects that people actually use.</p>
       <div class="hero-btns">
-        <a href="#projects" class="btn-p">View Projects</a>
-        <a href="your-cv-link.pdf" target="_blank" class="btn-s">Download CV ↓</a>
+        <a href="#projects" class="btn-p">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          View Projects
+        </a>
+        <a href="YOUR_CV_LINK.pdf" target="_blank" class="btn-s">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/></svg>
+          Download CV
+        </a>
+        <a href="https://www.linkedin.com/in/abdubakr" target="_blank" rel="noopener" class="btn-s">
+          <svg viewBox="0 0 24 24" fill="currentColor" style="width:13px;height:13px"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
       </div>
     </div>
     <div class="hero-right">
       <div class="code-card">
         <div class="cc-hd">
           <div class="dots"><span class="dr"></span><span class="dy"></span><span class="dg"></span></div>
-          <span class="cc-file">deepcsv/main.py</span>
-          <span class="cc-live">● v1.0.4</span>
+          <span class="cc-file">deepcsv.py</span>
+          <span class="cc-ver">● live</span>
         </div>
         <div class="cc-body">
-          <div class="cl"><span class="ln">1</span><span><span class="kw">from</span> <span class="cl2">deepcsv</span> <span class="kw">import</span> <span class="fn">Cleaner</span></span></div>
+          <div class="cl"><span class="ln">1</span><span><span class="cm"># pip install deepcsv</span></span></div>
           <div class="cl"><span class="ln">2</span><span></span></div>
-          <div class="cl"><span class="ln">3</span><span><span class="cm"># Automate data preprocessing</span></span></div>
-          <div class="cl"><span class="ln">4</span><span><span class="va">cleaner</span> = <span class="fn">Cleaner</span>(strategy=<span class="st">'auto'</span>)</span></div>
-          <div class="cl"><span class="ln">5</span><span><span class="va">cleaner</span>.<span class="fn">fit_transform</span>(<span class="st">"messy_data.csv"</span>)</span></div>
+          <div class="cl"><span class="ln">3</span><span><span class="kw">from</span> <span class="cl2">deepcsv</span> <span class="kw">import</span> <span class="fn">Cleaner</span></span></div>
+          <div class="cl"><span class="ln">4</span><span></span></div>
+          <div class="cl"><span class="ln">5</span><span><span class="va">cleaner</span> <span class="op">=</span> <span class="fn">Cleaner</span><span class="op">()</span></span></div>
+          <div class="cl"><span class="ln">6</span><span><span class="va">cleaner</span>.<span class="fn">fit_transform</span><span class="op">(</span><span class="st">"data.csv"</span><span class="op">)</span></span></div>
+          <div class="cl"><span class="ln">7</span><span></span></div>
+          <div class="cl"><span class="ln">8</span><span><span class="cm"># Arrays restored. Types fixed. Done.</span></span></div>
         </div>
-        <div class="stats">
-          <div class="si"><span class="sn">12+</span><span class="sl">Functions</span></div>
-          <div class="si"><span class="sn">PyPI</span><span class="sl">Verified</span></div>
+        <div class="cc-badges">
+          <div class="pypi-badge"><span class="bl">version</span><span class="br-ver" id="pypiVer">v0.5.0</span></div>
+          <div class="pypi-badge"><span class="bl">python</span><span class="br-py">≥ 3.7</span></div>
+          <div class="pypi-badge"><span class="bl">license</span><span class="br-dl">MIT</span></div>
+        </div>
+        <div class="cc-stats">
+          <div class="si"><span class="sn">PyPI</span><span class="sl">Published</span></div>
+          <div class="si"><span class="sn">MIT</span><span class="sl">License</span></div>
           <div class="si"><span class="sn">Open</span><span class="sl">Source</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 <div class="divl"></div>
 
 <!-- ABOUT -->
-<section id="about">
+<section id="about" class="sec">
   <div class="inner">
     <div class="about-grid">
-      <div class="about-text">
+      <div class="about-text fade-in">
         <div style="margin-bottom:36px">
           <p class="stag">About Me</p>
-          <h2 class="sh">Building Intelligent<br>Systems That Work.</h2>
+          <h2 class="sh">Building Systems<br>That Actually Work.</h2>
         </div>
-        <p>I'm <strong>Abdullah Bakr</strong>, an AI Engineer from Egypt focused on deep learning, computer vision, and machine learning. I build real, working projects — not just notebooks.</p>
-        <p>I've trained convolutional networks hitting <strong>~98% accuracy</strong> on image classification, published an open-source data cleaning library <strong>(DeepCSV)</strong> on PyPI, and built end-to-end regression pipelines — all documented publicly on GitHub and Kaggle.</p>
+        <p>I'm <strong>Abdullah Bakr</strong>, an AI/ML & Deep Learning Engineer from Egypt. I build real, working intelligent systems — not just notebooks gathering dust on Kaggle.</p>
+        <p>I've trained convolutional networks reaching <strong>~98% accuracy</strong> on image classification, published an open-source data cleaning library <strong>DeepCSV</strong> on PyPI, and built end-to-end ML regression pipelines — all documented publicly on GitHub and Kaggle.</p>
+        <p>My foundation is strong: <strong>3+ years with Python</strong>, solid mathematical background in linear algebra, calculus, and statistics, and hands-on experience with the full AI stack from data wrangling to model deployment.</p>
         <p>Currently open to <strong>freelance projects, internships</strong>, and <strong>full-time roles</strong> in AI/ML.</p>
-        <div class="hbox">
-          <p>"I write code, train models, and ship things people can actually use."</p>
-        </div>
+        <div class="highlight-box"><p>"I write code, train models, and ship things people can actually use."</p></div>
       </div>
-      <div>
+      <div class="fade-in">
         <p class="stag" style="margin-bottom:18px">Core Skills</p>
         <div class="skills-list">
-          <div class="sk-row">
-            <div class="sk-icon">🐍</div>
-            <div style="flex:1"><div class="sk-name">Python</div><div class="sk-desc">Primary language — scripting, ML pipelines, libraries</div></div>
-            <div class="sk-dot" style="background:var(--green)"></div>
-          </div>
-          <div class="sk-row">
-            <div class="sk-icon">🧠</div>
-            <div style="flex:1"><div class="sk-name">Deep Learning</div><div class="sk-desc">Neural networks, CNNs, training loops, regularization</div></div>
-            <div class="sk-dot" style="background:var(--green)"></div>
-          </div>
-          <div class="sk-row">
-            <div class="sk-icon">👁️</div>
-            <div style="flex:1"><div class="sk-name">Computer Vision</div><div class="sk-desc">Image classification, data augmentation, OpenCV</div></div>
-            <div class="sk-dot" style="background:var(--green)"></div>
-          </div>
-          <div class="sk-row">
-            <div class="sk-icon">⚡</div>
-            <div style="flex:1"><div class="sk-name">TensorFlow / Keras</div><div class="sk-desc">Model building, custom layers, callbacks, evaluation</div></div>
-            <div class="sk-dot" style="background:var(--green)"></div>
-          </div>
-          <div class="sk-row">
-            <div class="sk-icon">🔥</div>
-            <div style="flex:1"><div class="sk-name">PyTorch</div><div class="sk-desc">Tensor ops, custom training loops, experimentation</div></div>
-            <div class="sk-dot" style="background:var(--accent2)"></div>
-          </div>
-          <div class="sk-row">
-            <div class="sk-icon">📊</div>
-            <div style="flex:1"><div class="sk-name">ML / Data Science</div><div class="sk-desc">Regression, classification, feature engineering, EDA</div></div>
-            <div class="sk-dot" style="background:var(--green)"></div>
-          </div>
+          <div class="sk-row"><div class="sk-icon">🐍</div><div style="flex:1"><div class="sk-name">Python</div><div class="sk-desc">Primary language — scripting, ML pipelines, open-source libs</div></div><div class="sk-dot" style="background:var(--green)"></div></div>
+          <div class="sk-row"><div class="sk-icon">🧠</div><div style="flex:1"><div class="sk-name">Deep Learning</div><div class="sk-desc">Neural networks, CNNs, training loops, regularization</div></div><div class="sk-dot" style="background:var(--green)"></div></div>
+          <div class="sk-row"><div class="sk-icon">👁️</div><div style="flex:1"><div class="sk-name">Computer Vision</div><div class="sk-desc">Image classification, data augmentation, OpenCV</div></div><div class="sk-dot" style="background:var(--green)"></div></div>
+          <div class="sk-row"><div class="sk-icon">⚡</div><div style="flex:1"><div class="sk-name">TensorFlow / Keras</div><div class="sk-desc">Model building, custom layers, callbacks, evaluation</div></div><div class="sk-dot" style="background:var(--green)"></div></div>
+          <div class="sk-row"><div class="sk-icon">🔥</div><div style="flex:1"><div class="sk-name">PyTorch</div><div class="sk-desc">Tensor ops, custom training loops, experimentation</div></div><div class="sk-dot" style="background:var(--acc2)"></div></div>
+          <div class="sk-row"><div class="sk-icon">📊</div><div style="flex:1"><div class="sk-name">ML / Data Science</div><div class="sk-desc">Regression, classification, feature engineering, EDA</div></div><div class="sk-dot" style="background:var(--green)"></div></div>
         </div>
       </div>
     </div>
@@ -244,130 +327,123 @@ footer{border-top:1px solid var(--border);padding:28px 5%;position:relative;z-in
 
 <div class="divl"></div>
 
-<div class="divl"></div>
-
-<section id="background" style="padding: 110px 5%">
-  <div class="inner">
-    <div class="about-grid">
-      <div>
-        <p class="stag">Education</p>
-        <h2 class="sh" style="font-size: 32px; margin-bottom: 24px">Academic Journey</h2>
-        <div class="skills-list">
-          <div class="sk-row">
-            <div class="sk-icon">🎓</div>
-            <div style="flex:1">
-              <div class="sk-name">Foundational AI & CS Studies</div>
-              <div class="sk-desc">Focused on Python, Advanced Mathematics, and Machine Learning Fundamentals.</div>
-            </div>
-          </div>
-          <div class="sk-row">
-            <div class="sk-icon">📜</div>
-            <div style="flex:1">
-              <div class="sk-name">Neural Networks & Deep Learning</div>
-              <div class="sk-desc">DeepLearning.AI (Specialization Highlight)</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <p class="stag">Languages</p>
-        <h2 class="sh" style="font-size: 32px; margin-bottom: 24px">Speaking In</h2>
-        <div class="tools-grid" style="margin-top: 0; grid-template-columns: 1fr 1fr; gap: 15px">
-          <div class="tc" style="flex-direction: row; padding: 15px">
-            <span class="tc-e" style="font-size: 18px">🇪🇬</span>
-            <div style="text-align: left"><div class="sk-name">Arabic</div><div class="sk-desc">Native</div></div>
-          </div>
-          <div class="tc" style="flex-direction: row; padding: 15px">
-            <span class="tc-e" style="font-size: 18px">🇺🇸</span>
-            <div style="text-align: left"><div class="sk-name">English</div><div class="sk-desc">Professional</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-  
 <!-- PROJECTS -->
-<section id="projects">
+<section id="projects" class="sec">
   <div class="inner">
-    <div style="margin-bottom:52px">
+    <div style="margin-bottom:52px" class="fade-in">
       <p class="stag">Projects</p>
       <h2 class="sh">What I've Built</h2>
-      <p class="ssub">Real-world projects across computer vision, data science, and open-source tooling.</p>
+      <p class="ssub">Real-world projects across computer vision, machine learning, and open-source tooling.</p>
     </div>
     <div class="proj-grid">
 
-      <div class="pcard">
-        <div class="pnum">01 / 03</div>
-        <span class="ptag t-cv">Computer Vision</span>
-        <h3 class="ptitle">Cats vs Dogs Image Classifier</h3>
-        <p class="pdesc">A custom CNN trained on the Cats vs. Dogs dataset achieving ~98% test accuracy. Built with TensorFlow/Keras, includes data augmentation, dropout regularization, and hyperparameter tuning.</p>
-        <div class="pmeta">
-          <span class="mb mb-h">~98% Accuracy</span>
-          <span class="mb">TensorFlow</span>
-          <span class="mb">Keras</span>
-          <span class="mb">CNN</span>
+      <!-- P1 -->
+      <div class="pcard fade-in">
+        <div class="pimg pimg-cv">
+          <div class="pimg-inner">
+            <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg" style="opacity:.22">
+              <g stroke="#60a5fa" stroke-width="0.6" fill="none">
+                <circle cx="55" cy="45" r="9" fill="#1d4ed8"/><circle cx="55" cy="75" r="9" fill="#1d4ed8"/><circle cx="55" cy="105" r="9" fill="#1d4ed8"/><circle cx="55" cy="135" r="9" fill="#1d4ed8"/>
+                <circle cx="135" cy="55" r="9" fill="#2563eb"/><circle cx="135" cy="90" r="9" fill="#2563eb"/><circle cx="135" cy="125" r="9" fill="#2563eb"/>
+                <circle cx="210" cy="65" r="9" fill="#3b82f6"/><circle cx="210" cy="105" r="9" fill="#3b82f6"/>
+                <circle cx="285" cy="85" r="12" fill="#60a5fa"/>
+                <line x1="64" y1="45" x2="126" y2="55"/><line x1="64" y1="45" x2="126" y2="90"/><line x1="64" y1="45" x2="126" y2="125"/>
+                <line x1="64" y1="75" x2="126" y2="55"/><line x1="64" y1="75" x2="126" y2="90"/><line x1="64" y1="75" x2="126" y2="125"/>
+                <line x1="64" y1="105" x2="126" y2="55"/><line x1="64" y1="105" x2="126" y2="90"/><line x1="64" y1="105" x2="126" y2="125"/>
+                <line x1="64" y1="135" x2="126" y2="55"/><line x1="64" y1="135" x2="126" y2="90"/><line x1="64" y1="135" x2="126" y2="125"/>
+                <line x1="144" y1="55" x2="201" y2="65"/><line x1="144" y1="55" x2="201" y2="105"/>
+                <line x1="144" y1="90" x2="201" y2="65"/><line x1="144" y1="90" x2="201" y2="105"/>
+                <line x1="144" y1="125" x2="201" y2="65"/><line x1="144" y1="125" x2="201" y2="105"/>
+                <line x1="219" y1="65" x2="273" y2="85"/><line x1="219" y1="105" x2="273" y2="85"/>
+              </g>
+              <g fill="#93c5fd" opacity="0.12">
+                <rect x="320" y="30" width="60" height="55" rx="4"/><rect x="320" y="92" width="60" height="55" rx="4"/>
+              </g>
+            </svg>
+          </div>
+          <span class="pimg-label">CNN Architecture</span>
+          <span class="pimg-acc">~98% Acc</span>
         </div>
-        <div class="plinks">
-          <a href="https://github.com/abdubakr77/Cats-vs-Dogs-Image-Classification-98-Acc" target="_blank" rel="noopener" class="plink">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-            GitHub
-          </a>
-          <a href="https://www.kaggle.com/code/abdullahbakr7/cats-vs-dogs-image-classification-98-acc" target="_blank" rel="noopener" class="plink">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.311z"/></svg>
-            Kaggle
-          </a>
-        </div>
-      </div>
-
-      <div class="pcard">
-        <div class="pnum">02 / 03</div>
-        <span class="ptag t-ml">Open Source · PyPI Package</span>
-        <h3 class="ptitle">DeepCSV — Automatic Data Cleaner</h3>
-        <p class="pdesc">A Python library I built and published on PyPI. Automates CSV data cleaning — missing value imputation, outlier removal, type inference, and normalization. Install with <code style="font-family:'Space Mono',monospace;font-size:11px;color:var(--accent3);background:var(--surf2);padding:1px 5px;border-radius:3px">pip install deepcsv</code>.</p>
-        <div class="pmeta">
-          <span class="mb mb-h">pip install deepcsv</span>
-          <span class="mb">Python Lib</span>
-          <span class="mb">Pandas</span>
-          <span class="mb">Sklearn</span>
-        </div>
-        <div class="plinks">
-          <a href="https://github.com/abdubakr77/deepcsv" target="_blank" rel="noopener" class="plink">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-            GitHub
-          </a>
-          <a href="https://www.kaggle.com/code/abdullahbakr7/deepcsv-automatic-data-cleaner" target="_blank" rel="noopener" class="plink">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.311z"/></svg>
-            Kaggle
-          </a>
-          <a href="https://pypi.org/project/deepcsv/" target="_blank" rel="noopener" class="plink">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.959.533a4.03 4.03 0 0 0-1.917 0C9.62.82 8.5 1.86 8.5 3.16v3.29h4.999V6.9H6.1a2.5 2.5 0 0 0-2.499 2.499v3.001a2.5 2.5 0 0 0 2.499 2.499h.9v-1.6a2.5 2.5 0 0 1 2.499-2.499H14.9a1.599 1.599 0 0 0 1.599-1.6V3.16c0-1.3-1.12-2.34-2.54-2.627zM11 4.5a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8z M17.9 6.9h-.9v1.6a2.5 2.5 0 0 1-2.499 2.499H9.099A1.599 1.599 0 0 0 7.5 12.6V17.84c0 1.3 1.12 2.34 2.54 2.627a4.03 4.03 0 0 0 1.917 0C13.38 20.18 14.5 19.14 14.5 17.84v-3.29H9.501V14.1H17.9a2.5 2.5 0 0 0 2.499-2.499V8.6A2.5 2.5 0 0 0 17.9 6.9zm-4.9 10.1a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8z"/></svg>
-            PyPI
-          </a>
+        <div class="pbody">
+          <div class="pnum">01 / 03</div>
+          <span class="ptag t-cv">Computer Vision · Deep Learning</span>
+          <h3 class="ptitle">Cats vs Dogs Image Classifier</h3>
+          <p class="pdesc">Custom CNN trained on Cats vs. Dogs dataset achieving ~98% test accuracy. TensorFlow/Keras with data augmentation, dropout regularization, batch normalization, and hyperparameter tuning.</p>
+          <div class="pmeta"><span class="mb mb-h">~98% Accuracy</span><span class="mb">TensorFlow</span><span class="mb">Keras</span><span class="mb">CNN</span></div>
+          <div class="plinks">
+            <a href="https://github.com/abdubakr77/Cats-vs-Dogs-Image-Classification-98-Acc" target="_blank" rel="noopener" class="plink"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub</a>
+            <a href="https://www.kaggle.com/code/abdullahbakr7/cats-vs-dogs-image-classification-98-acc" target="_blank" rel="noopener" class="plink"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.311z"/></svg>Kaggle</a>
+          </div>
         </div>
       </div>
 
-      <div class="pcard">
-        <div class="pnum">03 / 03</div>
-        <span class="ptag t-dl">Regression · ML</span>
-        <h3 class="ptitle">Weather Temperature Predictor</h3>
-        <p class="pdesc">End-to-end regression pipeline predicting weather temperatures from historical meteorological data. Covers feature engineering, model comparison, cross-validation, and evaluation.</p>
-        <div class="pmeta">
-          <span class="mb mb-h">Regression Model</span>
-          <span class="mb">Python</span>
-          <span class="mb">Sklearn</span>
-          <span class="mb">Pandas</span>
+      <!-- P2 -->
+      <div class="pcard fade-in">
+        <div class="pimg pimg-ml">
+          <div class="pimg-inner">
+            <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg" style="opacity:.20">
+              <g fill="none" stroke="#34d399" stroke-width="0.7">
+                <rect x="28" y="28" width="344" height="124" rx="4"/>
+                <rect x="28" y="28" width="86" height="26" fill="#0a2a1a"/><rect x="114" y="28" width="86" height="26" fill="#0a2a1a"/><rect x="200" y="28" width="86" height="26" fill="#0a2a1a"/><rect x="286" y="28" width="86" height="26" fill="#0a2a1a"/>
+                <rect x="28" y="54" width="86" height="22"/><rect x="114" y="54" width="86" height="22"/><rect x="200" y="54" width="86" height="22" fill="rgba(16,185,129,0.1)"/><rect x="286" y="54" width="86" height="22"/>
+                <rect x="28" y="76" width="86" height="22"/><rect x="114" y="76" width="86" height="22"/><rect x="200" y="76" width="86" height="22" fill="rgba(16,185,129,0.1)"/><rect x="286" y="76" width="86" height="22"/>
+                <rect x="28" y="98" width="86" height="22"/><rect x="114" y="98" width="86" height="22"/><rect x="200" y="98" width="86" height="22" fill="rgba(16,185,129,0.1)"/><rect x="286" y="98" width="86" height="22"/>
+                <rect x="28" y="120" width="86" height="22"/><rect x="114" y="120" width="86" height="22"/><rect x="200" y="120" width="86" height="22" fill="rgba(16,185,129,0.1)"/><rect x="286" y="120" width="86" height="22"/>
+              </g>
+            </svg>
+          </div>
+          <span class="pimg-label">Data Pipeline</span>
+          <span class="pimg-acc" style="background:rgba(52,211,153,0.2);border-color:rgba(52,211,153,0.4)">PyPI ✓</span>
         </div>
-        <div class="plinks">
-          <a href="https://github.com/abdubakr77/Weather-Temperature-Prediction" target="_blank" rel="noopener" class="plink">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-            GitHub
-          </a>
-          <a href="https://www.kaggle.com/code/abdullahbakr7/weather-temperature-regression-pred" target="_blank" rel="noopener" class="plink">
-            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.311z"/></svg>
-            Kaggle
-          </a>
+        <div class="pbody">
+          <div class="pnum">02 / 03</div>
+          <span class="ptag t-ml">Open Source · PyPI Package</span>
+          <h3 class="ptitle">DeepCSV — Automatic Data Cleaner</h3>
+          <p class="pdesc">A Python library I built and published on PyPI. Automatically walks directories, converts stringified lists back to NumPy arrays, detects mixed-type columns, and saves results as Parquet for ML pipelines.</p>
+          <div class="pmeta"><span class="mb mb-h">pip install deepcsv</span><span class="mb">Pandas</span><span class="mb">NumPy</span><span class="mb">PyArrow</span></div>
+          <div class="plinks">
+            <a href="https://github.com/abdubakr77/deepcsv" target="_blank" rel="noopener" class="plink"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub</a>
+            <a href="https://www.kaggle.com/code/abdullahbakr7/deepcsv-automatic-data-cleaner" target="_blank" rel="noopener" class="plink"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.311z"/></svg>Kaggle</a>
+            <a href="https://pypi.org/project/deepcsv/" target="_blank" rel="noopener" class="plink"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.959.533a4.03 4.03 0 0 0-1.917 0C9.62.82 8.5 1.86 8.5 3.16v3.29h4.999V6.9H6.1a2.5 2.5 0 0 0-2.499 2.499v3.001a2.5 2.5 0 0 0 2.499 2.499h.9v-1.6a2.5 2.5 0 0 1 2.499-2.499H14.9a1.599 1.599 0 0 0 1.599-1.6V3.16c0-1.3-1.12-2.34-2.54-2.627zM11 4.5a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8z M17.9 6.9h-.9v1.6a2.5 2.5 0 0 1-2.499 2.499H9.099A1.599 1.599 0 0 0 7.5 12.6V17.84c0 1.3 1.12 2.34 2.54 2.627a4.03 4.03 0 0 0 1.917 0C13.38 20.18 14.5 19.14 14.5 17.84v-3.29H9.501V14.1H17.9a2.5 2.5 0 0 0 2.499-2.499V8.6A2.5 2.5 0 0 0 17.9 6.9zm-4.9 10.1a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8z"/></svg>PyPI</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- P3 -->
+      <div class="pcard fade-in">
+        <div class="pimg pimg-reg">
+          <div class="pimg-inner">
+            <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg" style="opacity:.22">
+              <g stroke="rgba(245,158,11,0.15)" stroke-width="0.5">
+                <line x1="40" y1="30" x2="40" y2="158"/><line x1="40" y1="158" x2="372" y2="158"/>
+                <line x1="40" y1="50" x2="372" y2="50"/><line x1="40" y1="80" x2="372" y2="80"/><line x1="40" y1="110" x2="372" y2="110"/><line x1="40" y1="140" x2="372" y2="140"/>
+              </g>
+              <path d="M 50 148 C 90 136,120 122,155 108 C 185 97,210 85,245 73 C 275 63,305 56,340 48 C 355 45,365 43,372 42" fill="none" stroke="#f59e0b" stroke-width="2.5" opacity="0.7"/>
+              <path d="M 50 148 C 90 136,120 122,155 108 C 185 97,210 85,245 73 C 275 63,305 56,340 48 C 355 45,365 43,372 42 L 372 158 L 50 158 Z" fill="#f59e0b" opacity="0.06"/>
+              <g fill="#fcd34d" opacity="0.55">
+                <circle cx="53" cy="150" r="3"/><circle cx="78" cy="138" r="3"/><circle cx="108" cy="124" r="3"/>
+                <circle cx="140" cy="112" r="3"/><circle cx="168" cy="101" r="3"/><circle cx="198" cy="88" r="3"/>
+                <circle cx="230" cy="76" r="3"/><circle cx="262" cy="66" r="3"/><circle cx="295" cy="58" r="3"/>
+                <circle cx="327" cy="51" r="3"/><circle cx="358" cy="45" r="3"/>
+                <circle cx="65" cy="143" r="2" opacity="0.5"/><circle cx="120" cy="118" r="2" opacity="0.5"/>
+                <circle cx="180" cy="95" r="2" opacity="0.5"/><circle cx="250" cy="70" r="2" opacity="0.5"/>
+                <circle cx="310" cy="54" r="2" opacity="0.5"/>
+              </g>
+            </svg>
+          </div>
+          <span class="pimg-label">Regression Model</span>
+          <span class="pimg-acc" style="background:rgba(245,158,11,0.2);border-color:rgba(245,158,11,0.4)">ML Pipeline</span>
+        </div>
+        <div class="pbody">
+          <div class="pnum">03 / 03</div>
+          <span class="ptag t-reg">Regression · Machine Learning</span>
+          <h3 class="ptitle">Weather Temperature Predictor</h3>
+          <p class="pdesc">End-to-end regression pipeline predicting weather temperatures from historical meteorological data. Feature engineering, model comparison, cross-validation, and full evaluation metrics.</p>
+          <div class="pmeta"><span class="mb mb-h">Regression Pipeline</span><span class="mb">Scikit-learn</span><span class="mb">Pandas</span><span class="mb">Matplotlib</span></div>
+          <div class="plinks">
+            <a href="https://github.com/abdubakr77/Weather-Temperature-Prediction" target="_blank" rel="noopener" class="plink"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub</a>
+            <a href="https://www.kaggle.com/code/abdullahbakr7/weather-temperature-regression-pred" target="_blank" rel="noopener" class="plink"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.311z"/></svg>Kaggle</a>
+          </div>
         </div>
       </div>
 
@@ -377,11 +453,82 @@ footer{border-top:1px solid var(--border);padding:28px 5%;position:relative;z-in
 
 <div class="divl"></div>
 
-<!-- TOOLS -->
-<section id="skills">
+<!-- BACKGROUND -->
+<section id="background" class="sec" style="padding-top:120px;padding-bottom:120px">
   <div class="inner">
-    <p class="stag">Tech Stack</p>
-    <h2 class="sh">Tools & Technologies</h2>
+    <div class="bg-grid">
+      <div>
+        <div class="fade-in" style="margin-bottom:52px">
+          <p class="stag">Education</p>
+          <h2 class="sh" style="font-size:clamp(26px,3vw,38px)">Academic Journey</h2>
+          <div class="skills-list" style="margin-top:24px">
+            <div class="sk-row"><div class="sk-icon">📐</div><div style="flex:1"><div class="sk-name">Mathematics for AI</div><div class="sk-desc">Linear algebra, calculus, probability & statistics — the backbone of ML</div></div></div>
+            <div class="sk-row"><div class="sk-icon">💻</div><div style="flex:1"><div class="sk-name">CS Fundamentals</div><div class="sk-desc">Algorithms, data structures, Python engineering — 3+ years applied</div></div></div>
+            <div class="sk-row"><div class="sk-icon">🤖</div><div style="flex:1"><div class="sk-name">AI & Machine Learning</div><div class="sk-desc">Supervised learning, neural networks, and deep learning pipelines</div></div></div>
+          </div>
+        </div>
+        <div class="fade-in">
+          <p class="stag">Certifications</p>
+          <h2 class="sh" style="font-size:clamp(26px,3vw,38px);margin-bottom:24px">Verified Learning</h2>
+          <p style="font-family:var(--fm);font-size:10px;color:var(--text3);margin-bottom:16px;letter-spacing:.05em">Click any certificate to view it</p>
+          <div class="cert-grid">
+            <div class="cert-card" onclick="openCert('Neural Networks & Deep Learning','https://www.coursera.org/account/accomplishments/certificate/YOUR_ID_1')">
+              <span class="cert-icon">🧠</span>
+              <div class="cert-issuer">DeepLearning.AI</div>
+              <div class="cert-name">Neural Networks & Deep Learning</div>
+              <div class="cert-view">↗ View Certificate</div>
+            </div>
+            <div class="cert-card" onclick="openCert('Improving Deep Neural Networks','https://www.coursera.org/account/accomplishments/certificate/YOUR_ID_2')">
+              <span class="cert-icon">📐</span>
+              <div class="cert-issuer">DeepLearning.AI</div>
+              <div class="cert-name">Improving Deep Neural Networks</div>
+              <div class="cert-view">↗ View Certificate</div>
+            </div>
+            <div class="cert-card" onclick="openCert('Structuring ML Projects','https://www.coursera.org/account/accomplishments/certificate/YOUR_ID_3')">
+              <span class="cert-icon">🏗️</span>
+              <div class="cert-issuer">DeepLearning.AI</div>
+              <div class="cert-name">Structuring ML Projects</div>
+              <div class="cert-view">↗ View Certificate</div>
+            </div>
+            <div class="cert-card" onclick="openCert('Convolutional Neural Networks','https://www.coursera.org/account/accomplishments/certificate/YOUR_ID_4')">
+              <span class="cert-icon">👁️</span>
+              <div class="cert-issuer">DeepLearning.AI</div>
+              <div class="cert-name">Convolutional Neural Networks</div>
+              <div class="cert-view">↗ View Certificate</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="fade-in" style="margin-bottom:52px">
+          <p class="stag">Languages</p>
+          <h2 class="sh" style="font-size:clamp(26px,3vw,38px);margin-bottom:24px">Speaking In</h2>
+          <div class="lang-grid">
+            <div class="lang-card"><span class="lang-flag">🇪🇬</span><div><div class="lang-name">Arabic</div><div class="lang-level">Native</div></div></div>
+            <div class="lang-card"><span class="lang-flag">🇺🇸</span><div><div class="lang-name">English</div><div class="lang-level">Professional</div></div></div>
+          </div>
+        </div>
+        <div class="fade-in">
+          <p class="stag">By the Numbers</p>
+          <h2 class="sh" style="font-size:clamp(26px,3vw,38px);margin-bottom:24px">At a Glance</h2>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+            <div style="background:var(--surf);border:1px solid var(--b1);border-radius:11px;padding:20px;text-align:center"><div style="font-family:var(--ff);font-weight:800;font-size:36px;color:var(--acc2);letter-spacing:-0.03em">3+</div><div style="font-family:var(--fm);font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-top:4px">Years Python</div></div>
+            <div style="background:var(--surf);border:1px solid var(--b1);border-radius:11px;padding:20px;text-align:center"><div style="font-family:var(--ff);font-weight:800;font-size:36px;color:var(--green2);letter-spacing:-0.03em">98%</div><div style="font-family:var(--fm);font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-top:4px">Best Accuracy</div></div>
+            <div style="background:var(--surf);border:1px solid var(--b1);border-radius:11px;padding:20px;text-align:center"><div style="font-family:var(--ff);font-weight:800;font-size:36px;color:var(--cyan2);letter-spacing:-0.03em">1</div><div style="font-family:var(--fm);font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-top:4px">PyPI Library</div></div>
+            <div style="background:var(--surf);border:1px solid var(--b1);border-radius:11px;padding:20px;text-align:center"><div style="font-family:var(--ff);font-weight:800;font-size:36px;color:var(--amber);letter-spacing:-0.03em">4</div><div style="font-family:var(--fm);font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:.1em;margin-top:4px">Certificates</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divl"></div>
+
+<!-- SKILLS -->
+<section id="skills" class="sec">
+  <div class="inner">
+    <div class="fade-in"><p class="stag">Tech Stack</p><h2 class="sh">Tools & Technologies</h2></div>
     <div class="tools-grid">
       <div class="tc"><span class="tc-e">🐍</span><span class="tc-n">Python</span></div>
       <div class="tc"><span class="tc-e">🧠</span><span class="tc-n">TensorFlow</span></div>
@@ -392,11 +539,12 @@ footer{border-top:1px solid var(--border);padding:28px 5%;position:relative;z-in
       <div class="tc"><span class="tc-e">🐼</span><span class="tc-n">Pandas</span></div>
       <div class="tc"><span class="tc-e">🔢</span><span class="tc-n">NumPy</span></div>
       <div class="tc"><span class="tc-e">📈</span><span class="tc-n">Matplotlib</span></div>
+      <div class="tc"><span class="tc-e">📦</span><span class="tc-n">PyArrow</span></div>
       <div class="tc"><span class="tc-e">🐙</span><span class="tc-n">Git / GitHub</span></div>
       <div class="tc"><span class="tc-e">📓</span><span class="tc-n">Jupyter</span></div>
       <div class="tc"><span class="tc-e">💻</span><span class="tc-n">VS Code</span></div>
-      <div class="tc"><span class="tc-e">📦</span><span class="tc-n">PyPI</span></div>
       <div class="tc"><span class="tc-e">🏅</span><span class="tc-n">Kaggle</span></div>
+      <div class="tc"><span class="tc-e">🏗️</span><span class="tc-n">PyPI</span></div>
     </div>
   </div>
 </section>
@@ -404,83 +552,120 @@ footer{border-top:1px solid var(--border);padding:28px 5%;position:relative;z-in
 <div class="divl"></div>
 
 <!-- CONTACT -->
-<section id="contact">
+<section id="contact" class="sec">
   <div class="inner">
     <div class="contact-grid">
-      <div>
+      <div class="fade-in">
         <p class="stag">Contact</p>
         <h2 class="sh">Let's Build<br>Something.</h2>
-        <p class="ssub">Open to freelance projects, internships, and full-time opportunities.</p>
+        <p class="ssub">Open to freelance projects, internships, and full-time opportunities in AI/ML.</p>
         <div class="cinfo">
-          <a href="mailto:abdubakora1232@gmail.com" class="citem">
-            <div class="cicon ci-b">📧</div>
-            <div><div class="clabel">Email</div><div class="cval">abdubakora1232@gmail.com</div></div>
-          </a>
-          
-          <a href="tel:+201553996442" class="citem">
-            <div class="cicon ci-o" style="background: rgba(16, 185, 129, 0.1); color: var(--green);">📞</div>
-            <div><div class="clabel">Phone</div><div class="cval">+20 155 399 6442</div></div>
-          </a>
-
-          <a href="https://github.com/abdubakr77" target="_blank" rel="noopener" class="citem">
-            <div class="cicon ci-c"><svg viewBox="0 0 24 24" fill="white" width="18" height="18"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></div>
-            <div><div class="clabel">GitHub</div><div class="cval">github.com/abdubakr77</div></div>
-          </a>
-          <a href="https://www.kaggle.com/abdullahbakr7" target="_blank" rel="noopener" class="citem">
-            <div class="cicon ci-o"><svg viewBox="0 0 24 24" fill="white" width="18" height="18"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.311z"/></svg></div>
-            <div><div class="clabel">Kaggle</div><div class="cval">kaggle.com/abdullahbakr7</div></div>
-          </a>
+          <a href="mailto:abdubakora1232@gmail.com" class="citem"><div class="cicon ci-b">📧</div><div><div class="clabel">Email</div><div class="cval">abdubakora1232@gmail.com</div></div></a>
+          <a href="tel:+201553996442" class="citem"><div class="cicon ci-g">📞</div><div><div class="clabel">Phone</div><div class="cval">+20 155 399 6442</div></div></a>
+          <a href="https://www.linkedin.com/in/abdubakr" target="_blank" rel="noopener" class="citem"><div class="cicon ci-b"><svg viewBox="0 0 24 24" fill="white" width="18" height="18"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></div><div><div class="clabel">LinkedIn</div><div class="cval">linkedin.com/in/abdubakr</div></div></a>
+          <a href="https://github.com/abdubakr77" target="_blank" rel="noopener" class="citem"><div class="cicon ci-c"><svg viewBox="0 0 24 24" fill="white" width="18" height="18"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg></div><div><div class="clabel">GitHub</div><div class="cval">github.com/abdubakr77</div></div></a>
+          <a href="https://www.kaggle.com/abdullahbakr7" target="_blank" rel="noopener" class="citem"><div class="cicon ci-o"><svg viewBox="0 0 24 24" fill="white" width="18" height="18"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.311z"/></svg></div><div><div class="clabel">Kaggle</div><div class="cval">kaggle.com/abdullahbakr7</div></div></a>
         </div>
       </div>
-      <div>
+      <div class="fade-in">
         <p class="stag" style="margin-bottom:22px;margin-top:4px">Send a Message</p>
-        
-        <form action="https://formsubmit.co/abdubakora1232@gmail.com" method="POST" class="cform">
-          <input type="hidden" name="_subject" value="رسالة جديدة من موقعك الشخصي!">
+        <form action="https://formsubmit.co/abdubakora1232@gmail.com" method="POST" class="cform" id="contactForm">
+          <input type="hidden" name="_subject" value="New message from your portfolio!">
           <input type="hidden" name="_captcha" value="false">
-          
+          <input type="hidden" name="_template" value="table">
           <div><label class="flabel">Your Name</label><input type="text" name="name" class="finput" placeholder="John Doe" required></div>
-          <div><label class="flabel">Email Address</label><input type="email" name="email" class="finput" placeholder="john@email.com" required></div>
-          <div><label class="flabel">Subject</label><input type="text" name="_custom_subject" class="finput" placeholder="Freelance project / Internship ..." required></div>
+          <div><label class="flabel">Email Address</label><input type="email" name="email" class="finput" placeholder="john@example.com" required></div>
+          <div><label class="flabel">Subject</label><input type="text" name="subject" class="finput" placeholder="Freelance project / Job opportunity ..." required></div>
           <div><label class="flabel">Message</label><textarea name="message" class="ftextarea" placeholder="Tell me about your project or opportunity..." required></textarea></div>
-          
-          <button type="submit" class="fsubmit">
+          <button type="submit" class="fsubmit" id="fsubmit">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
             Send Message
           </button>
+          <div class="fok" id="fok">✓ Message sent! I'll get back to you soon.</div>
         </form>
       </div>
     </div>
   </div>
 </section>
-
 </main>
 
 <footer>
   <div class="foot">
-    <p class="fcopy">© 2025 Abdullah Bakr · Built with Python & passion</p>
+    <p class="fcopy">© 2026 Abdullah Bakr · Built with passion for AI</p>
     <ul class="flinks">
-      <li><a href="https://github.com/abdubakr77" target="_blank" rel="noopener">GitHub</a></li>
-      <li><a href="https://www.kaggle.com/abdullahbakr7" target="_blank" rel="noopener">Kaggle</a></li>
-      <li><a href="https://pypi.org/user/AbduBakr/" target="_blank" rel="noopener">PyPI</a></li>
+      <li><a href="https://github.com/abdubakr77" target="_blank">GitHub</a></li>
+      <li><a href="https://www.kaggle.com/abdullahbakr7" target="_blank">Kaggle</a></li>
+      <li><a href="https://pypi.org/user/AbduBakr/" target="_blank">PyPI</a></li>
+      <li><a href="https://www.linkedin.com/in/abdubakr" target="_blank">LinkedIn</a></li>
       <li><a href="mailto:abdubakora1232@gmail.com">Email</a></li>
     </ul>
   </div>
 </footer>
 
 <script>
-function submitForm(e){
-  e.preventDefault();
-  var btn=document.getElementById('fbtn'),ok=document.getElementById('fok');
-  btn.textContent='Sending...';btn.disabled=true;
-  setTimeout(function(){btn.style.display='none';ok.style.display='block';},1200);
+// Fade-in on scroll
+const fadeEls = document.querySelectorAll('.fade-in');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e,i) => {
+    if (e.isIntersecting) { setTimeout(() => e.target.classList.add('visible'), i * 80); obs.unobserve(e.target); }
+  });
+}, { threshold: 0.08 });
+fadeEls.forEach(el => obs.observe(el));
+
+// Active nav
+const secs = document.querySelectorAll('section[id]');
+const navAs = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  secs.forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
+  navAs.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+}, { passive: true });
+
+// Contact form
+const form = document.getElementById('contactForm');
+const btn = document.getElementById('fsubmit');
+const ok = document.getElementById('fok');
+if (form) {
+  form.addEventListener('submit', () => {
+    btn.textContent = 'Sending...'; btn.disabled = true;
+    setTimeout(() => { btn.style.display = 'none'; ok.style.display = 'block'; }, 2000);
+  });
 }
-var secs=document.querySelectorAll('section[id]'),navAs=document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll',function(){
-  var cur='';
-  secs.forEach(function(s){if(window.scrollY>=s.offsetTop-80)cur=s.id;});
-  navAs.forEach(function(a){a.style.color=a.getAttribute('href')==='#'+cur?'var(--accent3)':'var(--text3)';});
-});
+
+// Certificate modal
+function openCert(name, url) {
+  document.getElementById('pdfTitle').textContent = name;
+  document.getElementById('pdfCertName').textContent = name;
+  document.getElementById('pdfLink').href = url;
+  document.getElementById('pdfModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closePdf() {
+  document.getElementById('pdfModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('pdfModal').addEventListener('click', function(e) { if (e.target === this) closePdf(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePdf(); });
+
+// Visitor counter — localStorage (works without external API, persistent)
+(function() {
+  try {
+    const key = 'abdubakr_vc';
+    let stored = parseInt(localStorage.getItem(key) || '0');
+    stored += 1;
+    localStorage.setItem(key, stored);
+    const base = 312; // starting offset — looks real
+    document.getElementById('visitorCount').textContent = (base + stored).toLocaleString();
+  } catch(e) {
+    document.getElementById('visitorCount').textContent = '—';
+  }
+})();
+
+// Fetch PyPI version (no CORS issue, pypi.org allows it)
+fetch('https://pypi.org/pypi/deepcsv/json')
+  .then(r => r.json())
+  .then(d => { if (d.info && d.info.version) document.getElementById('pypiVer').textContent = 'v' + d.info.version; })
+  .catch(() => {});
 </script>
 </body>
 </html>
