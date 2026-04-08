@@ -156,46 +156,35 @@ footer{border-top:1px solid var(--border);padding:28px 5%;position:relative;z-in
       <div class="badge">Available for work</div>
       <h1>Abdullah<br>Bakr</h1>
       <p class="hero-title">AI Engineer</p>
-      <p class="hero-desc">Building intelligent systems with deep learning, computer vision, and predictive modeling. Turning raw data into real-world solutions — one model at a time.</p>
-      <p class="hero-sub" style="margin-bottom:32px;"><strong>Cairo, Egypt</strong> &nbsp;·&nbsp; Open to Freelance · Internship · Full-time</p>
+      <p class="hero-desc">Building intelligent systems with deep learning, computer vision, and predictive modeling. Turning raw data into real-world solutions.</p>
       <div class="hero-btns">
-        <a href="#projects" class="btn-p">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px"><rect x="2" y="2" width="12" height="12" rx="1"/><rect x="5" y="5" width="4" height="4"/></svg>
-          View Projects
-        </a>
-        <a href="#contact" class="btn-s">Get In Touch →</a>
+        <a href="#projects" class="btn-p">View Projects</a>
+        <a href="your-cv-link.pdf" target="_blank" class="btn-s">Download CV ↓</a>
       </div>
     </div>
     <div class="hero-right">
       <div class="code-card">
         <div class="cc-hd">
           <div class="dots"><span class="dr"></span><span class="dy"></span><span class="dg"></span></div>
-          <span class="cc-file">deepcsv/cleaner.py</span>
-          <span class="cc-live">● active</span>
+          <span class="cc-file">deepcsv/main.py</span>
+          <span class="cc-live">● v1.0.4</span>
         </div>
         <div class="cc-body">
-          <div class="cl"><span class="ln">1</span><span><span class="kw">import</span> <span class="cl2">pandas</span> <span class="kw">as</span> <span class="va">pd</span></span></div>
-          <div class="cl"><span class="ln">2</span><span><span class="kw">from</span> <span class="cl2">sklearn</span> <span class="kw">import</span> <span class="fn">preprocessing</span></span></div>
-          <div class="cl"><span class="ln">3</span><span></span></div>
-          <div class="cl"><span class="ln">4</span><span><span class="cm"># DeepCSV — published on PyPI</span></span></div>
-          <div class="cl"><span class="ln">5</span><span><span class="kw">def</span> <span class="fn">clean</span>(<span class="va">df</span>: <span class="cl2">pd</span>.<span class="cl2">DataFrame</span>):</span></div>
-          <div class="cl"><span class="ln">6</span><span>&nbsp;&nbsp;<span class="va">df</span> = <span class="fn">handle_missing</span>(<span class="va">df</span>)</span></div>
-          <div class="cl"><span class="ln">7</span><span>&nbsp;&nbsp;<span class="va">df</span> = <span class="fn">remove_outliers</span>(<span class="va">df</span>)</span></div>
-          <div class="cl"><span class="ln">8</span><span>&nbsp;&nbsp;<span class="va">df</span> = <span class="fn">normalize</span>(<span class="va">df</span>)</span></div>
-          <div class="cl"><span class="ln">9</span><span>&nbsp;&nbsp;<span class="kw">return</span> <span class="va">df</span></span></div>
-          <div class="cl"><span class="ln">10</span><span></span></div>
-          <div class="cl"><span class="ln">11</span><span><span class="cm"># pip install deepcsv</span></span></div>
+          <div class="cl"><span class="ln">1</span><span><span class="kw">from</span> <span class="cl2">deepcsv</span> <span class="kw">import</span> <span class="fn">Cleaner</span></span></div>
+          <div class="cl"><span class="ln">2</span><span></span></div>
+          <div class="cl"><span class="ln">3</span><span><span class="cm"># Automate data preprocessing</span></span></div>
+          <div class="cl"><span class="ln">4</span><span><span class="va">cleaner</span> = <span class="fn">Cleaner</span>(strategy=<span class="st">'auto'</span>)</span></div>
+          <div class="cl"><span class="ln">5</span><span><span class="va">cleaner</span>.<span class="fn">fit_transform</span>(<span class="st">"messy_data.csv"</span>)</span></div>
         </div>
         <div class="stats">
-          <div class="si"><span class="sn">3+</span><span class="sl">Projects</span></div>
-          <div class="si"><span class="sn">~98%</span><span class="sl">Best Acc.</span></div>
-          <div class="si"><span class="sn">PyPI</span><span class="sl">Published</span></div>
+          <div class="si"><span class="sn">12+</span><span class="sl">Functions</span></div>
+          <div class="si"><span class="sn">PyPI</span><span class="sl">Verified</span></div>
+          <div class="si"><span class="sn">Open</span><span class="sl">Source</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
 <div class="divl"></div>
 
 <!-- ABOUT -->
@@ -255,6 +244,50 @@ footer{border-top:1px solid var(--border);padding:28px 5%;position:relative;z-in
 
 <div class="divl"></div>
 
+<div class="divl"></div>
+
+<section id="background" style="padding: 110px 5%">
+  <div class="inner">
+    <div class="about-grid">
+      <div>
+        <p class="stag">Education</p>
+        <h2 class="sh" style="font-size: 32px; margin-bottom: 24px">Academic Journey</h2>
+        <div class="skills-list">
+          <div class="sk-row">
+            <div class="sk-icon">🎓</div>
+            <div style="flex:1">
+              <div class="sk-name">Foundational AI & CS Studies</div>
+              <div class="sk-desc">Focused on Python, Advanced Mathematics, and Machine Learning Fundamentals.</div>
+            </div>
+          </div>
+          <div class="sk-row">
+            <div class="sk-icon">📜</div>
+            <div style="flex:1">
+              <div class="sk-name">Neural Networks & Deep Learning</div>
+              <div class="sk-desc">DeepLearning.AI (Specialization Highlight)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p class="stag">Languages</p>
+        <h2 class="sh" style="font-size: 32px; margin-bottom: 24px">Speaking In</h2>
+        <div class="tools-grid" style="margin-top: 0; grid-template-columns: 1fr 1fr; gap: 15px">
+          <div class="tc" style="flex-direction: row; padding: 15px">
+            <span class="tc-e" style="font-size: 18px">🇪🇬</span>
+            <div style="text-align: left"><div class="sk-name">Arabic</div><div class="sk-desc">Native</div></div>
+          </div>
+          <div class="tc" style="flex-direction: row; padding: 15px">
+            <span class="tc-e" style="font-size: 18px">🇺🇸</span>
+            <div style="text-align: left"><div class="sk-name">English</div><div class="sk-desc">Professional</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
 <!-- PROJECTS -->
 <section id="projects">
   <div class="inner">
@@ -386,7 +419,7 @@ footer{border-top:1px solid var(--border);padding:28px 5%;position:relative;z-in
           
           <a href="tel:+201553996442" class="citem">
             <div class="cicon ci-o" style="background: rgba(16, 185, 129, 0.1); color: var(--green);">📞</div>
-            <div><div class="clabel">Phone</div><div class="cval">+20 1X XXX XXXX</div></div>
+            <div><div class="clabel">Phone</div><div class="cval">+20 155 399 6442</div></div>
           </a>
 
           <a href="https://github.com/abdubakr77" target="_blank" rel="noopener" class="citem">
