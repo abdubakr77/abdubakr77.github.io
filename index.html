@@ -117,12 +117,13 @@
         <div class="cc-body">
           <div class="cl"><span class="ln">1</span><span><span class="cm"># pip install deepcsv</span></span></div>
           <div class="cl"><span class="ln">2</span><span></span></div>
-          <div class="cl"><span class="ln">3</span><span><span class="kw">from</span> <span class="cl2">deepcsv</span> <span class="kw">import</span> <span class="fn">utils</span></span></div>
-          <div class="cl"><span class="ln">4</span><span></span></div>
-          <div class="cl"><span class="ln">5</span><span><span class="va">utils</span> <span class="op">=</span> <span class="fn">utils</span><span class="op">()</span></span></div>
-          <div class="cl"><span class="ln">6</span><span><span class="va">utils</span>.<span class="fn">process_file</span><span class="op">(</span><span class="st">"data.csv"</span><span class="op">)</span></span></div>
-          <div class="cl"><span class="ln">7</span><span></span></div>
-          <div class="cl"><span class="ln">8</span><span><span class="cm"># Arrays restored. Types fixed. Done.</span></span></div>
+          <div class="cl"><span class="ln">3</span><span><span class="kw">from</span> <span class="cl2">deepcsv</span> <span class="kw">import</span> <span class="fn">auto_fix</span></span></div>
+          <div class="cl"><span class="ln">4</span><span><span class="pd">import</span> <span class="cl2">pandas</span> <span class="pd">as</span> <span class="fn">pd</span></span></div>
+          <div class="cl"><span class="ln">5</span><span></span></div>
+          <div class="cl"><span class="ln">6</span><span><span class="va">utils</span> <span class="op">=</span> <span class="fn">utils</span><span class="op">()</span></span></div>
+          <div class="cl"><span class="ln">7</span><span><span class="va">utils</span>.<span class="fn">auto_fix</span><span class="op">(</span><span class="st">"data.csv"</span><span class="op">)</span></span></div>
+          <div class="cl"><span class="ln">8</span><span></span></div>
+          <div class="cl"><span class="ln">9</span><span><span class="cm"># Arrays restored. Types fixed. Done.</span></span></div>
         </div>
 
         <!-- Badges: shields.io images load correctly on live sites -->
