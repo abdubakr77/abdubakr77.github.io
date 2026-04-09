@@ -297,7 +297,19 @@ h1 {
 .cc-file { font-family: var(--fm); font-size: 11px; color: var(--text3); }
 .cc-ver  { font-family: var(--fm); font-size: 10px; color: var(--green2); }
 
-.cc-body { padding: 22px 20px; font-family: var(--fm); font-size: 12px; line-height: 2.1; }
+.cc-body {
+  padding: 22px 20px; font-family: var(--fm); font-size: 12px; line-height: 2.1;
+  max-height: 210px; overflow-y: auto;
+}
+.cc-body::-webkit-scrollbar { width: 3px; }
+.cc-body::-webkit-scrollbar-track { background: transparent; }
+.cc-body::-webkit-scrollbar-thumb { background: var(--b2); border-radius: 3px; }
+.cc-scroll-hint {
+  font-family: var(--fm); font-size: 9px; color: var(--text3);
+  text-align: center; padding: 5px 0 8px;
+  letter-spacing: 0.08em; border-top: 1px solid var(--b1);
+  opacity: 0.6;
+}
 .cl { display: flex; gap: 16px; }
 .ln  { color: var(--text3); min-width: 20px; text-align: right; font-size: 10px; padding-top: 3px; user-select: none; }
 .kw  { color: #c792ea; }
