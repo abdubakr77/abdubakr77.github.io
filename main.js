@@ -108,14 +108,15 @@ if (toolsGrid) tcObs.observe(toolsGrid);
 function animateCounter(el) {
   const target = parseInt(el.dataset.target, 10);
   const suffix = el.dataset.suffix || '';
-  const duration = 1800; // ms
+  const duration = 2800; // longer total duration
   const start = performance.now();
 
   function step(now) {
     const elapsed = now - start;
     const progress = Math.min(elapsed / duration, 1);
-    // Ease-out cubic
-    const eased = 1 - Math.pow(1 - progress, 3);
+    // Strong ease-out: fast start, very slow finish near target
+    // Use power 5 for very pronounced deceleration near end
+    const eased = 1 - Math.pow(1 - progress, 5);
     const current = Math.round(eased * target);
     el.textContent = current + suffix;
     if (progress < 1) requestAnimationFrame(step);
@@ -132,6 +133,19 @@ const counterObs = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.5 });
 document.querySelectorAll('.counter').forEach(el => counterObs.observe(el));
+
+/* ── SCROLL CUE HIDE ON SCROLL ────────────────────────── */
+(function() {
+  const cue = document.querySelector('.scroll-cue');
+  if (!cue) return;
+  const hideCue = () => {
+    if (window.scrollY > 40) {
+      cue.classList.add('hidden');
+      window.removeEventListener('scroll', hideCue, { passive: true });
+    }
+  };
+  window.addEventListener('scroll', hideCue, { passive: true });
+})();
 
 /* ── ACTIVE NAV LINK ──────────────────────────────────── */
 const navSecs  = document.querySelectorAll('section[id]');
