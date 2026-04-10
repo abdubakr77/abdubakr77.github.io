@@ -6,6 +6,9 @@
 <title>Abdullah Bakr — AI/ML & Deep Learning Engineer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Bricolage+Grotesque:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<!-- Favicon: AB logo -->
+<link rel="icon" type="image/png" href="favicon_ab.png">
+<link rel="apple-touch-icon" href="favicon_ab.png">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -37,6 +40,22 @@
   </div>
 </div>
 
+<!-- ── CV MODAL ─────────────────────────────── -->
+<div class="cv-modal" id="cvModal">
+  <div class="cv-box">
+    <div class="cv-hd">
+      <span class="cv-title">Abdullah Bakr — CV</span>
+      <div class="cv-hd-right">
+        <a href="Abdullah_Bakr_CV.pdf" download="Abdullah_Bakr_CV.pdf" class="pdf-dl">⬇ Download</a>
+        <button class="pdf-close" onclick="closeCV()">✕ Close</button>
+      </div>
+    </div>
+    <div class="cv-frame">
+      <iframe src="Abdullah_Bakr_CV.pdf" title="Abdullah Bakr CV"></iframe>
+    </div>
+  </div>
+</div>
+
 <!-- ── NAV ──────────────────────────────────── -->
 <nav>
   <a href="#hero" class="nav-logo">AB<em>.</em></a>
@@ -53,6 +72,7 @@
       <span id="visitorCount">—</span>
       <span>visitors</span>
     </div>
+    <button class="nav-cv-btn" onclick="openCV()">View CV</button>
     <a href="#contact" class="nav-cta">Hire Me →</a>
   </div>
 </nav>
@@ -85,6 +105,12 @@
           </svg>
           View Projects
         </a>
+        <button onclick="openCV()" class="btn-s">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px">
+            <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+          </svg>
+          View CV
+        </button>
         <a href="Abdullah_Bakr_CV.pdf" download class="btn-s">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px">
             <path d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 004.561 21h14.878a2 2 0 001.94-1.515L22 17"/>
@@ -114,29 +140,48 @@
           <span class="cc-file">deepcsv.py</span>
           <span class="cc-ver">● live</span>
         </div>
-        <div class="cc-body">
+
+        <!-- Scrollable code body -->
+        <div class="cc-body cc-scroll" id="ccScrollBody">
           <div class="cl"><span class="ln">1</span><span><span class="cm"># pip install deepcsv</span></span></div>
           <div class="cl"><span class="ln">2</span><span></span></div>
-          <div class="cl"><span class="ln">3</span><span><span class="kw">from</span> <span class="cl2">deepcsv</span> <span class="kw">import</span> <span class="fn">process_file</span></span></div>
+          <div class="cl"><span class="ln">3</span><span><span class="kw">from</span> <span class="cl2">deepcsv</span> <span class="kw">import</span> <span class="fn">process_file</span><span class="op">, </span><span class="fn">read_any</span><span class="op">, </span><span class="fn">clean_values</span><span class="op">, </span><span class="fn">auto_fix</span></span></div>
           <div class="cl"><span class="ln">4</span><span></span></div>
-          <div class="cl"><span class="ln">5</span><span><span class="fn">process_file</span><span class="op">(</span><span class="st">"path\data.csv, auto_fix=True"</span><span class="op">)</span></span></div>
-          <div class="cl"><span class="ln">6</span><span></span></div>
-          <div class="cl"><span class="ln">7</span><span><span class="cm"># Arrays restored. Types fixed. Done.</span></span></div>
+          <div class="cl"><span class="ln">5</span><span><span class="cm"># ─── process_file() ────────────────────────────</span></span></div>
+          <div class="cl"><span class="ln">6</span><span><span class="cm"># Converts string lists → NumPy arrays, fixes mixed types</span></span></div>
+          <div class="cl"><span class="ln">7</span><span><span class="fn">process_file</span><span class="op">(</span><span class="st">"data.csv"</span><span class="op">)</span></span></div>
+          <div class="cl"><span class="ln">8</span><span><span class="fn">process_file</span><span class="op">(</span><span class="st">"data.csv"</span><span class="op">, </span><span class="va">file_format</span><span class="op">=</span><span class="st">"parquet"</span><span class="op">)</span></span></div>
+          <div class="cl"><span class="ln">9</span><span></span></div>
+          <div class="cl"><span class="ln">10</span><span><span class="cm"># ─── process_all_files() ───────────────────────</span></span></div>
+          <div class="cl"><span class="ln">11</span><span><span class="cm"># Batch processes entire folder trees recursively</span></span></div>
+          <div class="cl"><span class="ln">12</span><span><span class="fn">process_all_files</span><span class="op">(</span><span class="st">"path/to/folder"</span><span class="op">, </span><span class="va">file_format</span><span class="op">=</span><span class="st">"csv"</span><span class="op">)</span></span></div>
+          <div class="cl"><span class="ln">13</span><span></span></div>
+          <div class="cl"><span class="ln">14</span><span><span class="cm"># ─── read_any() ────────────────────────────────</span></span></div>
+          <div class="cl"><span class="ln">15</span><span><span class="cm"># One universal reader — csv, xlsx, json, parquet…</span></span></div>
+          <div class="cl"><span class="ln">16</span><span><span class="va">df</span> <span class="op">=</span> <span class="fn">read_any</span><span class="op">(</span><span class="st">"data/users.csv"</span><span class="op">)</span></span></div>
+          <div class="cl"><span class="ln">17</span><span><span class="va">df</span> <span class="op">=</span> <span class="fn">read_any</span><span class="op">(</span><span class="st">"warehouse/orders.parquet"</span><span class="op">)</span></span></div>
+          <div class="cl"><span class="ln">18</span><span></span></div>
+          <div class="cl"><span class="ln">19</span><span><span class="cm"># ─── clean_values() ────────────────────────────</span></span></div>
+          <div class="cl"><span class="ln">20</span><span><span class="cm"># Cleans nulls, values, types with full control</span></span></div>
+          <div class="cl"><span class="ln">21</span><span><span class="fn">clean_values</span><span class="op">(</span><span class="va">df</span><span class="op">, </span><span class="va">cols</span><span class="op">=[</span><span class="st">"age"</span><span class="op">, </span><span class="st">"salary"</span><span class="op">])</span></span></div>
+          <div class="cl"><span class="ln">22</span><span><span class="fn">clean_values</span><span class="op">(</span><span class="va">df</span><span class="op">, </span><span class="va">finding_type</span><span class="op">=</span><span class="kw">str</span><span class="op">, </span><span class="va">cols</span><span class="op">=[</span><span class="st">"score"</span><span class="op">])</span></span></div>
+          <div class="cl"><span class="ln">23</span><span></span></div>
+          <div class="cl"><span class="ln">24</span><span><span class="cm"># ─── auto_fix() ────────────────────────────────</span></span></div>
+          <div class="cl"><span class="ln">25</span><span><span class="cm"># Detects & fixes mixed-type columns automatically</span></span></div>
+          <div class="cl"><span class="ln">26</span><span><span class="va">df</span> <span class="op">=</span> <span class="fn">auto_fix</span><span class="op">(</span><span class="st">"data.csv"</span><span class="op">)</span></span></div>
+          <div class="cl"><span class="ln">27</span><span><span class="va">df</span> <span class="op">=</span> <span class="fn">auto_fix</span><span class="op">(</span><span class="va">my_dataframe</span><span class="op">)</span></span></div>
+          <div class="cl"><span class="ln">28</span><span></span></div>
+          <div class="cl"><span class="ln">29</span><span><span class="cm"># Arrays restored. Types fixed. Done.</span></span></div>
         </div>
+        <div class="cc-scroll-hint">↕ scroll to explore</div>
 
-        <!-- Badges: shields.io images load correctly on live sites -->
+        <!-- Badges row -->
         <div class="cc-badges">
           <a href="https://pypi.org/project/deepcsv/" target="_blank" rel="noopener" style="text-decoration:none;display:flex;align-items:center">
-            <img
-              src="https://img.shields.io/pypi/v/deepcsv?style=flat-square&color=3b82f6&label=version&labelColor=1e293b"
-              alt="PyPI Version"
-              style="height:22px;border-radius:5px">
+            <img src="https://img.shields.io/pypi/v/deepcsv?style=flat-square&color=3b82f6&label=version&labelColor=1e293b" alt="PyPI Version" style="height:22px;border-radius:5px">
           </a>
           <a href="https://pypi.org/project/deepcsv/" target="_blank" rel="noopener" style="text-decoration:none;display:flex;align-items:center">
-            <img
-              src="https://img.shields.io/pypi/dm/deepcsv?style=flat-square&color=059669&label=downloads%2Fmo&labelColor=1e293b"
-              alt="PyPI Downloads"
-              style="height:22px;border-radius:5px">
+            <img src="https://img.shields.io/pypi/dm/deepcsv?style=flat-square&color=059669&label=downloads%2Fmo&labelColor=1e293b" alt="PyPI Downloads" style="height:22px;border-radius:5px">
           </a>
           <div class="pypi-badge">
             <span class="bl">python</span>
@@ -232,34 +277,15 @@
     </div>
     <div class="proj-grid">
 
-      <!-- Project 1 -->
+      <!-- Project 1: Cats vs Dogs -->
       <div class="pcard fade-in">
-        <div class="pimg pimg-cv">
-          <div class="pimg-inner">
-            <svg viewBox="0 0 400 190" xmlns="http://www.w3.org/2000/svg" style="opacity:.22">
-              <g stroke="#60a5fa" stroke-width="0.6" fill="none">
-                <circle cx="55" cy="48" r="9" fill="#1d4ed8"/><circle cx="55" cy="78" r="9" fill="#1d4ed8"/>
-                <circle cx="55" cy="108" r="9" fill="#1d4ed8"/><circle cx="55" cy="138" r="9" fill="#1d4ed8"/>
-                <circle cx="138" cy="58" r="9" fill="#2563eb"/><circle cx="138" cy="93" r="9" fill="#2563eb"/>
-                <circle cx="138" cy="128" r="9" fill="#2563eb"/>
-                <circle cx="215" cy="68" r="9" fill="#3b82f6"/><circle cx="215" cy="108" r="9" fill="#3b82f6"/>
-                <circle cx="292" cy="88" r="12" fill="#60a5fa"/>
-                <line x1="64" y1="48" x2="129" y2="58"/><line x1="64" y1="48" x2="129" y2="93"/><line x1="64" y1="48" x2="129" y2="128"/>
-                <line x1="64" y1="78" x2="129" y2="58"/><line x1="64" y1="78" x2="129" y2="93"/><line x1="64" y1="78" x2="129" y2="128"/>
-                <line x1="64" y1="108" x2="129" y2="58"/><line x1="64" y1="108" x2="129" y2="93"/><line x1="64" y1="108" x2="129" y2="128"/>
-                <line x1="64" y1="138" x2="129" y2="58"/><line x1="64" y1="138" x2="129" y2="93"/><line x1="64" y1="138" x2="129" y2="128"/>
-                <line x1="147" y1="58" x2="206" y2="68"/><line x1="147" y1="58" x2="206" y2="108"/>
-                <line x1="147" y1="93" x2="206" y2="68"/><line x1="147" y1="93" x2="206" y2="108"/>
-                <line x1="147" y1="128" x2="206" y2="68"/><line x1="147" y1="128" x2="206" y2="108"/>
-                <line x1="224" y1="68" x2="280" y2="88"/><line x1="224" y1="108" x2="280" y2="88"/>
-              </g>
-            </svg>
-          </div>
-          <span class="pimg-label">CNN Architecture</span>
+        <div class="pimg pimg-cv" style="height:200px;padding:0;overflow:hidden">
+          <img src="img_cats_dogs.png" alt="Cats vs Dogs Classifier" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block">
+          <span class="pimg-label">Computer Vision</span>
           <span class="pimg-acc">~98% Acc</span>
         </div>
         <div class="pbody">
-          <div class="pnum">01 / 03</div>
+          <div class="pnum">01 / 04</div>
           <span class="ptag t-cv">Computer Vision · Deep Learning</span>
           <h3 class="ptitle">Cats vs Dogs Image Classifier</h3>
           <p class="pdesc">Custom CNN achieving ~98% accuracy on binary image classification. Built with TensorFlow/Keras — data augmentation, dropout regularization, batch normalization, and hyperparameter tuning.</p>
@@ -280,31 +306,15 @@
         </div>
       </div>
 
-      <!-- Project 2 -->
+      <!-- Project 2: DeepCSV -->
       <div class="pcard fade-in">
-        <div class="pimg pimg-ml">
-          <div class="pimg-inner">
-            <svg viewBox="0 0 400 190" xmlns="http://www.w3.org/2000/svg" style="opacity:.20">
-              <g fill="none" stroke="#34d399" stroke-width="0.7">
-                <rect x="28" y="28" width="344" height="134" rx="4"/>
-                <rect x="28" y="28" width="86" height="28" fill="#0a2a1a"/><rect x="114" y="28" width="86" height="28" fill="#0a2a1a"/>
-                <rect x="200" y="28" width="86" height="28" fill="#0a2a1a"/><rect x="286" y="28" width="86" height="28" fill="#0a2a1a"/>
-                <rect x="28" y="56" width="86" height="22"/><rect x="114" y="56" width="86" height="22"/>
-                <rect x="200" y="56" width="86" height="22" fill="rgba(16,185,129,0.12)"/><rect x="286" y="56" width="86" height="22"/>
-                <rect x="28" y="78" width="86" height="22"/><rect x="114" y="78" width="86" height="22"/>
-                <rect x="200" y="78" width="86" height="22" fill="rgba(16,185,129,0.12)"/><rect x="286" y="78" width="86" height="22"/>
-                <rect x="28" y="100" width="86" height="22"/><rect x="114" y="100" width="86" height="22"/>
-                <rect x="200" y="100" width="86" height="22" fill="rgba(16,185,129,0.12)"/><rect x="286" y="100" width="86" height="22"/>
-                <rect x="28" y="122" width="86" height="22"/><rect x="114" y="122" width="86" height="22"/>
-                <rect x="200" y="122" width="86" height="22" fill="rgba(16,185,129,0.12)"/><rect x="286" y="122" width="86" height="22"/>
-              </g>
-            </svg>
-          </div>
-          <span class="pimg-label">Data Pipeline</span>
+        <div class="pimg pimg-ml" style="height:200px;padding:0;overflow:hidden">
+          <img src="img_deepcsv.png" alt="DeepCSV" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block">
+          <span class="pimg-label">Open Source</span>
           <span class="pimg-acc" style="background:rgba(52,211,153,0.2);border-color:rgba(52,211,153,0.4)">PyPI ✓</span>
         </div>
         <div class="pbody">
-          <div class="pnum">02 / 03</div>
+          <div class="pnum">02 / 04</div>
           <span class="ptag t-ml">Open Source · PyPI Package</span>
           <h3 class="ptitle">DeepCSV — Automatic Data Cleaner</h3>
           <p class="pdesc">Python library published on PyPI. Auto-walks directories, converts stringified lists to NumPy arrays, fixes mixed-type columns, and saves as Parquet — built for real ML data prep.</p>
@@ -329,32 +339,15 @@
         </div>
       </div>
 
-      <!-- Project 3 -->
+      <!-- Project 3: Weather -->
       <div class="pcard fade-in">
-        <div class="pimg pimg-reg">
-          <div class="pimg-inner">
-            <svg viewBox="0 0 400 190" xmlns="http://www.w3.org/2000/svg" style="opacity:.22">
-              <g stroke="rgba(245,158,11,0.15)" stroke-width="0.5">
-                <line x1="40" y1="30" x2="40" y2="165"/>
-                <line x1="40" y1="165" x2="375" y2="165"/>
-                <line x1="40" y1="50" x2="375" y2="50"/><line x1="40" y1="82" x2="375" y2="82"/>
-                <line x1="40" y1="114" x2="375" y2="114"/><line x1="40" y1="146" x2="375" y2="146"/>
-              </g>
-              <path d="M 52 155 C 90 142, 122 128, 158 114 C 190 102, 218 89, 252 76 C 282 65, 312 57, 345 49 C 360 46, 370 44, 375 43" fill="none" stroke="#f59e0b" stroke-width="2.5" opacity="0.7"/>
-              <path d="M 52 155 C 90 142, 122 128, 158 114 C 190 102, 218 89, 252 76 C 282 65, 312 57, 345 49 C 360 46, 370 44, 375 43 L 375 165 L 52 165 Z" fill="#f59e0b" opacity="0.06"/>
-              <g fill="#fcd34d" opacity="0.6">
-                <circle cx="55" cy="157" r="3"/><circle cx="82" cy="144" r="3"/><circle cx="112" cy="130" r="3"/>
-                <circle cx="145" cy="116" r="3"/><circle cx="175" cy="104" r="3"/><circle cx="206" cy="91" r="3"/>
-                <circle cx="238" cy="79" r="3"/><circle cx="268" cy="68" r="3"/><circle cx="300" cy="60" r="3"/>
-                <circle cx="330" cy="53" r="3"/><circle cx="362" cy="47" r="3"/>
-              </g>
-            </svg>
-          </div>
+        <div class="pimg pimg-reg" style="height:200px;padding:0;overflow:hidden">
+          <img src="img_weather.png" alt="Weather Temperature Predictor" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block">
           <span class="pimg-label">Regression Model</span>
           <span class="pimg-acc" style="background:rgba(245,158,11,0.2);border-color:rgba(245,158,11,0.4)">ML Pipeline</span>
         </div>
         <div class="pbody">
-          <div class="pnum">03 / 03</div>
+          <div class="pnum">03 / 04</div>
           <span class="ptag t-reg">Regression · Machine Learning</span>
           <h3 class="ptitle">Weather Temperature Predictor</h3>
           <p class="pdesc">End-to-end regression pipeline predicting weather temperatures from historical meteorological data. Feature engineering, model comparison (Linear, Ridge, RF), cross-validation, full evaluation.</p>
@@ -375,6 +368,52 @@
         </div>
       </div>
 
+      <!-- Project 4: Intel Image Classification (In Progress) -->
+      <div class="pcard fade-in" style="position:relative">
+        <div class="p-inprogress-badge">⚙ In Progress</div>
+        <div class="pimg pimg-intel" style="height:200px;padding:0;overflow:hidden;position:relative">
+          <div class="pimg-inner" style="background:linear-gradient(135deg,#0d1429,#1a0d3c);width:100%;height:100%;display:flex;align-items:center;justify-content:center">
+            <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" style="opacity:.25;width:100%;height:100%;position:absolute;inset:0">
+              <g fill="none" stroke="#a855f7" stroke-width="0.8">
+                <!-- Grid pattern suggesting image pixels / conv layers -->
+                <rect x="30" y="20" width="60" height="160" rx="4"/>
+                <rect x="100" y="40" width="50" height="120" rx="4"/>
+                <rect x="160" y="55" width="40" height="90" rx="4"/>
+                <rect x="210" y="70" width="30" height="60" rx="4"/>
+                <rect x="250" y="82" width="20" height="36" rx="4"/>
+                <!-- Connection lines -->
+                <line x1="90" y1="100" x2="100" y2="100"/><line x1="150" y1="100" x2="160" y2="100"/>
+                <line x1="200" y1="100" x2="210" y2="100"/><line x1="240" y1="100" x2="250" y2="100"/>
+                <!-- Output circle -->
+                <circle cx="320" cy="100" r="28" stroke="#c084fc" stroke-width="1.5"/>
+                <line x1="270" y1="100" x2="292" y2="100"/>
+                <!-- Labels -->
+                <text x="55" y="195" font-size="8" fill="#a855f7" text-anchor="middle">Input</text>
+                <text x="315" y="140" font-size="8" fill="#c084fc" text-anchor="middle">Output</text>
+              </g>
+            </svg>
+          </div>
+          <span class="pimg-label">Transfer Learning</span>
+          <span class="pimg-acc" style="background:rgba(168,85,247,0.2);border-color:rgba(168,85,247,0.4)">ResNet50</span>
+        </div>
+        <div class="pbody">
+          <div class="pnum">04 / 04</div>
+          <span class="ptag t-intel">Computer Vision · Transfer Learning</span>
+          <h3 class="ptitle">Intel Image Classification</h3>
+          <p class="pdesc">Multi-class scene classification using Transfer Learning with ResNet50 on the Intel Image dataset (6 categories: Buildings, Forest, Glacier, Mountain, Sea, Street). Training results will be added upon completion.</p>
+          <div class="pmeta">
+            <span class="mb mb-h">~24K Images</span>
+            <span class="mb">TensorFlow</span><span class="mb">ResNet50</span><span class="mb">Keras</span>
+          </div>
+          <div class="plinks">
+            <a href="https://github.com/abdubakr77" target="_blank" rel="noopener" class="plink">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -390,10 +429,24 @@
 
       <!-- LEFT: Education + Certifications -->
       <div>
+        <!-- Education -->
         <div class="fade-in" style="margin-bottom:52px">
           <p class="stag">Education</p>
           <h2 class="sh" style="font-size:clamp(26px,3vw,38px)">Academic Journey</h2>
-          <div class="skills-list" style="margin-top:24px">
+
+          <!-- MIS Degree Card -->
+          <div class="edu-card" style="margin-top:24px">
+            <div class="edu-icon">🎓</div>
+            <div class="edu-content">
+              <div class="edu-degree">B.Sc. in Management Information Systems <span class="edu-tag">MIS</span></div>
+              <div class="edu-inst">Science Valley Academy</div>
+              <div class="edu-meta">
+                <span class="edu-status active-badge">● Enrolled</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="skills-list" style="margin-top:16px">
             <div class="sk-row">
               <div class="sk-icon">📐</div>
               <div style="flex:1">
@@ -418,6 +471,7 @@
           </div>
         </div>
 
+        <!-- Certifications -->
         <div class="fade-in">
           <p class="stag">Certifications</p>
           <h2 class="sh" style="font-size:clamp(26px,3vw,38px);margin-bottom:6px">Verified Learning</h2>
@@ -425,27 +479,13 @@
             Click any certificate to view it
           </p>
 
-          <!--
-            HOW TO ADD YOUR CERTIFICATE FILES:
-            1. Upload your certificate PDFs / images to a folder called "certificates/" in your GitHub repo.
-            2. Update the onclick data-src attributes below with the correct paths.
-
-            Examples:
-              onclick="openCert('AI for Everyone', 'certificates/ai4e.pdf')"
-              onclick="openCert('Python Basics',   'certificates/python.pdf')"
-
-            For external verification links use the full URL:
-              onclick="openCert('Time Management', 'https://edraak.org/...')"
-          -->
           <div class="cert-grid">
 
-            <!-- 1. AI for Everyone (badge image + PDF) -->
-            <div class="cert-card"
-                 onclick="openCert('AI for Everyone (AI4E)', 'certificates/Attendance_Certificate.pdf')">
+            <!-- 1. AI for Everyone -->
+            <div class="cert-card" onclick="openCert('AI for Everyone (AI4E)', 'certificates/Attendance_Certificate.pdf')">
               <div class="cert-img-wrap">
-                <img src="certificates/AI_for_Everyone_AI4E_.png"
-                     alt="AI for Everyone badge"
-                     onerror="this.parentElement.innerHTML='<div class=\'cert-icon-wrap\'>🤖</div>'">
+                <img src="certificates/AI_for_Everyone_AI4E_.jpg" alt="AI for Everyone"
+                     onerror="this.parentElement.style.background='linear-gradient(135deg,#0d1f3c,#1a1040)';this.style.display='none'">
               </div>
               <div class="cert-body">
                 <div class="cert-issuer">ITI / Mahara-Tech · AI Academy</div>
@@ -454,13 +494,11 @@
               </div>
             </div>
 
-            <!-- 2. Python Programming Basics (badge image + PDF) -->
-            <div class="cert-card"
-                 onclick="openCert('Python Programming Basics', 'certificates/Course_Certificate_En.pdf')">
+            <!-- 2. Python Programming Basics -->
+            <div class="cert-card" onclick="openCert('Python Programming Basics', 'certificates/Course_Certificate_En.pdf')">
               <div class="cert-img-wrap">
-                <img src="certificates/Python_Programming_Basics.png"
-                     alt="Python Programming Basics badge"
-                     onerror="this.parentElement.innerHTML='<div class=\'cert-icon-wrap\'>🐍</div>'">
+                <img src="certificates/Python_Programming_Basics.jpg" alt="Python Programming"
+                     onerror="this.parentElement.style.background='linear-gradient(135deg,#0a2a1a,#0a1f2e)';this.style.display='none'">
               </div>
               <div class="cert-body">
                 <div class="cert-issuer">ITI / Mahara-Tech · Cybersecurity Academy</div>
@@ -469,10 +507,23 @@
               </div>
             </div>
 
-            <!-- 3. Intro to Modern AI — Cisco (icon + PDF) -->
-            <div class="cert-card"
-                 onclick="openCert('Introduction to Modern AI', 'certificates/IntrotoModernAI.pdf')">
-              <div class="cert-icon-wrap">🌐</div>
+            <!-- 3. Boost Your Productivity with AI (Google) — NEW -->
+            <div class="cert-card" onclick="openCert('Boost Your Productivity with AI', 'certificates/Boost_Productivity_AI_Google.pdf')">
+              <div class="cert-img-wrap cert-img-google">
+                <div class="cert-bg-pattern cert-bg-google"></div>
+              </div>
+              <div class="cert-body">
+                <div class="cert-issuer">Google · Maharat من Google</div>
+                <div class="cert-name">Boost Your Productivity with AI</div>
+                <div class="cert-view">↗ View Certificate</div>
+              </div>
+            </div>
+
+            <!-- 4. Intro to Modern AI — Cisco -->
+            <div class="cert-card" onclick="openCert('Introduction to Modern AI', 'certificates/IntrotoModernAI.pdf')">
+              <div class="cert-img-wrap cert-img-cisco">
+                <div class="cert-bg-pattern cert-bg-cisco"></div>
+              </div>
               <div class="cert-body">
                 <div class="cert-issuer">Cisco Networking Academy</div>
                 <div class="cert-name">Introduction to Modern AI</div>
@@ -480,10 +531,11 @@
               </div>
             </div>
 
-            <!-- 4. Time & Stress Management — Edraak (external verify link) -->
-            <div class="cert-card"
-                 onclick="openCert('Time &amp; Stress Management', 'https://programs.edraak.org/learn/verify-certificate/3ef81f4aaef747fca57199a199dc89d9/?lang=en')">
-              <div class="cert-icon-wrap">⏱️</div>
+            <!-- 5. Time & Stress Management — Edraak -->
+            <div class="cert-card" onclick="openCert('Time &amp; Stress Management', 'https://programs.edraak.org/learn/verify-certificate/3ef81f4aaef747fca57199a199dc89d9/?lang=en')">
+              <div class="cert-img-wrap cert-img-edraak">
+                <div class="cert-bg-pattern cert-bg-edraak"></div>
+              </div>
               <div class="cert-body">
                 <div class="cert-issuer">Edraak</div>
                 <div class="cert-name">Time &amp; Stress Management</div>
@@ -516,10 +568,10 @@
           <p class="stag">By the Numbers</p>
           <h2 class="sh" style="font-size:clamp(26px,3vw,38px);margin-bottom:24px">At a Glance</h2>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-            <div class="stat-card"><div class="stat-val" style="color:var(--acc2)">3+</div><div class="stat-lbl">Years Python</div></div>
-            <div class="stat-card"><div class="stat-val" style="color:var(--green2)">98%</div><div class="stat-lbl">Best Accuracy</div></div>
-            <div class="stat-card"><div class="stat-val" style="color:var(--cyan2)">1</div><div class="stat-lbl">PyPI Library</div></div>
-            <div class="stat-card"><div class="stat-val" style="color:var(--amber)">4</div><div class="stat-lbl">Certificates</div></div>
+            <div class="stat-card"><div class="stat-val counter" data-target="3" data-suffix="+" style="color:var(--acc2)">0</div><div class="stat-lbl">Years Python</div></div>
+            <div class="stat-card"><div class="stat-val counter" data-target="98" data-suffix="%" style="color:var(--green2)">0</div><div class="stat-lbl">Best Accuracy</div></div>
+            <div class="stat-card"><div class="stat-val counter" data-target="1" data-suffix="" style="color:var(--cyan2)">0</div><div class="stat-lbl">PyPI Library</div></div>
+            <div class="stat-card"><div class="stat-val counter" data-target="5" data-suffix="" style="color:var(--amber)">0</div><div class="stat-lbl">Certificates</div></div>
           </div>
         </div>
       </div><!-- /right -->
@@ -540,21 +592,21 @@
       <h2 class="sh">Tools &amp; Technologies</h2>
     </div>
     <div class="tools-grid">
-      <div class="tc"><span class="tc-e">🐍</span><span class="tc-n">Python</span></div>
-      <div class="tc"><span class="tc-e">🧠</span><span class="tc-n">TensorFlow</span></div>
-      <div class="tc"><span class="tc-e">⚡</span><span class="tc-n">Keras</span></div>
-      <div class="tc"><span class="tc-e">🔥</span><span class="tc-n">PyTorch</span></div>
-      <div class="tc"><span class="tc-e">👁️</span><span class="tc-n">OpenCV</span></div>
-      <div class="tc"><span class="tc-e">📊</span><span class="tc-n">Scikit-learn</span></div>
-      <div class="tc"><span class="tc-e">🐼</span><span class="tc-n">Pandas</span></div>
-      <div class="tc"><span class="tc-e">🔢</span><span class="tc-n">NumPy</span></div>
-      <div class="tc"><span class="tc-e">📈</span><span class="tc-n">Matplotlib</span></div>
-      <div class="tc"><span class="tc-e">📦</span><span class="tc-n">PyArrow</span></div>
-      <div class="tc"><span class="tc-e">🐙</span><span class="tc-n">Git / GitHub</span></div>
-      <div class="tc"><span class="tc-e">📓</span><span class="tc-n">Jupyter</span></div>
-      <div class="tc"><span class="tc-e">💻</span><span class="tc-n">VS Code</span></div>
-      <div class="tc"><span class="tc-e">🏅</span><span class="tc-n">Kaggle</span></div>
-      <div class="tc"><span class="tc-e">🏗️</span><span class="tc-n">PyPI</span></div>
+      <div class="tc tc-anim"><span class="tc-e">🐍</span><span class="tc-n">Python</span></div>
+      <div class="tc tc-anim"><span class="tc-e">🧠</span><span class="tc-n">TensorFlow</span></div>
+      <div class="tc tc-anim"><span class="tc-e">⚡</span><span class="tc-n">Keras</span></div>
+      <div class="tc tc-anim"><span class="tc-e">🔥</span><span class="tc-n">PyTorch</span></div>
+      <div class="tc tc-anim"><span class="tc-e">👁️</span><span class="tc-n">OpenCV</span></div>
+      <div class="tc tc-anim"><span class="tc-e">📊</span><span class="tc-n">Scikit-learn</span></div>
+      <div class="tc tc-anim"><span class="tc-e">🐼</span><span class="tc-n">Pandas</span></div>
+      <div class="tc tc-anim"><span class="tc-e">🔢</span><span class="tc-n">NumPy</span></div>
+      <div class="tc tc-anim"><span class="tc-e">📈</span><span class="tc-n">Matplotlib</span></div>
+      <div class="tc tc-anim"><span class="tc-e">📦</span><span class="tc-n">PyArrow</span></div>
+      <div class="tc tc-anim"><span class="tc-e">🐙</span><span class="tc-n">Git / GitHub</span></div>
+      <div class="tc tc-anim"><span class="tc-e">📓</span><span class="tc-n">Jupyter</span></div>
+      <div class="tc tc-anim"><span class="tc-e">💻</span><span class="tc-n">VS Code</span></div>
+      <div class="tc tc-anim"><span class="tc-e">🏅</span><span class="tc-n">Kaggle</span></div>
+      <div class="tc tc-anim"><span class="tc-e">🏗️</span><span class="tc-n">PyPI</span></div>
     </div>
   </div>
 </section>

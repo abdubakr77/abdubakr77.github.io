@@ -644,3 +644,167 @@ footer { border-top: 1px solid var(--b1); padding: 28px 6%; position: relative; 
   .tools-grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
   h1 { font-size: 52px; }
 }
+/* ====================================================
+   NEW ADDITIONS
+   ==================================================== */
+
+/* === CV MODAL (full-screen, no scroll, with close) === */
+.cv-modal {
+  display: none; position: fixed; inset: 0; z-index: 999;
+  background: rgba(4,7,15,0.96); backdrop-filter: blur(18px);
+  align-items: center; justify-content: center; padding: 16px;
+}
+.cv-modal.open { display: flex; }
+.cv-box {
+  background: var(--surf); border: 1px solid var(--b2);
+  border-radius: var(--radius-lg); width: 100%; max-width: 960px;
+  height: 92vh; display: flex; flex-direction: column; overflow: hidden;
+}
+.cv-hd {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 20px; border-bottom: 1px solid var(--b1); flex-shrink: 0; gap: 12px;
+}
+.cv-title { font-family: var(--ff); font-weight: 600; font-size: 15px; color: var(--text); flex:1; }
+.cv-hd-right { display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+.cv-frame { flex: 1; overflow: hidden; background: #fff; }
+.cv-frame iframe { width: 100%; height: 100%; border: none; display: block; }
+
+/* === NAV CV BUTTON === */
+.nav-cv-btn {
+  font-family: var(--fm); font-size: 10px; color: var(--cyan2);
+  background: none; border: 1px solid rgba(34,211,238,0.2);
+  padding: 6px 14px; border-radius: 5px; cursor: pointer;
+  transition: all 0.2s; letter-spacing: 0.07em; text-transform: uppercase;
+}
+.nav-cv-btn:hover { background: rgba(34,211,238,0.08); border-color: rgba(34,211,238,0.4); }
+
+/* === CODE CARD SCROLL === */
+.cc-scroll {
+  max-height: 230px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--surf3) transparent;
+}
+.cc-scroll::-webkit-scrollbar { width: 3px; }
+.cc-scroll::-webkit-scrollbar-thumb { background: var(--surf3); border-radius: 3px; }
+
+.cc-scroll-hint {
+  font-family: var(--fm); font-size: 9px; color: var(--text3);
+  text-align: center; padding: 6px 0 4px;
+  border-top: 1px dashed rgba(82,160,255,0.08);
+  letter-spacing: 0.08em; opacity: 0.7;
+}
+
+/* === PYPI BADGE — bigger python version === */
+.pypi-badge .br-py {
+  background: #b45309; color: #fff; padding: 0 9px;
+  height: 100%; display: flex; align-items: center;
+  font-size: 11px; font-weight: 600;
+}
+
+/* === PROJECT: In-Progress Badge === */
+.p-inprogress-badge {
+  position: absolute; top: 14px; left: 14px; z-index: 10;
+  font-family: var(--fm); font-size: 9.5px; font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  padding: 4px 10px; border-radius: 100px;
+  letter-spacing: 0.06em;
+  box-shadow: 0 2px 10px rgba(168,85,247,0.35);
+}
+
+/* Intel project tag */
+.t-intel { background: rgba(168,85,247,.1); color: #d8b4fe; border: 1px solid rgba(168,85,247,.25); }
+.pimg-intel { background: linear-gradient(135deg, #0d1429, #1a0d3c); }
+
+/* Hover zoom on project images */
+.pcard:hover .pimg img { transform: scale(1.05); }
+
+/* === EDUCATION CARD === */
+.edu-card {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 18px 20px; background: var(--surf); border: 1px solid var(--b2);
+  border-radius: 11px; border-left: 3px solid var(--acc2);
+}
+.edu-icon { font-size: 28px; flex-shrink: 0; line-height: 1; }
+.edu-degree {
+  font-family: var(--ff); font-weight: 700; font-size: 15px;
+  color: var(--text); margin-bottom: 4px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.edu-tag {
+  font-family: var(--fm); font-size: 9px; color: var(--acc2);
+  background: rgba(59,130,246,.12); border: 1px solid rgba(59,130,246,.25);
+  padding: 2px 8px; border-radius: 4px; font-weight: 500; letter-spacing: 0.06em;
+}
+.edu-inst {
+  font-family: var(--fb); font-size: 13px; color: var(--text2); margin-bottom: 8px;
+}
+.edu-meta { display: flex; align-items: center; gap: 10px; }
+.active-badge {
+  font-family: var(--fm); font-size: 9.5px; color: var(--green2);
+  background: rgba(16,185,129,.08); border: 1px solid rgba(16,185,129,.2);
+  padding: 3px 10px; border-radius: 100px; letter-spacing: 0.06em;
+}
+
+/* === CERTIFICATES — 5 cards, custom bg patterns (no emojis) === */
+.cert-grid { grid-template-columns: repeat(2, 1fr); }
+
+/* Google cert: blue/white gradient suggesting Google colors */
+.cert-img-google {
+  background: linear-gradient(135deg, #1a2a4a 0%, #0d1f3c 50%, #1a3050 100%);
+  position: relative; overflow: hidden;
+}
+.cert-bg-google {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(66,133,244,0.4) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 50%, rgba(52,168,83,0.25) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 20%, rgba(251,188,5,0.2) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(234,67,53,0.2) 0%, transparent 50%);
+}
+
+/* Cisco: dark teal networking feel */
+.cert-img-cisco {
+  background: linear-gradient(135deg, #0a1a2e 0%, #0d2a20 100%);
+  position: relative; overflow: hidden;
+}
+.cert-bg-cisco {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(0,170,210,0.3) 0%, transparent 65%),
+    radial-gradient(ellipse at 75% 40%, rgba(0,120,160,0.2) 0%, transparent 50%);
+}
+
+/* Edraak: warm orange/purple Middle East platform */
+.cert-img-edraak {
+  background: linear-gradient(135deg, #1a100a 0%, #2a1020 100%);
+  position: relative; overflow: hidden;
+}
+.cert-bg-edraak {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 35% 55%, rgba(234,88,12,0.3) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 35%, rgba(168,85,247,0.2) 0%, transparent 50%);
+}
+
+/* === TECH ICONS — slide-up animation === */
+.tc-anim {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.tc-anim.tc-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* === COUNTER ANIMATION === */
+.counter { display: block; }
+
+/* === RESPONSIVE extras === */
+@media (max-width: 600px) {
+  .cert-grid { grid-template-columns: 1fr; }
+  .cv-box { height: 95vh; }
+  .nav-cv-btn { display: none; }
+}

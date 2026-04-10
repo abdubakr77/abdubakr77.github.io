@@ -38,7 +38,6 @@ window.addEventListener('load', () => {
 
   function draw() {
     ctx.clearRect(0, 0, W, H);
-    // Draw lines between close particles
     for (let i = 0; i < particles.length; i++) {
       for (let j = i + 1; j < particles.length; j++) {
         const dx = particles[i].x - particles[j].x;
@@ -54,7 +53,6 @@ window.addEventListener('load', () => {
         }
       }
     }
-    // Draw dots
     particles.forEach(p => {
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
@@ -65,20 +63,13 @@ window.addEventListener('load', () => {
 
   function update() {
     particles.forEach(p => {
-      p.x += p.vx;
-      p.y += p.vy;
-      if (p.x < 0) p.x = W;
-      if (p.x > W) p.x = 0;
-      if (p.y < 0) p.y = H;
-      if (p.y > H) p.y = 0;
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
     });
   }
 
-  function loop() {
-    update();
-    draw();
-    requestAnimationFrame(loop);
-  }
+  function loop() { update(); draw(); requestAnimationFrame(loop); }
   loop();
 })();
 
@@ -94,8 +85,56 @@ const fadeObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.08 });
 fadeEls.forEach(el => fadeObs.observe(el));
 
+/* ── TECH ICONS — staggered slide-up on scroll ────────── */
+const tcEls = document.querySelectorAll('.tc-anim');
+const tcObs = new IntersectionObserver((entries) => {
+  // Find only newly intersecting ones
+  const visible = entries.filter(e => e.isIntersecting);
+  if (visible.length === 0) return;
+  // Get all tc-anim not yet visible and stagger them
+  tcEls.forEach((el, i) => {
+    if (!el.classList.contains('tc-visible')) {
+      setTimeout(() => el.classList.add('tc-visible'), i * 60);
+    }
+  });
+  // Once triggered, unobserve all
+  tcEls.forEach(el => tcObs.unobserve(el));
+}, { threshold: 0.1 });
+// Observe only the tools grid container
+const toolsGrid = document.querySelector('.tools-grid');
+if (toolsGrid) tcObs.observe(toolsGrid);
+
+/* ── COUNTER ANIMATION ────────────────────────────────── */
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target, 10);
+  const suffix = el.dataset.suffix || '';
+  const duration = 1800; // ms
+  const start = performance.now();
+
+  function step(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    // Ease-out cubic
+    const eased = 1 - Math.pow(1 - progress, 3);
+    const current = Math.round(eased * target);
+    el.textContent = current + suffix;
+    if (progress < 1) requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+
+const counterObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateCounter(e.target);
+      counterObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.counter').forEach(el => counterObs.observe(el));
+
 /* ── ACTIVE NAV LINK ──────────────────────────────────── */
-const navSecs = document.querySelectorAll('section[id]');
+const navSecs  = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll', () => {
   let cur = '';
@@ -119,24 +158,15 @@ if (contactForm) {
 }
 
 /* ── CERTIFICATE MODAL ────────────────────────────────── */
-const EDRAAK_URL = 'https://programs.edraak.org/learn/verify-certificate/3ef81f4aaef747fca57199a199dc89d9/?lang=en';
-
-/**
- * openCert(name, src)
- *  src = relative file path  → embed in iframe  (e.g. "certificates/ai4e.pdf")
- *  src = full URL starting http → show external link card
- *  src = null / '' → show fallback
- */
 function openCert(name, src) {
-  const modal  = document.getElementById('pdfModal');
-  const frame  = document.getElementById('pdfFrame');
-  const title  = document.getElementById('pdfTitle');
-  const dlBtn  = document.getElementById('pdfDlLink');
+  const modal = document.getElementById('pdfModal');
+  const frame = document.getElementById('pdfFrame');
+  const title = document.getElementById('pdfTitle');
+  const dlBtn = document.getElementById('pdfDlLink');
 
   title.textContent = name;
 
   if (src && src.startsWith('http')) {
-    // External cert — pretty card
     frame.innerHTML = `
       <div class="pdf-ext">
         <div class="big-icon">🎓</div>
@@ -146,7 +176,6 @@ function openCert(name, src) {
       </div>`;
     dlBtn.style.display = 'none';
   } else if (src) {
-    // Local file — embed iframe
     frame.innerHTML = `<iframe src="${src}" title="${name}"></iframe>`;
     dlBtn.href     = src;
     dlBtn.download = name.replace(/[^a-z0-9]/gi, '_') + '.pdf';
@@ -156,7 +185,7 @@ function openCert(name, src) {
       <div class="pdf-ext">
         <div class="big-icon">📄</div>
         <h3>${name}</h3>
-        <p>Certificate file not linked yet. Add the file path to the data-src attribute.</p>
+        <p>Certificate file not linked yet.</p>
       </div>`;
     dlBtn.style.display = 'none';
   }
@@ -168,23 +197,37 @@ function openCert(name, src) {
 function closePdf() {
   document.getElementById('pdfModal').classList.remove('open');
   document.body.style.overflow = '';
-  // Clear iframe after transition to free memory
   setTimeout(() => { document.getElementById('pdfFrame').innerHTML = ''; }, 400);
 }
 
-// Close on backdrop click
-document.getElementById('pdfModal').addEventListener('click', function (e) {
+document.getElementById('pdfModal').addEventListener('click', function(e) {
   if (e.target === this) closePdf();
 });
-// Close on Escape
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closePdf(); });
+
+/* ── CV MODAL ─────────────────────────────────────────── */
+function openCV() {
+  document.getElementById('cvModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeCV() {
+  document.getElementById('cvModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('cvModal').addEventListener('click', function(e) {
+  if (e.target === this) closeCV();
+});
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closePdf(); closeCV(); }
+});
 
 /* ── VISITOR COUNTER ──────────────────────────────────── */
-(function () {
+(function() {
   try {
     const KEY  = 'abdubakr_vc';
     const BASE = 312;
-    // Only count once per session
     const sessionKey = 'abdubakr_counted';
     let total = parseInt(localStorage.getItem(KEY) || '0');
     if (!sessionStorage.getItem(sessionKey)) {
@@ -193,21 +236,18 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closePdf(); 
       sessionStorage.setItem(sessionKey, '1');
     }
     document.getElementById('visitorCount').textContent = (BASE + total).toLocaleString();
-  } catch (e) {
+  } catch(e) {
     document.getElementById('visitorCount').textContent = '—';
   }
 })();
 
 /* ── PYPI LIVE BADGES ─────────────────────────────────── */
 (function fetchPyPI() {
-  // Version from PyPI JSON API
   fetch('https://pypi.org/pypi/deepcsv/json')
     .then(r => r.json())
     .then(d => {
       const el = document.getElementById('pypiVerText');
-      if (el && d.info && d.info.version) {
-        el.textContent = 'v' + d.info.version;
-      }
+      if (el && d.info && d.info.version) el.textContent = 'v' + d.info.version;
     })
     .catch(() => {});
 })();
