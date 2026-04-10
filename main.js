@@ -147,6 +147,17 @@ document.querySelectorAll('.counter').forEach(el => counterObs.observe(el));
   window.addEventListener('scroll', hideCue, { passive: true });
 })();
 
+/* ── CODE CARD HINT HIDE ON SCROLL ────────────────────── */
+(function() {
+  const hint = document.querySelector('.cc-scroll-hint');
+  const body = document.getElementById('ccScrollBody');
+  if (!hint || !body) return;
+  body.addEventListener('scroll', () => {
+    if (body.scrollTop > 20) hint.classList.add('cc-hint-hidden');
+    else hint.classList.remove('cc-hint-hidden');
+  }, { passive: true });
+})();
+
 /* ── ACTIVE NAV LINK ──────────────────────────────────── */
 const navSecs  = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');

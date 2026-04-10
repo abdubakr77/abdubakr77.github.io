@@ -708,7 +708,14 @@ footer { border-top: 1px solid var(--b1); padding: 28px 6%; position: relative; 
   font-family: var(--fm); font-size: 9px; color: var(--text3);
   text-align: center; padding: 6px 0 4px;
   border-top: 1px dashed rgba(82,160,255,0.08);
-  letter-spacing: 0.08em; opacity: 0.7;
+  letter-spacing: 0.08em;
+  animation: ccHintGlow 2.5s ease-in-out infinite;
+  transition: opacity 0.5s ease;
+}
+.cc-scroll-hint.cc-hint-hidden { opacity: 0; pointer-events: none; }
+@keyframes ccHintGlow {
+  0%,100% { opacity: 0.4; color: var(--text3); }
+  50% { opacity: 1; color: var(--acc3); text-shadow: 0 0 10px rgba(147,197,253,0.5); }
 }
 
 /* === PYPI BADGE — bigger python version === */
@@ -824,30 +831,33 @@ footer { border-top: 1px solid var(--b1); padding: 28px 6%; position: relative; 
   .nav-cv-btn { display: none; }
 }
 
-/* === PROJECT IMAGE BLUR OVERLAY === */
-.pimg { position: relative; }
-.pimg-blur-overlay {
-  position: absolute; inset: 0; z-index: 1;
-  backdrop-filter: blur(3px);
-  background: rgba(4,7,15,0.18);
-  transition: backdrop-filter 0.4s ease, background 0.4s ease;
-  pointer-events: none;
+/* === PROJECT IMAGE BLUR — direct filter on img === */
+.pimg img {
+  filter: blur(2.5px) brightness(0.82);
+  transition: filter 0.4s ease, transform 0.4s ease;
 }
-.pcard:hover .pimg-blur-overlay {
-  backdrop-filter: blur(0px);
-  background: rgba(4,7,15,0.0);
+.pcard:hover .pimg img {
+  filter: blur(0px) brightness(1);
 }
 
-/* === CERT IMAGE BLUR OVERLAY === */
+/* === CERT IMAGE BLUR — direct filter on img === */
+.cert-img-wrap img {
+  filter: blur(3px) brightness(0.78);
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+.cert-card:hover .cert-img-wrap img {
+  filter: blur(0px) brightness(1);
+  transform: scale(1.04);
+}
+
+/* Gradient overlays for certs without real images (CSS bg patterns) */
 .cert-img-wrap { position: relative; }
 .cert-blur-overlay {
   position: absolute; inset: 0; z-index: 1;
-  backdrop-filter: blur(4px);
-  background: rgba(4,7,15,0.22);
-  transition: backdrop-filter 0.4s ease, background 0.4s ease;
+  background: rgba(4,7,15,0.3);
+  transition: background 0.4s ease;
   pointer-events: none;
 }
 .cert-card:hover .cert-blur-overlay {
-  backdrop-filter: blur(1px);
   background: rgba(4,7,15,0.05);
 }
