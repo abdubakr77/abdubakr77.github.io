@@ -91,8 +91,14 @@ body::before {
   display: flex; align-items: center; justify-content: center;
   flex-direction: column; gap: 20px;
   transition: opacity 0.9s ease, visibility 0.9s ease;
+  /* CSS safety: auto-fade after 5s no matter what */
+  animation: introForceHide 0.9s ease 4.5s forwards;
 }
-#intro-overlay.gone { opacity: 0; visibility: hidden; pointer-events: none; }
+#intro-overlay.gone {
+  opacity: 0; visibility: hidden; pointer-events: none;
+  animation: none;
+}
+@keyframes introForceHide { to { opacity: 0; visibility: hidden; pointer-events: none; } }
 .intro-logo {
   font-family: var(--ff); font-weight: 800;
   font-size: clamp(56px, 9vw, 110px);
