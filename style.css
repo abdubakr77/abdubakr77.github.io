@@ -709,8 +709,6 @@ footer { border-top: 1px solid var(--b1); padding: 28px 6%; position: relative; 
   text-align: center; padding: 6px 0 4px;
   border-top: 1px dashed rgba(82,160,255,0.08);
   letter-spacing: 0.08em; opacity: 0.7;
-  max-height: 40px;
-  overflow: hidden;
 }
 
 /* === PYPI BADGE — bigger python version === */
@@ -882,11 +880,6 @@ footer { border-top: 1px solid var(--b1); padding: 28px 6%; position: relative; 
 .cc-scroll-hint.hint-hidden {
   opacity: 0 !important;
   animation: none;
-  max-height: 0;
-  padding: 0;
-  border-top: none;
-  overflow: hidden;
-  transition: opacity 0.6s ease, max-height 0.6s ease, padding 0.6s ease;
 }
 
 /* === BLACK HORSE cert thumbnail === */
