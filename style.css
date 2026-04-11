@@ -91,14 +91,8 @@ body::before {
   display: flex; align-items: center; justify-content: center;
   flex-direction: column; gap: 20px;
   transition: opacity 0.9s ease, visibility 0.9s ease;
-  /* CSS safety: auto-fade after 5s no matter what */
-  animation: introForceHide 0.9s ease 4.5s forwards;
 }
-#intro-overlay.gone {
-  opacity: 0; visibility: hidden; pointer-events: none;
-  animation: none;
-}
-@keyframes introForceHide { to { opacity: 0; visibility: hidden; pointer-events: none; } }
+#intro-overlay.gone { opacity: 0; visibility: hidden; pointer-events: none; }
 .intro-logo {
   font-family: var(--ff); font-weight: 800;
   font-size: clamp(56px, 9vw, 110px);
@@ -710,7 +704,12 @@ footer { border-top: 1px solid var(--b1); padding: 28px 6%; position: relative; 
 .cc-scroll::-webkit-scrollbar { width: 3px; }
 .cc-scroll::-webkit-scrollbar-thumb { background: var(--surf3); border-radius: 3px; }
 
-
+.cc-scroll-hint {
+  font-family: var(--fm); font-size: 9px; color: var(--text3);
+  text-align: center; padding: 6px 0 4px;
+  border-top: 1px dashed rgba(82,160,255,0.08);
+  letter-spacing: 0.08em; opacity: 0.7;
+}
 
 /* === PYPI BADGE — bigger python version === */
 .pypi-badge .br-py {
@@ -735,7 +734,6 @@ footer { border-top: 1px solid var(--b1); padding: 28px 6%; position: relative; 
 .pimg-intel { background: linear-gradient(135deg, #0d1429, #1a0d3c); }
 
 /* Hover zoom on project images */
-.pimg img { transition: transform 0.65s cubic-bezier(0.4,0,0.2,1); }
 .pcard:hover .pimg img { transform: scale(1.05); }
 
 /* === EDUCATION CARD === */
@@ -832,14 +830,12 @@ footer { border-top: 1px solid var(--b1); padding: 28px 6%; position: relative; 
   position: absolute; inset: 0; z-index: 1;
   backdrop-filter: blur(3px);
   background: rgba(4,7,15,0.18);
-  transition: backdrop-filter 0.65s cubic-bezier(0.4,0,0.2,1), background 0.65s cubic-bezier(0.4,0,0.2,1), opacity 0.65s cubic-bezier(0.4,0,0.2,1);
+  transition: backdrop-filter 0.4s ease, background 0.4s ease;
   pointer-events: none;
-  opacity: 1;
 }
 .pcard:hover .pimg-blur-overlay {
   backdrop-filter: blur(0px);
   background: rgba(4,7,15,0.0);
-  opacity: 0;
 }
 
 /* === CERT IMAGE BLUR OVERLAY === */
@@ -858,20 +854,17 @@ footer { border-top: 1px solid var(--b1); padding: 28px 6%; position: relative; 
 
 /* === COLLEGE LOGO in Education card === */
 .edu-icon-logo {
-  background: transparent;
-  border-radius: 10px;
-  padding: 2px;
+  background: rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 4px;
   display: flex; align-items: center; justify-content: center;
-  min-width: 48px; height: 48px;
+  min-width: 44px; height: 44px;
   overflow: hidden;
-  flex-shrink: 0;
 }
 .college-logo-img {
-  width: 44px; height: 44px;
+  width: 38px; height: 38px;
   object-fit: contain;
-  border-radius: 8px;
-  mix-blend-mode: lighten;
-  filter: brightness(1.1) contrast(1.05);
+  border-radius: 6px;
 }
 
 /* === NEON GLOW on scroll hint — pulses, fades on scroll === */
@@ -881,11 +874,6 @@ footer { border-top: 1px solid var(--b1); padding: 28px 6%; position: relative; 
   100% { text-shadow: 0 0 4px rgba(82,160,255,0); color: var(--text3); }
 }
 .cc-scroll-hint {
-  font-family: var(--fm); font-size: 9px; color: var(--text3);
-  text-align: center; padding: 6px 0 4px;
-  border-top: 1px dashed rgba(82,160,255,0.08);
-  letter-spacing: 0.08em;
-  opacity: 0.7;
   animation: neon-pulse 2.4s ease-in-out infinite;
   transition: opacity 0.6s ease;
 }
@@ -912,50 +900,42 @@ footer { border-top: 1px solid var(--b1); padding: 28px 6%; position: relative; 
 }
 
 /* Add logo/icon text overlay for CSS-only cert cards */
-.cert-img-google,
-.cert-img-cisco,
-.cert-img-edraak {
-  position: relative;
-  overflow: hidden;
-}
-
-/* Icon labels for CSS-only cert thumbnails */
-.cert-img-google .cert-icon-label,
-.cert-img-cisco .cert-icon-label,
-.cert-img-edraak .cert-icon-label {
-  position: absolute; inset: 0; z-index: 3;
+.cert-img-google::after,
+.cert-img-cisco::after,
+.cert-img-edraak::after {
+  position: absolute; z-index: 2;
   display: flex; align-items: center; justify-content: center;
+  inset: 0;
+  font-size: 28px;
+  font-family: var(--fd);
+  font-weight: 700;
+  letter-spacing: 0.04em;
   pointer-events: none;
   transition: opacity 0.4s ease;
 }
-.cert-img-google .cert-icon-label {
-  font-size: 46px;
-  font-family: var(--fd);
-  font-weight: 900;
-  background: linear-gradient(135deg, #4285F4 0%, #34A853 33%, #FBBC05 66%, #EA4335 100%);
+.cert-img-google::after {
+  content: 'G';
+  background: linear-gradient(135deg, #4285F4, #34A853, #FBBC05, #EA4335);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 0 12px rgba(66,133,244,0.5));
+  font-size: 42px;
 }
-.cert-img-cisco .cert-icon-label {
-  font-size: 22px;
-  font-family: var(--fd);
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  color: rgba(0,200,230,0.9);
-  text-shadow: 0 0 18px rgba(0,200,230,0.7), 0 0 32px rgba(0,170,210,0.4);
+.cert-img-cisco::after {
+  content: '~';
+  color: rgba(0,170,210,0.85);
+  font-size: 52px;
+  text-shadow: 0 0 20px rgba(0,170,210,0.6);
 }
-.cert-img-edraak .cert-icon-label {
-  font-size: 24px;
+.cert-img-edraak::after {
+  content: 'إدراك';
+  color: rgba(234,88,12,0.9);
+  font-size: 20px;
+  text-shadow: 0 0 14px rgba(234,88,12,0.5);
   font-family: sans-serif;
-  font-weight: 700;
-  color: rgba(251,146,60,0.95);
-  text-shadow: 0 0 16px rgba(234,88,12,0.6);
-  letter-spacing: 0.05em;
 }
-.cert-card:hover .cert-img-google .cert-icon-label,
-.cert-card:hover .cert-img-cisco .cert-icon-label,
-.cert-card:hover .cert-img-edraak .cert-icon-label {
-  opacity: 0.5;
+.cert-card:hover .cert-img-google::after,
+.cert-card:hover .cert-img-cisco::after,
+.cert-card:hover .cert-img-edraak::after {
+  opacity: 0.6;
 }

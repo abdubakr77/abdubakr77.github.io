@@ -3,33 +3,12 @@
    main.js
    ============================================================ */
 
-/* ── INTRO SCREEN — guaranteed to disappear ──────────── */
-(function() {
-  var overlay = document.getElementById('intro-overlay');
-  if (!overlay) return;
-
-  function hideIntro() {
-    overlay.classList.add('gone');
-  }
-
-  // Primary: fire after 1900ms from DOMContentLoaded (doesn't wait for images)
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-      setTimeout(hideIntro, 1900);
-    });
-  } else {
-    // DOM already ready (script ran late)
-    setTimeout(hideIntro, 1900);
-  }
-
-  // Safety net: if 'load' fires earlier, use that
-  window.addEventListener('load', function() {
-    setTimeout(hideIntro, 1900);
-  });
-
-  // Hard fallback: no matter what, gone after 4s
-  setTimeout(hideIntro, 4000);
-})();
+/* ── INTRO SCREEN ─────────────────────────────────────── */
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('intro-overlay').classList.add('gone');
+  }, 1900);
+});
 
 /* ── PARTICLE BACKGROUND ──────────────────────────────── */
 (function initParticles() {
