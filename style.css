@@ -733,6 +733,9 @@ footer { border-top: 1px solid var(--b1); padding: 28px 6%; position: relative; 
 .t-intel { background: rgba(168,85,247,.1); color: #d8b4fe; border: 1px solid rgba(168,85,247,.25); }
 .pimg-intel { background: linear-gradient(135deg, #0d1429, #1a0d3c); }
 
+/* Garbage project image fallback */
+.pimg-garbage { background: linear-gradient(135deg, #0d1f10, #0f2a1a); }
+
 /* Hover zoom on project images */
 .pcard:hover .pimg img { transform: scale(1.05); }
 
@@ -880,10 +883,8 @@ footer { border-top: 1px solid var(--b1); padding: 28px 6%; position: relative; 
 .cc-scroll-hint.hint-hidden {
   opacity: 0 !important;
   animation: none;
-  visibility: hidden;
-  height: 0;
-  padding: 0;
-  border: none;
+  pointer-events: none;
+  /* NO height/padding/border changes — prevents layout shift */
 }
 
 /* === BLACK HORSE cert thumbnail === */
