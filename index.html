@@ -421,37 +421,32 @@
         </div>
       </div>
 
-      <!-- Project 6: Cancer Classification — In Progress -->
-      <div class="pcard fade-in" style="position:relative">
-        <div class="p-inprogress-badge">🛠 In Progress</div>
-        <div class="pimg" style="height:200px;padding:0;overflow:hidden;background:linear-gradient(135deg,#1a0a1a,#2a0d1a)">
-          <div class="pimg-blur-overlay" style="backdrop-filter:blur(8px);background:rgba(4,7,15,0.45)"></div>
-          <!-- Placeholder pattern — no real image yet -->
-          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:2">
-            <svg viewBox="0 0 120 80" width="120" height="80" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="60" cy="40" r="28" stroke="rgba(239,68,68,0.3)" stroke-width="1.5" stroke-dasharray="4 3"/>
-              <circle cx="60" cy="40" r="16" stroke="rgba(239,68,68,0.2)" stroke-width="1" stroke-dasharray="3 3"/>
-              <circle cx="60" cy="40" r="6" fill="rgba(239,68,68,0.25)"/>
-              <circle cx="60" cy="40" r="2" fill="rgba(239,68,68,0.6)"/>
-            </svg>
-          </div>
-          <span class="pimg-label" style="z-index:3">Medical Imaging</span>
-          <span class="pimg-acc" style="background:rgba(239,68,68,0.15);border-color:rgba(239,68,68,0.35);color:#fca5a5;z-index:3">Coming Soon</span>
+      <!-- Project 6: Breast Cancer Classification -->
+      <div class="pcard fade-in">
+        <div class="pimg" style="height:200px;padding:0;overflow:hidden;background:linear-gradient(135deg,#1a0a1a,#2a0d1a);position:relative">
+          <img src="img_cancer.jpg" alt="Breast Cancer Classification" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block">
+          <div class="pimg-blur-overlay"></div>
+          <span class="pimg-label">Medical Imaging</span>
+          <span class="pimg-acc" style="background:rgba(239,68,68,0.2);border-color:rgba(239,68,68,0.4);color:#fca5a5">92% Acc</span>
         </div>
-        <div class="pbody" style="opacity:0.78">
+        <div class="pbody">
           <div class="pnum">06 / 06</div>
           <span class="ptag" style="background:rgba(239,68,68,0.08);color:#fca5a5;border:1px solid rgba(239,68,68,0.2)">Medical AI · Deep Learning</span>
-          <h3 class="ptitle">Cancer Image Classification</h3>
-          <p class="pdesc">Working on a deep learning model for cancer image classification using medical imaging datasets. Exploring CNN architectures and transfer learning for early detection support.</p>
+          <h3 class="ptitle">Breast Cancer Classification (VGG19-BN)</h3>
+          <p class="pdesc">Deep learning model for breast cancer classification using VGG19 with batch normalization on ultrasound images (benign / malignant / normal). Achieved 92% test accuracy with a confusion matrix showing strong generalization.</p>
           <div class="pmeta">
-            <span class="mb" style="color:#f87171;background:rgba(239,68,68,0.07);border-color:rgba(239,68,68,0.18)">🛠 In Development</span>
-            <span class="mb">PyTorch</span><span class="mb">Medical Imaging</span>
+            <span class="mb mb-h" style="color:#fca5a5;background:rgba(239,68,68,0.07);border-color:rgba(239,68,68,0.2)">92% Test Accuracy</span>
+            <span class="mb">PyTorch</span><span class="mb">VGG19-BN</span><span class="mb">Medical Imaging</span>
           </div>
           <div class="plinks">
-            <span class="plink" style="opacity:0.4;cursor:not-allowed;user-select:none" title="Not available yet">
+            <a href="https://github.com/abdubakr77/cancer-classification" target="_blank" rel="noopener" class="plink">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              GitHub — Soon
-            </span>
+              GitHub
+            </a>
+            <a href="https://www.kaggle.com/code/abdullahbakr7/breast-cancer-classification-vgg19-bn" target="_blank" rel="noopener" class="plink">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.311z"/></svg>
+              Kaggle
+            </a>
           </div>
         </div>
       </div>
