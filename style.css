@@ -944,3 +944,70 @@ footer { border-top: 1px solid var(--b1); padding: 28px 6%; position: relative; 
 .cert-card:hover .cert-img-edraak::after {
   opacity: 0.6;
 }
+
+/* ── RESEARCH PROJECT CARD ──────────────────────────────── */
+.pcard-research {
+  border-color: rgba(99,102,241,0.18);
+}
+.pcard-research:hover {
+  border-color: rgba(99,102,241,0.4);
+  box-shadow: 0 20px 60px rgba(99,102,241,0.12);
+}
+
+/* Research badge (top-left) */
+.p-research-badge {
+  position: absolute; top: 14px; left: 14px; z-index: 10;
+  font-family: var(--fm); font-size: 9.5px; font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #4f46e5, #6366f1);
+  padding: 4px 11px; border-radius: 100px;
+  letter-spacing: 0.06em;
+  box-shadow: 0 2px 12px rgba(99,102,241,0.4);
+}
+
+/* Grad-CAM pulse circles */
+.gradcam-pulse {
+  animation: gcPulse 3s ease-in-out infinite;
+}
+@keyframes gcPulse {
+  0%,100% { opacity: 0.4; r: 20; }
+  50%      { opacity: 0.85; r: 26; }
+}
+
+/* Scan line sweep */
+.scan-line {
+  animation: scanSweep 4s linear infinite;
+}
+@keyframes scanSweep {
+  0%   { transform: translateX(0);   opacity: 0.8; }
+  90%  { transform: translateX(340px); opacity: 0.8; }
+  100% { transform: translateX(340px); opacity: 0; }
+}
+
+/* Models row */
+.research-models {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 4px; margin-top: 2px;
+}
+.rm-pill {
+  font-family: var(--fm); font-size: 9.5px; letter-spacing: 0.06em;
+  padding: 3px 9px; border-radius: 100px;
+}
+.rm-baseline {
+  color: var(--text3); background: var(--surf2);
+  border: 1px solid var(--b1);
+}
+.rm-proposed {
+  color: #c7d2fe;
+  background: rgba(99,102,241,0.12);
+  border: 1px solid rgba(99,102,241,0.3);
+  font-weight: 600;
+}
+
+/* Disabled link */
+.plink-disabled {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--fm); font-size: 10px; color: var(--text3);
+  border: 1px solid var(--b1); padding: 7px 13px; border-radius: 6px;
+  opacity: 0.42; cursor: not-allowed; user-select: none;
+}
+.plink-disabled svg { width: 11px; height: 11px; flex-shrink: 0; }
