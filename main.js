@@ -313,47 +313,54 @@ document.addEventListener('keydown', e => {
     return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
   }
 
-  function triggerRipple(fromBtn, targetTheme, onMidpoint) {
-    // Get button position for ripple origin
-    const rect = fromBtn.getBoundingClientRect();
-    const cx = rect.left + rect.width / 2;
-    const cy = rect.top + rect.height / 2;
+  function doThemeTransition(targetTheme) {
+    // 1. Create full-screen fade overlay (white or dark)
+    const overlay = document.createElement('div');
+    overlay.className = 'theme-fade-overlay';
+    overlay.style.background = targetTheme === 'light' ? '#f0f4fa' : '#04070f';
+    document.body.appendChild(overlay);
 
-    // Calculate ripple size — must cover the whole viewport
-    const maxDist = Math.sqrt(
-      Math.max(cx, window.innerWidth - cx) ** 2 +
-      Math.max(cy, window.innerHeight - cy) ** 2
-    );
-    const size = maxDist * 2 + 20;
+    // 2. Small decorative ripple dot from the button
+    const rect = btn.getBoundingClientRect();
+    const dot = document.createElement('div');
+    dot.className = 'theme-ripple-dot';
+    dot.style.left = (rect.left + rect.width / 2) + 'px';
+    dot.style.top  = (rect.top  + rect.height / 2) + 'px';
+    dot.style.background = targetTheme === 'light' ? 'rgba(240,244,250,0.6)' : 'rgba(4,7,15,0.6)';
+    document.body.appendChild(dot);
 
-    // Create ripple element
-    const ripple = document.createElement('div');
-    ripple.className = 'theme-ripple' + (targetTheme === 'dark' ? ' to-dark' : '');
-    ripple.style.cssText = `
-      width: ${size}px;
-      height: ${size}px;
-      top: ${cy - size / 2}px;
-      left: ${cx - size / 2}px;
-    `;
-    document.body.appendChild(ripple);
+    // 3. Fade overlay IN (content fades behind it)
+    requestAnimationFrame(() => {
+      overlay.style.opacity = '1';
+    });
 
-    // Force reflow before adding expanding class
-    ripple.getBoundingClientRect();
-    ripple.classList.add('expanding');
-
-    // At the midpoint of the expansion (~300ms), switch the theme
-    const midDelay = 320;
+    // 4. At peak opacity (~380ms) — switch theme silently
     setTimeout(() => {
-      onMidpoint();
-    }, midDelay);
+      if (targetTheme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+      localStorage.setItem(STORAGE_KEY, targetTheme);
+      updateParticleColor(targetTheme);
 
-    // After expansion completes, fade out and remove
+      // Fire the decorative dot pop
+      dot.classList.add('pop');
+    }, 380);
+
+    // 5. Fade overlay OUT, revealing the new theme underneath
     setTimeout(() => {
-      ripple.classList.add('done');
-      setTimeout(() => {
-        ripple.remove();
-      }, 250);
-    }, 650);
+      overlay.style.transition = 'opacity 0.42s cubic-bezier(0.4, 0, 0.2, 1)';
+      overlay.style.opacity = '0';
+    }, 430);
+
+    // 6. Cleanup
+    setTimeout(() => {
+      overlay.remove();
+      dot.remove();
+      isAnimating = false;
+      btn.disabled = false;
+    }, 900);
   }
 
   btn.addEventListener('click', function () {
@@ -363,30 +370,11 @@ document.addEventListener('keydown', e => {
 
     const current = getCurrentTheme();
     const next = current === 'dark' ? 'light' : 'dark';
-
-    triggerRipple(btn, next, function () {
-      // Apply new theme at midpoint of ripple
-      if (next === 'light') {
-        document.documentElement.setAttribute('data-theme', 'light');
-      } else {
-        document.documentElement.removeAttribute('data-theme');
-      }
-      localStorage.setItem(STORAGE_KEY, next);
-
-      // Update particle color
-      updateParticleColor(next);
-    });
-
-    // Re-enable after animation
-    setTimeout(() => {
-      isAnimating = false;
-      btn.disabled = false;
-    }, 700);
+    doThemeTransition(next);
   });
 
-  // Listen to system preference changes (if user changes OS theme)
+  // Listen to system preference changes
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-    // Only auto-switch if user hasn't manually set a preference
     if (!localStorage.getItem(STORAGE_KEY)) {
       if (e.matches) {
         document.documentElement.removeAttribute('data-theme');

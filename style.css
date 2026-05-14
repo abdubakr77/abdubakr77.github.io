@@ -69,24 +69,30 @@
   --shadow-card: rgba(59,130,246,0.10);
 }
 
-/* === THEME RIPPLE TRANSITION === */
-.theme-ripple {
+/* === THEME TRANSITION OVERLAY === */
+.theme-fade-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 99998;
+  opacity: 0;
+  transition: opacity 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+}
+/* Ripple circle — decorative only, small, from button */
+.theme-ripple-dot {
   position: fixed;
   border-radius: 50%;
   pointer-events: none;
   z-index: 99999;
-  transform: scale(0);
-  background: #f0f4fa;
-  transition: transform 0.65s cubic-bezier(0.22,1,0.36,1), opacity 0.2s ease 0.5s;
-  opacity: 1;
+  width: 6px; height: 6px;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0.5;
+  transition:
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.55s ease;
 }
-.theme-ripple.to-dark {
-  background: #04070f;
-}
-.theme-ripple.expanding {
-  transform: scale(1);
-}
-.theme-ripple.done {
+.theme-ripple-dot.pop {
+  transform: translate(-50%, -50%) scale(22);
   opacity: 0;
 }
 
