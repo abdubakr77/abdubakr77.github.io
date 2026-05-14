@@ -3,12 +3,27 @@
    main.js
    ============================================================ */
 
+/* ── THEME SYSTEM (runs immediately, before paint) ────── */
+(function initTheme() {
+  const STORAGE_KEY = 'abdubakr_theme';
+  const saved = localStorage.getItem(STORAGE_KEY);
+  // Detect system preference
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  // Resolve: saved preference wins, else follow system, else default dark
+  const theme = saved ? saved : (prefersDark ? 'dark' : 'light');
+  if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+})();
+
 /* ── INTRO SCREEN ─────────────────────────────────────── */
 window.addEventListener('load', () => {
   setTimeout(() => {
     document.getElementById('intro-overlay').classList.add('gone');
   }, 1900);
 });
+
+/* ── PARTICLE COLOR STATE ─────────────────────────────── */
+let _particleTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+function updateParticleColor(theme) { _particleTheme = theme; }
 
 /* ── PARTICLE BACKGROUND ──────────────────────────────── */
 (function initParticles() {
@@ -36,6 +51,12 @@ window.addEventListener('load', () => {
     });
   }
 
+  function getParticleColor(alpha) {
+    return _particleTheme === 'light'
+      ? `rgba(37,99,235,${alpha})`
+      : `rgba(96,165,250,${alpha})`;
+  }
+
   function draw() {
     ctx.clearRect(0, 0, W, H);
     for (let i = 0; i < particles.length; i++) {
@@ -47,7 +68,7 @@ window.addEventListener('load', () => {
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(96,165,250,${0.07 * (1 - dist / 130)})`;
+          ctx.strokeStyle = getParticleColor(0.07 * (1 - dist / 130));
           ctx.lineWidth = 0.6;
           ctx.stroke();
         }
@@ -56,7 +77,7 @@ window.addEventListener('load', () => {
     particles.forEach(p => {
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(96,165,250,${p.a})`;
+      ctx.fillStyle = getParticleColor(p.a);
       ctx.fill();
     });
   }
@@ -279,3 +300,102 @@ document.addEventListener('keydown', e => {
     }
   }, { passive: true });
 })();
+
+/* ── THEME TOGGLE WITH RIPPLE ─────────────────────────── */
+(function setupThemeToggle() {
+  const STORAGE_KEY = 'abdubakr_theme';
+  const btn = document.getElementById('themeToggle');
+  if (!btn) return;
+
+  let isAnimating = false;
+
+  function getCurrentTheme() {
+    return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+  }
+
+  function triggerRipple(fromBtn, targetTheme, onMidpoint) {
+    // Get button position for ripple origin
+    const rect = fromBtn.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+
+    // Calculate ripple size — must cover the whole viewport
+    const maxDist = Math.sqrt(
+      Math.max(cx, window.innerWidth - cx) ** 2 +
+      Math.max(cy, window.innerHeight - cy) ** 2
+    );
+    const size = maxDist * 2 + 20;
+
+    // Create ripple element
+    const ripple = document.createElement('div');
+    ripple.className = 'theme-ripple' + (targetTheme === 'dark' ? ' to-dark' : '');
+    ripple.style.cssText = `
+      width: ${size}px;
+      height: ${size}px;
+      top: ${cy - size / 2}px;
+      left: ${cx - size / 2}px;
+    `;
+    document.body.appendChild(ripple);
+
+    // Force reflow before adding expanding class
+    ripple.getBoundingClientRect();
+    ripple.classList.add('expanding');
+
+    // At the midpoint of the expansion (~300ms), switch the theme
+    const midDelay = 320;
+    setTimeout(() => {
+      onMidpoint();
+    }, midDelay);
+
+    // After expansion completes, fade out and remove
+    setTimeout(() => {
+      ripple.classList.add('done');
+      setTimeout(() => {
+        ripple.remove();
+      }, 250);
+    }, 650);
+  }
+
+  btn.addEventListener('click', function () {
+    if (isAnimating) return;
+    isAnimating = true;
+    btn.disabled = true;
+
+    const current = getCurrentTheme();
+    const next = current === 'dark' ? 'light' : 'dark';
+
+    triggerRipple(btn, next, function () {
+      // Apply new theme at midpoint of ripple
+      if (next === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+      localStorage.setItem(STORAGE_KEY, next);
+
+      // Update particle color
+      updateParticleColor(next);
+    });
+
+    // Re-enable after animation
+    setTimeout(() => {
+      isAnimating = false;
+      btn.disabled = false;
+    }, 700);
+  });
+
+  // Listen to system preference changes (if user changes OS theme)
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    // Only auto-switch if user hasn't manually set a preference
+    if (!localStorage.getItem(STORAGE_KEY)) {
+      if (e.matches) {
+        document.documentElement.removeAttribute('data-theme');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    }
+  });
+})();
+
+/* ── PARTICLE COLOR SWITCH ON THEME CHANGE ──────────── */
+// updateParticleColor is defined near the top, before the particle IIFE

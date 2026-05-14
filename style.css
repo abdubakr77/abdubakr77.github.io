@@ -3,7 +3,7 @@
    style.css
    ============================================================ */
 
-/* === TOKENS === */
+/* === TOKENS — DARK MODE (default) === */
 :root {
   --bg: #04070f;
   --bg2: #070c17;
@@ -29,7 +29,101 @@
   --fb: 'DM Sans', sans-serif;
   --radius: 10px;
   --radius-lg: 14px;
+  /* Nav bg raw values for rgba usage */
+  --nav-bg-raw: 4, 7, 15;
+  --modal-bg: rgba(4,7,15,0.94);
+  --cv-modal-bg: rgba(4,7,15,0.96);
+  --pimg-blur-bg: rgba(4,7,15,0.18);
+  --cert-blur-bg: rgba(4,7,15,0.22);
+  --grid-line: rgba(82,160,255,0.025);
+  --shadow-card: rgba(0,0,0,.4);
 }
+
+/* === TOKENS — LIGHT MODE === */
+[data-theme="light"] {
+  --bg: #f0f4fa;
+  --bg2: #e8eef8;
+  --surf: #ffffff;
+  --surf2: #f5f8fe;
+  --surf3: #e4ecf7;
+  --b1: rgba(59, 130, 246, 0.10);
+  --b2: rgba(59, 130, 246, 0.20);
+  --b3: rgba(59, 130, 246, 0.35);
+  --acc: #2563eb;
+  --acc2: #3b82f6;
+  --acc3: #1d4ed8;
+  --cyan: #0891b2;
+  --cyan2: #0e7490;
+  --green: #059669;
+  --green2: #10b981;
+  --amber: #d97706;
+  --text: #0f172a;
+  --text2: #374151;
+  --text3: #6b7280;
+  --nav-bg-raw: 240, 244, 250;
+  --modal-bg: rgba(240,244,250,0.96);
+  --cv-modal-bg: rgba(240,244,250,0.97);
+  --pimg-blur-bg: rgba(240,244,250,0.18);
+  --cert-blur-bg: rgba(240,244,250,0.22);
+  --grid-line: rgba(59,130,246,0.04);
+  --shadow-card: rgba(59,130,246,0.10);
+}
+
+/* === THEME RIPPLE TRANSITION === */
+.theme-ripple {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: scale(0);
+  background: #f0f4fa;
+  transition: transform 0.65s cubic-bezier(0.22,1,0.36,1), opacity 0.2s ease 0.5s;
+  opacity: 1;
+}
+.theme-ripple.to-dark {
+  background: #04070f;
+}
+.theme-ripple.expanding {
+  transform: scale(1);
+}
+.theme-ripple.done {
+  opacity: 0;
+}
+
+/* === THEME TOGGLE BUTTON === */
+.theme-toggle {
+  width: 34px; height: 34px;
+  border-radius: 8px;
+  border: 1px solid var(--b2);
+  background: var(--surf);
+  color: var(--text2);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+.theme-toggle:hover {
+  border-color: var(--acc2);
+  background: var(--b1);
+  color: var(--acc2);
+}
+.theme-toggle:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+.theme-toggle svg {
+  width: 16px; height: 16px;
+  position: absolute;
+  transition: opacity 0.25s ease, transform 0.35s cubic-bezier(0.22,1,0.36,1);
+}
+/* Sun icon — visible in dark mode */
+.theme-toggle .icon-sun  { opacity: 1;  transform: rotate(0deg) scale(1); }
+.theme-toggle .icon-moon { opacity: 0;  transform: rotate(-90deg) scale(0.6); }
+/* Moon icon — visible in light mode */
+[data-theme="light"] .theme-toggle .icon-sun  { opacity: 0;  transform: rotate(90deg) scale(0.6); }
+[data-theme="light"] .theme-toggle .icon-moon { opacity: 1;  transform: rotate(0deg) scale(1); }
 
 /* === RESET === */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -49,8 +143,8 @@ body::before {
   content: '';
   position: fixed; inset: 0;
   background-image:
-    linear-gradient(rgba(82,160,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(82,160,255,0.025) 1px, transparent 1px);
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
   background-size: 72px 72px;
   pointer-events: none; z-index: 0;
   mask-image: radial-gradient(ellipse 90% 70% at 50% 0%, black 0%, transparent 80%);
@@ -121,7 +215,7 @@ nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 200;
   height: 60px; padding: 0 6%;
   display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
-  background: rgba(4, 7, 15, 0.82);
+  background: rgba(var(--nav-bg-raw), 0.82);
   backdrop-filter: blur(28px) saturate(160%);
   border-bottom: 1px solid var(--b1);
   opacity: 0;
@@ -387,7 +481,7 @@ h1 {
   border-radius: var(--radius-lg); overflow: hidden;
   display: flex; flex-direction: column; transition: all 0.3s; position: relative;
 }
-.pcard:hover { border-color: var(--b2); transform: translateY(-5px); box-shadow: 0 20px 60px rgba(0,0,0,.4); }
+.pcard:hover { border-color: var(--b2); transform: translateY(-5px); box-shadow: 0 20px 60px var(--shadow-card); }
 
 .pimg { height: 190px; position: relative; overflow: hidden; flex-shrink: 0; }
 .pimg-inner { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; }
@@ -493,7 +587,7 @@ h1 {
 /* === PDF MODAL === */
 .pdf-modal {
   display: none; position: fixed; inset: 0; z-index: 999;
-  background: rgba(4,7,15,0.94); backdrop-filter: blur(18px);
+  background: var(--modal-bg); backdrop-filter: blur(18px);
   align-items: center; justify-content: center; padding: 16px;
 }
 .pdf-modal.open { display: flex; }
@@ -664,7 +758,7 @@ footer { border-top: 1px solid var(--b1); padding: 28px 6%; position: relative; 
 /* === CV MODAL (full-screen, no scroll, with close) === */
 .cv-modal {
   display: none; position: fixed; inset: 0; z-index: 999;
-  background: rgba(4,7,15,0.96); backdrop-filter: blur(18px);
+  background: var(--cv-modal-bg); backdrop-filter: blur(18px);
   align-items: center; justify-content: center; padding: 16px;
 }
 .cv-modal.open { display: flex; }
@@ -832,13 +926,13 @@ footer { border-top: 1px solid var(--b1); padding: 28px 6%; position: relative; 
 .pimg-blur-overlay {
   position: absolute; inset: 0; z-index: 1;
   backdrop-filter: blur(3px);
-  background: rgba(4,7,15,0.18);
+  background: var(--pimg-blur-bg);
   transition: backdrop-filter 0.4s ease, background 0.4s ease;
   pointer-events: none;
 }
 .pcard:hover .pimg-blur-overlay {
   backdrop-filter: blur(0px);
-  background: rgba(4,7,15,0.0);
+  background: rgba(0,0,0,0.0);
 }
 
 /* === CERT IMAGE BLUR OVERLAY === */
@@ -846,13 +940,13 @@ footer { border-top: 1px solid var(--b1); padding: 28px 6%; position: relative; 
 .cert-blur-overlay {
   position: absolute; inset: 0; z-index: 1;
   backdrop-filter: blur(4px);
-  background: rgba(4,7,15,0.22);
+  background: var(--cert-blur-bg);
   transition: backdrop-filter 0.4s ease, background 0.4s ease;
   pointer-events: none;
 }
 .cert-card:hover .cert-blur-overlay {
   backdrop-filter: blur(1px);
-  background: rgba(4,7,15,0.05);
+  background: rgba(0,0,0,0.05);
 }
 
 /* === COLLEGE LOGO in Education card === */
@@ -1011,3 +1105,150 @@ footer { border-top: 1px solid var(--b1); padding: 28px 6%; position: relative; 
   opacity: 0.42; cursor: not-allowed; user-select: none;
 }
 .plink-disabled svg { width: 11px; height: 11px; flex-shrink: 0; }
+/* ============================================================
+   LIGHT MODE OVERRIDES
+   ============================================================ */
+
+/* Body smooth transition on theme change */
+body {
+  transition:
+    background-color 0.01s,
+    color 0.01s;
+}
+
+/* Orbs — lighter, more subtle in light mode */
+[data-theme="light"] .o1 {
+  background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
+}
+[data-theme="light"] .o2 {
+  background: radial-gradient(circle, rgba(6,182,212,0.06) 0%, transparent 70%);
+}
+[data-theme="light"] .o3 {
+  background: radial-gradient(circle, rgba(59,130,246,0.05) 0%, transparent 70%);
+}
+
+/* Particles — recolored via JS (canvas), but color-scheme hint helps */
+[data-theme="light"] #particles { filter: invert(0); }
+
+/* Intro overlay */
+[data-theme="light"] #intro-overlay { background: var(--bg); }
+
+/* CV frame & PDF frame background in light mode (already white #fff, stays fine) */
+[data-theme="light"] .cv-frame,
+[data-theme="light"] .pdf-frame { background: #f5f8fe; }
+
+/* Scrollbar */
+[data-theme="light"] ::-webkit-scrollbar-track { background: var(--bg); }
+[data-theme="light"] ::-webkit-scrollbar-thumb { background: var(--surf3); }
+
+/* Code card syntax colours — keep them in light mode (dark code bg) */
+[data-theme="light"] .code-card {
+  background: #1e2433;
+  border-color: rgba(59,130,246,0.18);
+}
+[data-theme="light"] .cc-hd { background: #161c2d; border-bottom-color: rgba(255,255,255,0.07); }
+[data-theme="light"] .cc-badges { border-top-color: rgba(255,255,255,0.07); }
+[data-theme="light"] .cc-stats { border-top-color: rgba(255,255,255,0.07); }
+[data-theme="light"] .si { border-right-color: rgba(255,255,255,0.07); }
+[data-theme="light"] .cc-file { color: rgba(255,255,255,0.35); }
+[data-theme="light"] .ln { color: rgba(255,255,255,0.25); }
+[data-theme="light"] .cc-scroll-hint { border-top-color: rgba(255,255,255,0.06); color: rgba(255,255,255,0.3); }
+[data-theme="light"] .sn { color: #60a5fa; }
+[data-theme="light"] .sl { color: rgba(255,255,255,0.3); }
+[data-theme="light"] .cc-scroll { scrollbar-color: rgba(255,255,255,0.12) transparent; }
+
+/* PyPI badge in light mode — keep dark appearance (it's a code card element) */
+[data-theme="light"] .pypi-badge .bl { background: #3a3a3a; color: #ccc; }
+[data-theme="light"] .pypi-badge .br-py { background: #b45309; color: #fff; }
+
+/* Research proposed pill — keep purple on light bg */
+[data-theme="light"] .rm-proposed {
+  color: #4338ca;
+  background: rgba(99,102,241,0.10);
+  border-color: rgba(99,102,241,0.25);
+}
+
+/* Highlight box */
+[data-theme="light"] .highlight-box {
+  background: linear-gradient(135deg, rgba(59,130,246,0.05), rgba(6,182,212,0.03));
+}
+[data-theme="light"] .highlight-box p { color: var(--text); }
+
+/* Edu icon logo bg */
+[data-theme="light"] .edu-icon-logo { background: rgba(0,0,0,0.05); }
+
+/* Active badge */
+[data-theme="light"] .active-badge {
+  color: var(--green);
+  background: rgba(16,185,129,0.10);
+  border-color: rgba(16,185,129,0.25);
+}
+
+/* pimg label (on project image) — keep dark pill */
+[data-theme="light"] .pimg-label {
+  background: rgba(0,0,0,0.45);
+  color: rgba(255,255,255,0.65);
+}
+
+/* Cert card google/cisco/edraak after content — no change needed (they have their own bg) */
+
+/* Visitor badge dot */
+[data-theme="light"] .vdot { background: var(--acc2); }
+
+/* Nav cta hover */
+[data-theme="light"] .nav-cta:hover { background: rgba(59,130,246,0.08); }
+
+/* btn-p & btn-s */
+[data-theme="light"] .btn-p { color: #fff; }
+[data-theme="light"] .btn-p:hover { box-shadow: 0 10px 30px rgba(37,99,235,.25); }
+[data-theme="light"] .btn-s { color: var(--text2); }
+[data-theme="light"] .btn-s:hover { color: var(--acc2); }
+
+/* fsubmit */
+[data-theme="light"] .fsubmit { color: #fff; }
+[data-theme="light"] .fsubmit:hover { background: #1d4ed8; box-shadow: 0 10px 28px rgba(37,99,235,.22); }
+
+/* fok success */
+[data-theme="light"] .fok {
+  color: var(--green);
+  background: rgba(16,185,129,0.08);
+  border-color: rgba(16,185,129,0.2);
+}
+
+/* Scroll cue arrow */
+[data-theme="light"] .scroll-arrow { border-color: var(--b2); }
+
+/* Badge (available) */
+[data-theme="light"] .badge {
+  border-color: rgba(16,185,129,0.25);
+  background: rgba(16,185,129,0.06);
+}
+
+/* pcard hover shadow */
+[data-theme="light"] .pcard:hover { box-shadow: 0 20px 60px var(--shadow-card); }
+
+/* cert card hover shadow */
+[data-theme="light"] .cert-card:hover { box-shadow: 0 14px 44px rgba(59,130,246,.12); }
+
+/* rm-baseline in light */
+[data-theme="light"] .rm-baseline { color: var(--text3); }
+
+/* modal overlay bg */
+[data-theme="light"] .pdf-modal,
+[data-theme="light"] .cv-modal { background: var(--modal-bg); }
+
+/* pdf-ext external cert bg */
+[data-theme="light"] .pdf-ext { background: var(--surf2); }
+[data-theme="light"] .pdf-ext h3 { color: var(--text); }
+[data-theme="light"] .pdf-ext p { color: var(--text2); }
+[data-theme="light"] .pdf-ext a { color: #fff; background: var(--acc); }
+[data-theme="light"] .pdf-ext a:hover { background: #1d4ed8; }
+
+/* pdf-close & pdf-dl */
+[data-theme="light"] .pdf-close { color: var(--text2); border-color: var(--b1); }
+[data-theme="light"] .pdf-close:hover { color: var(--text); border-color: var(--b2); }
+[data-theme="light"] .pdf-dl { color: var(--acc2); border-color: var(--b2); }
+[data-theme="light"] .pdf-dl:hover { background: var(--b1); }
+
+/* plink-disabled */
+[data-theme="light"] .plink-disabled { color: var(--text3); border-color: var(--b1); }
