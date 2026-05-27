@@ -208,33 +208,13 @@
   transition: all 0.3s;
 }
 
-/* Card filter animation */
+/* Card filter animation — handled entirely by JS inline styles */
 .pcard {
-  transition: all 0.3s cubic-bezier(0.4,0,0.2,1),
-              opacity 0.3s ease,
-              transform 0.3s ease;
+  will-change: opacity, transform;
 }
 
 .pcard.pf-hidden {
-  display: none;
-}
-
-.pcard.pf-entering {
-  animation: cardIn 0.35s cubic-bezier(0.4,0,0.2,1) forwards;
-}
-
-.pcard.pf-exiting {
-  animation: cardOut 0.2s ease forwards;
-}
-
-@keyframes cardIn {
-  from { opacity: 0; transform: translateY(16px) scale(0.97); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-@keyframes cardOut {
-  from { opacity: 1; transform: scale(1); }
-  to   { opacity: 0; transform: scale(0.95); }
+  display: none !important;
 }
 
 /* ── COMING SOON CARD ─────────────────────────────────── */
