@@ -10,6 +10,7 @@
 <link rel="icon" type="image/png" href="favicon_ab.png">
 <link rel="apple-touch-icon" href="favicon_ab.png">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="projects-filter.css">
 </head>
 <body>
 
@@ -279,15 +280,38 @@
      ════════════════════════════════════════════ -->
 <section id="projects" class="sec">
   <div class="inner">
-    <div style="margin-bottom:52px" class="fade-in">
+    <div class="proj-header fade-in">
       <p class="stag">Projects</p>
       <h2 class="sh">What I've Built</h2>
-      <p class="ssub">Real-world projects across computer vision, machine learning, and open-source tooling.</p>
+      <p class="ssub">Real-world projects across computer vision, machine learning, open-source tooling, and more — browse by category or filter by tech stack.</p>
     </div>
-    <div class="proj-grid">
+
+    <!-- ── FILTER SYSTEM ───────────────────────────── -->
+    <div class="filter-system fade-in">
+
+      <!-- Main Category Tabs -->
+      <div class="cat-tabs-wrap">
+        <!-- tabs injected by JS -->
+      </div>
+
+      <!-- Sub-filter Chips -->
+      <div class="sub-filter-row hidden">
+        <!-- chips injected by JS -->
+      </div>
+
+    </div>
+
+    <!-- Results bar -->
+    <div class="results-bar fade-in">
+      <span class="results-count">Showing <em>—</em> projects</span>
+    </div>
+
+    <!-- Grid -->
+    <div class="proj-grid-wrap">
+      <div class="proj-grid">
 
       <!-- Project 1: Cats vs Dogs -->
-      <div class="pcard fade-in">
+      <div class="pcard fade-in" data-pid="cats-dogs">
         <div class="pimg pimg-cv" style="height:200px;padding:0;overflow:hidden">
           <img src="assets/images/projects/img_cats_dogs.png" alt="Cats vs Dogs Classifier" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block">
           <div class="pimg-blur-overlay"></div>
@@ -317,7 +341,7 @@
       </div>
 
       <!-- Project 2: DeepCSV -->
-      <div class="pcard fade-in">
+      <div class="pcard fade-in" data-pid="deepcsv">
         <div class="pimg pimg-ml" style="height:200px;padding:0;overflow:hidden">
           <img src="assets/images/projects/img_deepcsv.png" alt="DeepCSV" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block">
           <div class="pimg-blur-overlay"></div>
@@ -351,7 +375,7 @@
       </div>
 
       <!-- Project 3: Weather -->
-      <div class="pcard fade-in">
+      <div class="pcard fade-in" data-pid="weather">
         <div class="pimg pimg-reg" style="height:200px;padding:0;overflow:hidden">
           <img src="assets/images/projects/img_weather.png" alt="Weather Temperature Predictor" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block">
           <div class="pimg-blur-overlay"></div>
@@ -381,7 +405,7 @@
       </div>
 
       <!-- Project 4: Intel Image Classification -->
-      <div class="pcard fade-in">
+      <div class="pcard fade-in" data-pid="intel">
         <div class="pimg pimg-intel" style="height:200px;padding:0;overflow:hidden">
           <img src="assets/images/projects/img_intel.png" alt="Intel Image Classification" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block">
           <div class="pimg-blur-overlay"></div>
@@ -411,7 +435,7 @@
       </div>
 
       <!-- Project 5: Garbage Classification -->
-      <div class="pcard fade-in">
+      <div class="pcard fade-in" data-pid="garbage">
         <div class="pimg" style="height:200px;padding:0;overflow:hidden;background:linear-gradient(135deg,#0d1f10,#0f2a1a)">
           <img src="assets/images/projects/img_garbage.png" alt="Garbage Classification" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block">
           <div class="pimg-blur-overlay"></div>
@@ -441,7 +465,7 @@
       </div>
 
       <!-- Project 6: Breast Cancer Classification -->
-      <div class="pcard fade-in">
+      <div class="pcard fade-in" data-pid="cancer-vgg">
         <div class="pimg" style="height:200px;padding:0;overflow:hidden;background:linear-gradient(135deg,#1a0a1a,#2a0d1a);position:relative">
           <img src="assets/images/projects/img_cancer.jpg" alt="Breast Cancer Classification" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block">
           <div class="pimg-blur-overlay"></div>
@@ -471,7 +495,7 @@
       </div>
 
       <!-- Project 7: Breast Cancer Classification (Transfer Learning) -->
-      <div class="pcard fade-in">
+      <div class="pcard fade-in" data-pid="cancer-tl">
         <div class="pimg" style="height:200px;padding:0;overflow:hidden;background:linear-gradient(135deg,#1a0a1a,#2a0d1a);position:relative">
           <img src="assets/images/projects/img_cancer_tl.png" alt="Breast Cancer Classification Transfer Learning" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block">
           <div class="pimg-blur-overlay"></div>
@@ -501,7 +525,7 @@
       </div>
 
       <!-- Project 7: NIH Chest X-Ray Research -->
-      <div class="pcard pcard-research fade-in" style="position:relative">
+      <div class="pcard pcard-research fade-in" data-pid="nih-xray" style="position:relative">
         <div class="p-research-badge">📄 Research Paper</div>
         <div class="pimg" style="height:200px;padding:0;overflow:hidden;position:relative;background:linear-gradient(135deg,#04111f,#071a2e)">
           <!-- Animated research visual — no real image yet -->
@@ -588,7 +612,20 @@
         </div>
       </div>
  
-    </div>
+      </div><!-- /.proj-grid -->
+
+      <!-- Empty State -->
+      <div class="proj-empty">
+        <div class="pe-icon">🔍</div>
+        <div class="pe-title">No projects found</div>
+        <div class="pe-sub">Try selecting a different category or clearing the filter.</div>
+      </div>
+
+    </div><!-- /.proj-grid-wrap -->
+
+    <!-- Pagination -->
+    <div class="proj-pagination"></div>
+
   </div>
 </section>
 
@@ -903,5 +940,6 @@
 </footer>
 
 <script src="main.js"></script>
+<script src="projects-filter.js"></script>
 </body>
 </html>
