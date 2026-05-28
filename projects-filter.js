@@ -14,6 +14,11 @@
     { id:'cancer-vgg',     cat:'medical',  sub:['classification','pytorch','imaging'],                   status:'done' },
     { id:'cancer-tl',      cat:'medical',  sub:['transfer-learning','classification','tensorflow','imaging'], status:'done' },
     { id:'nih-xray',       cat:'research', sub:['multi-label','pytorch','imaging'],                      status:'research' },
+    // New projects
+    { id:'sia',            cat:'cv',       sub:['classification','pytorch','transfer-learning'],          status:'done' },
+    { id:'iris',           cat:'ml',       sub:['classification','sklearn'],                             status:'done' },
+    { id:'faceage',        cat:'cv',       sub:['classification','pytorch','transfer-learning'],          status:'done' },
+    { id:'drowsiness',     cat:'cv',       sub:['classification','pytorch','transfer-learning'],          status:'done' },
     { id:'nlp-sentiment',  cat:'nlp',      sub:[], status:'coming-soon',
       _meta:{ icon:'💬', title:'Sentiment Analysis Engine',
               desc:'Fine-tuning BERT/RoBERTa for multi-class Arabic & English sentiment analysis. Planned deployment as REST API.' }},
