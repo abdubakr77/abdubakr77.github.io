@@ -1,1094 +1,614 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abdullah Bakr — AI/ML & Deep Learning Engineer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=Bricolage+Grotesque:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<!-- Favicon: AB logo -->
-<link rel="icon" type="image/png" href="favicon_ab.png">
-<link rel="apple-touch-icon" href="favicon_ab.png">
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="projects-filter.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abdullah Bakr | Computer Vision & Medical Imaging Engineer</title>
+<meta name="description" content="Abdullah Bakr builds computer vision models for medical images: chest X-ray, dental X-ray and skin lesion pipelines, plus deepcsv, an open-source Python library. Based in Egypt, open to internships, junior roles and freelance work.">
+<meta name="author" content="Abdullah Bakr">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://abdubakr77.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://abdubakr77.github.io/">
+<meta property="og:title" content="Abdullah Bakr | Computer Vision & Medical Imaging Engineer">
+<meta property="og:description" content="Abdullah Bakr builds computer vision models for medical images: chest X-ray, dental X-ray and skin lesion pipelines, plus deepcsv, an open-source Python library. Based in Egypt, open to internships, junior roles and freelance work.">
+<meta property="og:image" content="https://abdubakr77.github.io/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://abdubakr77.github.io/assets/img/og.png">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-latin-wght-normal.woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/main.css">
+<script>document.documentElement.classList.add('js');try{if(sessionStorage.getItem('pt')==='1'){document.documentElement.classList.add('pt-in');sessionStorage.removeItem('pt');}}catch(e){}</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Person","name":"Abdullah Bakr","jobTitle":"Machine Learning Engineer, Computer Vision and Medical Imaging","email":"mailto:abdullah.bakr.official@gmail.com","url":"https://abdubakr77.github.io/","address":{"@type":"PostalAddress","addressRegion":"Monufiya","addressCountry":"EG"},"sameAs":["https://www.linkedin.com/in/abdubakr","https://github.com/abdubakr77","https://www.kaggle.com/abdullahbakr7","https://orcid.org/0009-0009-1638-4356","https://pypi.org/user/AbduBakr/"]}
+</script>
 </head>
-<body>
+<body class="page-index">
+<a class="skip" href="#main">Skip to content</a>
 
-<!-- Background layers -->
-<canvas id="particles"></canvas>
-<div class="orb o1"></div>
-<div class="orb o2"></div>
-<div class="orb o3"></div>
+<!-- loader -->
+<div class="loader" id="loader" aria-hidden="true"><span class="loader__arc"></span></div>
+<!-- page transition curtain -->
+<div class="curtain" id="curtain" aria-hidden="true"></div>
 
-<!-- ── INTRO SCREEN ─────────────────────────── -->
-<div id="intro-overlay">
-  <div class="intro-logo">AB<em>.</em></div>
-  <div class="intro-bar"></div>
-  <div class="intro-role">AI / ML &amp; Deep Learning Engineer</div>
-</div>
-
-<!-- ── PDF MODAL ────────────────────────────── -->
-<div class="pdf-modal" id="pdfModal">
-  <div class="pdf-box">
-    <div class="pdf-hd">
-      <span class="pdf-title" id="pdfTitle">Certificate</span>
-      <div class="pdf-hd-right">
-        <a href="#" id="pdfDlLink" download class="pdf-dl">⬇ Download</a>
-        <button class="pdf-close" onclick="closePdf()">✕ Close</button>
+<!-- top bar -->
+<header class="bar" id="bar">
+  <div class="bar__clock" aria-label="Local time in Egypt"><span id="clock">00:00:00</span></div>
+  <nav class="bar__nav" aria-label="Main">
+    <a href="#top" data-nav="top" class="is-active">Home</a>
+    <div class="dd">
+      <button type="button" class="dd__btn" aria-expanded="false" aria-controls="ddMenu"><i class="dd__dot" aria-hidden="true"></i>About <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+      <div class="mega" id="ddMenu" hidden>
+        <div class="mega__main">
+          <a class="mega__big" href="projects.html">
+            <span class="mega__grid" aria-hidden="true"></span><span class="mega__px" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+            <svg class="mega__ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 15c-1.5 1.3-2 5-2 5s3.7-.5 5-2c.7-.8.7-2.1-.1-2.9a2.2 2.2 0 0 0-2.9-.1zM12 15l-3-3a22 22 0 0 1 2-3.9A12.9 12.9 0 0 1 22 2c0 2.7-.8 7.5-6 11a22.4 22.4 0 0 1-4 2z"/><path d="M9 12H4s.6-3 2-4c1.6-1.1 5 0 5 0M12 15v5s3-.6 4-2c1.1-1.6 0-5 0-5"/></svg>
+            <b>Projects</b><small>Every build, with the code</small>
+          </a>
+          <a class="mega__big" href="experience.html">
+            <span class="mega__grid" aria-hidden="true"></span><span class="mega__px" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+            <svg class="mega__ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg>
+            <b>Experience</b><small>Roles, research and study</small>
+          </a>
+          <div class="mega__row">
+            <a class="mega__sm" href="skills.html"><span><b>Skills</b><small>Tools and methods</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></a>
+            <a class="mega__sm" href="achievements.html"><span><b>Achievements</b><small>Certificates and milestones</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0zM7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3"/></svg></a>
+            <a class="mega__sm" href="https://www.linkedin.com/in/abdubakr/recent-activity/all/" target="_blank" rel="noopener"><span><b>Posts</b><small>Writing on LinkedIn</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2zM22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z"/></svg></a>
+          </div>
+        </div>
+        <div class="mega__side">
+          <a class="mega__item" href="gallery.html"><span><b>Gallery</b><small>Model outputs, up close</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg></a>
+          <a class="mega__item" href="resume.html"><span><b>Resume</b><small>View or download my CV</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></a>
+          <button type="button" class="mega__item" data-open-form><span><b>Message</b><small>Send me a note</small></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-6.4A8 8 0 1 1 21 12z"/></svg></button>
+        </div>
       </div>
     </div>
-    <div class="pdf-frame" id="pdfFrame"></div>
+    <a href="#work" data-nav="work">Projects</a>
+    <a href="#contact" data-nav="contact">Contact</a>
+  </nav>
+  <div class="bar__icons">
+    <a class="ib" href="resume.html" aria-label="View my resume" data-tip="Resume">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>
+    </a>
+    <a class="ib" href="https://github.com/abdubakr77" target="_blank" rel="noopener" aria-label="GitHub" data-tip="GitHub">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+    </a>
+    <a class="ib" href="mailto:abdullah.bakr.official@gmail.com" aria-label="Email me" data-tip="Email">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+    </a>
+    <button type="button" class="ib ib--menu" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu"><span></span><span></span></button>
   </div>
+</header>
+
+<div class="mmenu" id="mobileMenu" hidden>
+  <nav aria-label="Mobile">
+    <a href="#top">Home</a><a href="projects.html">Projects</a><a href="experience.html">Experience</a><a href="skills.html">Skills</a><a href="achievements.html">Achievements</a><a href="gallery.html">Gallery</a><a href="resume.html">Resume</a><a href="#contact">Contact</a>
+  </nav>
 </div>
 
-<!-- ── CV MODAL ─────────────────────────────── -->
-<div class="cv-modal" id="cvModal">
-  <div class="cv-box">
-    <div class="cv-hd">
-      <span class="cv-title">Abdullah Bakr — CV</span>
-      <div class="cv-hd-right">
-        <a href="Abdullah_Bakr_CV.pdf" download="Abdullah_Bakr_CV.pdf" class="pdf-dl">⬇ Download</a>
-        <button class="pdf-close" onclick="closeCV()">✕ Close</button>
+<a class="avail" href="#contact" aria-label="Available for opportunity, go to contact"><span>Available for opportunity</span></a>
+<main id="main">
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top" aria-label="Introduction">
+  <div class="hero__bg" aria-hidden="true">
+    <div class="dots"></div>
+    <div class="spot">
+      <div class="spot__side spot__side--l"><i class="s1"></i><i class="s2"></i><i class="s3"></i></div>
+      <div class="spot__side spot__side--r"><i class="s1"></i><i class="s2"></i><i class="s3"></i></div>
+    </div>
+  </div>
+
+  <div class="hero__stage">
+    <h1 class="sr-only">Abdullah Bakr, Computer Vision Engineer</h1>
+    <div class="hero__title">
+      <div class="hrow hrow--1">
+        <p class="hero__note hero__note--tl" data-h>Hi, I'm Abdullah Bakr. I&nbsp;build vision models that read medical images.</p>
+        <div class="hrow__line">
+          <a class="float-ic float-ic--gh" href="https://github.com/abdubakr77" target="_blank" rel="noopener" aria-label="GitHub" data-h>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>
+    </a>
+          <span class="hl hl--1" aria-hidden="true"><span class="hl__in shiny" data-h>COMPUTER</span></span>
+        </div>
+      </div>
+      <div class="hrow hrow--2">
+        <div class="hrow__line">
+          <a class="float-ic float-ic--li" href="https://www.linkedin.com/in/abdubakr" target="_blank" rel="noopener" aria-label="LinkedIn" data-h>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/></svg>
+    </a>
+          <a class="float-ic float-ic--kg" href="https://www.kaggle.com/abdullahbakr7" target="_blank" rel="noopener" aria-label="Kaggle" data-h>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path class="fill" d="M18.8 23.6c-.02.24-.15.36-.38.36h-3.03c-.18 0-.34-.08-.47-.25l-5-6.37-1.4 1.32v4.92c0 .25-.12.38-.37.38H5.8c-.25 0-.37-.13-.37-.38V.4c0-.25.12-.38.37-.38h2.34c.25 0 .37.13.37.38v14.11l6-6.07c.15-.15.31-.23.47-.23h3.13c.2 0 .32.08.37.25.04.2.02.33-.07.4l-6.33 6.13 6.6 8.2c.1.1.13.23.08.38z"/></svg>
+    </a>
+          <span class="hl hl--2" aria-hidden="true"><span class="hl__in shiny" data-h><span>VI</span><span class="glyph glyph--scan" aria-hidden="true">
+        <svg viewBox="0 0 100 100"><path class="g-stroke" d="M18 34V24a6 6 0 0 1 6-6h10M66 18h10a6 6 0 0 1 6 6v10M82 66v10a6 6 0 0 1-6 6H66M34 82H24a6 6 0 0 1-6-6V66"/><path class="g-eye" d="M22 50s10-16 28-16 28 16 28 16-10 16-28 16-28-16-28-16z"/><circle class="g-pupil" cx="50" cy="50" r="8"/><line class="g-scanline" x1="24" y1="50" x2="76" y2="50"/></svg>
+      </span><span>SION</span></span></span>
+        </div>
+      </div>
+      <div class="hrow hrow--3">
+        <div class="hrow__line">
+          <span class="hl hl--3" aria-hidden="true"><span class="hl__in shiny" data-h><span>EN</span><span class="glyph glyph--tooth" aria-hidden="true">
+        <svg viewBox="0 0 100 100"><path class="t-body" d="M50 22c-6-6-16-8-24-4-9 5-11 17-8 28 2 8 5 13 6 22 1 8 3 16 9 16 6 0 6-10 8-17 2-6 6-6 9-6s7 0 9 6c2 7 2 17 8 17 6 0 8-8 9-16 1-9 4-14 6-22 3-11 1-23-8-28-8-4-18-2-24 4z"/><g class="t-eyes"><rect x="36" y="40" width="8" height="12" rx="4"/><rect x="56" y="40" width="8" height="12" rx="4"/></g></svg>
+      </span><span>GINEER</span></span></span>
+        </div>
+        <p class="hero__note hero__note--br" data-h>Open to internships, junior roles and freelance work, remote or hybrid.</p>
       </div>
     </div>
-    <div class="cv-frame">
-      <iframe src="Abdullah_Bakr_CV.pdf" title="Abdullah Bakr CV"></iframe>
+
+    <div class="hero__foot" data-h>
+      <span class="hero__line" aria-hidden="true"></span>
+      <span class="hero__loc">Monufiya, EG &middot; 2026</span>
+      <a class="round-btn" href="#focus" aria-label="Scroll to content">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7l10 10M17 8v9H8"/></svg>
+      </a>
     </div>
   </div>
+</section>
+
+<!-- ================= CORE FOCUS ================= -->
+<section class="focus" id="focus" aria-labelledby="focus-h">
+  <div class="focus__box" data-rv>
+    <span class="corner corner--tl"></span><span class="corner corner--tr"></span><span class="corner corner--bl"></span><span class="corner corner--br"></span>
+    <div class="focus__top">
+      <p class="tag tag--red">Core focus</p>
+      <p class="focus__role">Computer vision &amp; medical imaging engineer</p>
+    </div>
+    <h2 id="focus-h" class="focus__quote"><span class="q">"</span><b>Medical imaging.</b> <span class="dim">Computer vision.</span><br><em>models you can check</em><span class="q">."</span></h2>
+    <div class="focus__grid">
+      <p class="focus__lead">I train models that find what matters in an X-ray or a skin photo, and I show <em>where they look</em> so a person can verify them.</p>
+      <div>
+        <h3>Scope</h3>
+        <p>Detection, segmentation and classification on chest and dental X-rays, breast ultrasound and skin images, from data cleaning to a working app.</p>
+        <p class="focus__red">From notebooks to usable tools.</p>
+      </div>
+      <div>
+        <h3>How I work</h3>
+        <p>Patient-level and lesion-level splits with no leakage, metrics on held-out data, and Grad-CAM checks on what the model is looking at.</p>
+        <p class="sig" aria-label="Signature: Abdullah">Abdullah</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STATS ================= -->
+<section class="stats" aria-labelledby="stats-h">
+  <div class="stats__inner">
+    <p class="pill-tag"><span class="dot"></span>Professional statistics</p>
+    <h2 id="stats-h" class="stats__text" data-type>Images that speak. Models that explain. Code that ships. One engineer and the numbers behind the work.</h2>
+    <dl class="stats__bar">
+      <div><dt>Mean AUC</dt><dd><span class="count" data-to="0.8495" data-dec="4">0.8495</span></dd></div>
+      <div><dt>PyPI downloads</dt><dd><span class="count" data-to="17500" data-dec="0">17,500</span><small>+</small></dd></div>
+      <div><dt>Public projects</dt><dd><span class="count" data-to="17" data-dec="0">17</span></dd></div>
+      <div><dt>Kaggle</dt><dd>Expert<small> notebooks</small></dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- ================= STORY: expanding card ================= -->
+<section class="story" id="story" aria-labelledby="story-h">
+  <div class="story__pin">
+    <div class="story__intro">
+      <div class="story__btns"><span class="pill-btn">About me</span><span class="round-btn round-btn--light" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></span></div>
+      <div class="story__hints"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>Scroll to explore</span><span>My short story</span></div>
+    </div>
+    <div class="story__card">
+      <div class="marquee marquee--big" aria-hidden="true">
+        <div class="marquee__track">
+          <span>COMPUTER VISION</span><i class="spark"></i><span>MEDICAL IMAGING</span><i class="spark"></i><span>ML ENGINEER</span><i class="spark"></i>
+          <span>COMPUTER VISION</span><i class="spark"></i><span>MEDICAL IMAGING</span><i class="spark"></i><span>ML ENGINEER</span><i class="spark"></i>
+        </div>
+      </div>
+      <h2 id="story-h" class="sr-only">My short story</h2>
+    </div>
+  </div>
+
+  <div class="story__body">
+    <figure class="xray" id="xray">
+      <div class="xray__frame">
+        <img class="xray__raw" src="assets/img/cxr-raw.webp" alt="Chest X-ray from the NIH ChestX-ray14 test set" width="1000" height="1000" loading="lazy">
+        <img class="xray__cam" src="assets/img/cam-effusion.webp" alt="" width="1000" height="1000" loading="lazy">
+        <span class="xray__ov xray__ov--tl">NIH ChestX-ray14 &middot; test image</span>
+        <span class="xray__ov xray__ov--tr">Swin V2-B &middot; Grad-CAM++</span>
+        <span class="xray__ov xray__ov--bl">Truth: effusion</span>
+        <span class="xray__ov xray__ov--br" id="xrayPct">attention 0%</span>
+      </div>
+      <figcaption>Scroll to fade in where my chest X-ray model looks when it predicts effusion.</figcaption>
+    </figure>
+
+    <div class="about2">
+      <h3 class="about2__h">Building vision models<br>where medicine meets machine learning.</h3>
+      <p class="about2__p words words--blur">I'm a second-year Information Systems student in Egypt and a machine learning engineer focused on computer vision. Most of my work is on medical images: chest and dental X-rays, breast ultrasound and skin lesions. I spend a lot of time on the parts that make a number believable, then I turn working models into things people can use, like a dental X-ray app or the deepcsv library.</p>
+    </div>
+
+    <div class="stack" id="stack">
+      <p class="stack__label">Tech stack &amp; ecosystem</p>
+      <div class="marquee marquee--logos" data-dir="-1"><div class="marquee__track" id="logosA"></div></div>
+      <div class="marquee marquee--logos" data-dir="1"><div class="marquee__track" id="logosB"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERTISE: 3D cubes ================= -->
+<section class="expertise" id="expertise" aria-label="Expertise">
+  <article class="feat" data-cube="1" data-glow="#d4a514,#6d3fc0,#1f8a4c,#d06a1d">
+    <div class="feat__sticky">
+      <div class="feat__cube-wrap"><span class="feat__glow" aria-hidden="true"></span><span class="feat__ring" aria-hidden="true"><i></i><i></i><i></i></span><div class="cube-float"><div class="cube-tilt"><div class="cube-spin"><div class="cube" aria-hidden="true">
+        <div class="cube__f f1 c-yellow"><span class="ico ico-xray"></span><b>X-RAY</b></div>
+        <div class="cube__f f2 c-purple"><span class="ico ico-scan"></span><b>SCAN</b></div>
+        <div class="cube__f f3 c-red"><span class="ico ico-heart"></span><b>CLINIC</b></div>
+        <div class="cube__f f4 c-green"><span class="ico ico-data"></span><b>DATA</b></div>
+        <div class="cube__f f5 c-blue"><span class="ico ico-net"></span><b>NN</b></div>
+        <div class="cube__f f6 c-orange"><span class="ico ico-eye"></span><b>CAM</b></div>
+      </div></div></div></div><div class="cube__shadow"></div></div>
+      <div class="feat__text">
+        <p class="feat__num">Feature &mdash; 01 <span class="feat__bar"><i></i></span></p>
+        <h2>MEDICAL<br>IMAGING</h2>
+        <p>Chest and dental X-rays, breast ultrasound and skin lesions. Multi-label classification across 14 thoracic diseases, tooth-level dental analysis, and attention maps that show what the model used.</p>
+        <ul class="chips"><li>Grad-CAM++</li><li>Patient-level splits</li><li>NIH ChestX-ray14</li><li>DENTEX 2023</li><li>Focal loss</li><li>Multi-label</li></ul>
+      </div>
+    </div>
+  </article>
+
+  <article class="feat feat--flip" data-cube="2" data-glow="#2a5bc7,#b42f2f,#13879a,#6d3fc0">
+    <div class="feat__sticky">
+      <div class="feat__cube-wrap"><span class="feat__glow" aria-hidden="true"></span><span class="feat__ring" aria-hidden="true"><i></i><i></i><i></i></span><div class="cube-float"><div class="cube-tilt"><div class="cube-spin"><div class="cube" aria-hidden="true">
+        <div class="cube__f f1 c-blue"><span class="ico ico-box"></span><b>BOX</b></div>
+        <div class="cube__f f2 c-red"><span class="ico ico-mask"></span><b>MASK</b></div>
+        <div class="cube__f f3 c-teal"><span class="ico ico-layers"></span><b>STAGE</b></div>
+        <div class="cube__f f4 c-purple"><span class="ico ico-target"></span><b>DETECT</b></div>
+        <div class="cube__f f5 c-yellow"><span class="ico ico-code"></span><b>CODE</b></div>
+        <div class="cube__f f6 c-green"><span class="ico ico-drone"></span><b>DRONE</b></div>
+      </div></div></div></div><div class="cube__shadow"></div></div>
+      <div class="feat__text">
+        <p class="feat__num">Feature &mdash; 02 <span class="feat__bar"><i></i></span></p>
+        <h2>DETECTION &amp;<br>SEGMENTATION</h2>
+        <p>Multi-stage pipelines where each model hands off to the next: YOLO finds the region, a Swin or ResNet classifier makes the call. Built for dental X-rays, skin lesions and drones in the wild.</p>
+        <ul class="chips"><li>Ultralytics YOLO</li><li>Segmentation</li><li>Swin Transformer</li><li>Two-stage pipelines</li><li>Albumentations</li><li>Test-time augmentation</li></ul>
+      </div>
+    </div>
+  </article>
+
+  <article class="feat" data-cube="3" data-glow="#1f8a4c,#2a5bc7,#d06a1d,#d4a514">
+    <div class="feat__sticky">
+      <div class="feat__cube-wrap"><span class="feat__glow" aria-hidden="true"></span><span class="feat__ring" aria-hidden="true"><i></i><i></i><i></i></span><div class="cube-float"><div class="cube-tilt"><div class="cube-spin"><div class="cube" aria-hidden="true">
+        <div class="cube__f f1 c-green"><span class="ico ico-doc"></span><b>PAPER</b></div>
+        <div class="cube__f f2 c-blue"><span class="ico ico-pkg"></span><b>PYPI</b></div>
+        <div class="cube__f f3 c-yellow"><span class="ico ico-bulb"></span><b>IDEA</b></div>
+        <div class="cube__f f4 c-red"><span class="ico ico-chart"></span><b>BENCH</b></div>
+        <div class="cube__f f5 c-purple"><span class="ico ico-trophy"></span><b>KAGGLE</b></div>
+        <div class="cube__f f6 c-orange"><span class="ico ico-git"></span><b>OPEN</b></div>
+      </div></div></div></div><div class="cube__shadow"></div></div>
+      <div class="feat__text">
+        <p class="feat__num">Feature &mdash; 03 <span class="feat__bar"><i></i></span></p>
+        <h2>RESEARCH &amp;<br>OPEN SOURCE</h2>
+        <p>A first-author preprint benchmarking six architectures, an open-source library with 17,500+ downloads, public Kaggle notebooks, and 5+ ML challenges I designed and published on Shipd.</p>
+        <ul class="chips"><li>Benchmarking</li><li>Research writing</li><li>PyPI packaging</li><li>Kaggle Expert</li><li>Challenge design</li><li>Reproducibility</li></ul>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- ================= WORK ================= -->
+<section class="discover" aria-labelledby="disc-h">
+  <h2 id="disc-h" class="discover__t words">Discover my latest work and the models behind it</h2>
+  <p class="discover__s">Scroll to explore<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></p>
+</section>
+
+<section class="work" id="work" aria-label="Selected projects">
+  <div class="work__pin">
+    <div class="work__bgs" aria-hidden="true" id="workBgs"></div>
+    <div class="work__band">
+      <ol class="work__rows" id="workRows"></ol>
+    </div>
+    <div class="work__page" aria-hidden="true"><span>Page</span><i><b id="workBar"></b></i><span id="workNum">1 / 6</span></div>
+  </div>
+  <!-- mobile / no-js list is generated into the same rows -->
+</section>
+
+<div class="work__more">
+  <a class="round-btn round-btn--light" href="https://github.com/abdubakr77" target="_blank" rel="noopener" aria-label="GitHub profile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a>
+  <a class="pill-btn pill-btn--light" href="#more">More projects</a>
+  <a class="round-btn round-btn--light" href="https://www.kaggle.com/abdullahbakr7" target="_blank" rel="noopener" aria-label="Kaggle notebooks"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
 </div>
 
-<!-- ── NAV ──────────────────────────────────── -->
-<nav>
-  <a href="#hero" class="nav-logo">AB<em>.</em></a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#background">Background</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <div class="nav-right">
-    <div class="visitor-badge">
-      <span class="vdot"></span>
-      <span id="visitorCount">—</span>
-      <span>visitors</span>
+<!-- ================= JOURNEY ================= -->
+<section class="journey" id="journey" aria-labelledby="journey-h">
+  <div class="journey__head">
+    <h2 id="journey-h" class="shiny-static">Professional Journey</h2>
+    <p>A timeline of my roles, research and study so far.</p>
+  </div>
+  <div class="journey__pin">
+    <div class="journey__track" id="journeyTrack">
+      <div class="journey__line"><i id="journeyProgress"></i></div>
+      <article class="jn jn--down">
+        <span class="jn__dot"></span>
+        <h3 class="jn__role">B.Sc. Information Systems</h3>
+        <div class="jn__card">
+          <p class="jn__date">Sep 2025 &ndash; Jun 2029</p>
+          <h4>Science Valley Academy</h4>
+          <p>Second year, grade Very Good. Software development, databases and systems design, alongside my ML work.</p>
+        </div>
+      </article>
+      <article class="jn jn--up">
+        <span class="jn__dot"></span>
+        <h3 class="jn__role">Research collaborator</h3>
+        <div class="jn__card">
+          <p class="jn__date">2026</p>
+          <h4>Chest X-ray study with Dr. Ashraf Ullah</h4>
+          <p>First author and sole implementer of a Swin Transformer V2-B study on NIH ChestX-ray14, now a preprint on Research Square.</p>
+          <a class="mini-link" href="https://www.researchsquare.com/article/rs-10932750/latest" target="_blank" rel="noopener">Read the preprint</a>
+        </div>
+      </article>
+      <article class="jn jn--down">
+        <span class="jn__dot"></span>
+        <h3 class="jn__role">ML engineering intern</h3>
+        <div class="jn__card">
+          <p class="jn__date">Jul &ndash; Sep 2026</p>
+          <h4>FlyRank AI, remote</h4>
+          <p>Selected from 20,000+ applicants. Finished the full assignment track and a capstone on Google search ranking and discoverability, accepted by the lead mentor.</p>
+          <a class="mini-link" href="https://github.com/abdubakr77/flyrank-ml-internship" target="_blank" rel="noopener">Internship workspace</a>
+        </div>
+      </article>
+      <article class="jn jn--up">
+        <span class="jn__dot"></span>
+        <h3 class="jn__role">ML engineer, freelance</h3>
+        <div class="jn__card">
+          <p class="jn__date">2026 &ndash; now</p>
+          <h4>Shipd, remote</h4>
+          <p>Solved 50+ ML challenges end to end. Designed and published 5+ original challenges, each with a deterministic dataset pipeline and reproducible public and private splits.</p>
+        </div>
+      </article>
+      <article class="jn jn--down">
+        <span class="jn__dot"></span>
+        <h3 class="jn__role">Open source &amp; community</h3>
+        <div class="jn__card">
+          <p class="jn__date">2026</p>
+          <h4>deepcsv, Kaggle, LinkedIn</h4>
+          <p>Maintainer of deepcsv (17,500+ downloads), Kaggle Notebooks Expert, and #8 in Egypt among AI and ML creators on Favikon (June 2026), writing for 14K+ followers.</p>
+        </div>
+      </article>
     </div>
-    <!-- Theme Toggle -->
-    <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode" aria-label="Toggle theme">
-      <!-- Sun icon (shown in dark mode) -->
-      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="5"/>
-        <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-        <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-      </svg>
-      <!-- Moon icon (shown in light mode) -->
-      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-      </svg>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="voices" aria-labelledby="voices-h">
+  <h2 id="voices-h" class="sr-only">What people say</h2>
+  <figure class="voice" data-rv>
+    <blockquote><p>He is a hardworking and consistent professional. We collaborated on a research paper together, and it was a pleasure working with him. He completed his part of the work within the given deadline. Abdullah has excellent programming skills in both Machine Learning and Deep Learning.</p></blockquote>
+    <figcaption><a href="https://www.linkedin.com/in/dr-ashraf-ullah-96b9aaa3/" target="_blank" rel="noopener">Dr. Ashraf Ullah</a><span>Research collaborator</span></figcaption>
+  </figure>
+  <figure class="voice" data-rv>
+    <blockquote><p>We recently collaborated on a Kaggle competition where we joined in the final 10 days, and his dedication was key to our success. &hellip; He took the lead on building robust ML pipelines and fine-tuning hyperparameter spaces using Optuna.</p></blockquote>
+    <figcaption><a href="https://www.linkedin.com/in/hozaifa-mohamed-708355259/" target="_blank" rel="noopener">Hozaifa Mohamed</a><span>Competition teammate</span></figcaption>
+  </figure>
+</section>
+
+<!-- ================= CERTIFICATES ================= -->
+<section class="certs" id="certs" aria-labelledby="certs-h">
+  <div class="certs__head" data-rv>
+    <p class="tag">Certifications &amp; achievements</p>
+    <h2 id="certs-h" class="shiny-static">Learning that goes on the record.</h2>
+    <p>Courses and programs in deep learning, computer vision and cloud AI.</p>
+  </div>
+  <div class="cgrid" id="cgrid">
+    <button type="button" class="ccard" data-cert="assets/img/certs/Completion_Certificate_Deep_Learning_CV.webp" data-title="Deep Learning for Computer Vision, ITI, MaharaTech">
+      <span class="ccard__in"><span class="ccard__img"><img width="1600" height="1170" src="assets/img/certs/Completion_Certificate_Deep_Learning_CV.webp" alt="Deep Learning for Computer Vision certificate" loading="lazy"></span>
+      <span class="ccard__meta"><b>Deep Learning for Computer Vision</b><small>ITI, MaharaTech</small><i class="ccard__go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></i></span>
+      <span class="ccard__shine" aria-hidden="true"></span></span>
     </button>
-    <button class="nav-cv-btn" onclick="openCV()">View CV</button>
-    <a href="#contact" class="nav-cta">Hire Me →</a>
+    <button type="button" class="ccard" data-cert="assets/img/certs/AWS_AI_Practitioner_Challenge.webp" data-title="AWS AI Practitioner Challenge, Udacity" data-verify="https://www.udacity.com/certificate/e/6e93ba3c-28a5-11f1-bd20-3fb9ced1e7dc">
+      <span class="ccard__in"><span class="ccard__img"><img width="1600" height="1236" src="assets/img/certs/AWS_AI_Practitioner_Challenge.webp" alt="AWS AI Practitioner Challenge certificate" loading="lazy"></span>
+      <span class="ccard__meta"><b>AWS AI Practitioner Challenge</b><small>Udacity</small><i class="ccard__go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></i></span>
+      <span class="ccard__shine" aria-hidden="true"></span></span>
+    </button>
+    <button type="button" class="ccard" data-cert="assets/img/certs/introduction-to-modern-ai.webp" data-title="Introduction to Modern AI, Cisco Networking Academy">
+      <span class="ccard__in"><span class="ccard__img"><img width="1600" height="1236" src="assets/img/certs/introduction-to-modern-ai.webp" alt="Introduction to Modern AI certificate" loading="lazy"></span>
+      <span class="ccard__meta"><b>Introduction to Modern AI</b><small>Cisco Networking Academy</small><i class="ccard__go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></i></span>
+      <span class="ccard__shine" aria-hidden="true"></span></span>
+    </button>
+    <button type="button" class="ccard" data-cert="assets/img/certs/Python_Programming_Basics.webp" data-title="Python Programming Basics, ITI, MaharaTech">
+      <span class="ccard__in"><span class="ccard__img"><img width="1600" height="1171" src="assets/img/certs/Python_Programming_Basics.webp" alt="Python Programming Basics certificate" loading="lazy"></span>
+      <span class="ccard__meta"><b>Python Programming Basics</b><small>ITI, MaharaTech</small><i class="ccard__go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></i></span>
+      <span class="ccard__shine" aria-hidden="true"></span></span>
+    </button>
+    <button type="button" class="ccard" data-cert="assets/img/certs/AI_for_Everyone_AI4E_.webp" data-title="AI for Everyone (AI4E), ITI, MaharaTech">
+      <span class="ccard__in"><span class="ccard__img"><img width="1600" height="1171" src="assets/img/certs/AI_for_Everyone_AI4E_.webp" alt="AI for Everyone (AI4E) certificate" loading="lazy"></span>
+      <span class="ccard__meta"><b>AI for Everyone (AI4E)</b><small>ITI, MaharaTech</small><i class="ccard__go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></i></span>
+      <span class="ccard__shine" aria-hidden="true"></span></span>
+    </button>
+    <button type="button" class="ccard" data-cert="assets/img/certs/Boost_Productivity_AI_Google.webp" data-title="Boost Your Productivity with AI, Google, Maharat">
+      <span class="ccard__in"><span class="ccard__img"><img width="1600" height="1130" src="assets/img/certs/Boost_Productivity_AI_Google.webp" alt="Boost Your Productivity with AI certificate" loading="lazy"></span>
+      <span class="ccard__meta"><b>Boost Your Productivity with AI</b><small>Google, Maharat</small><i class="ccard__go" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17L17 7M8 7h9v9"/></svg></i></span>
+      <span class="ccard__shine" aria-hidden="true"></span></span>
+    </button>
   </div>
-</nav>
-
-<main>
-
-<!-- ════════════════════════════════════════════
-     HERO
-     ════════════════════════════════════════════ -->
-<section id="hero" class="sec">
-  <div class="hero-grid">
-
-    <!-- Left: text -->
-    <div class="hero-left">
-      <div class="badge">
-        <span class="badge-dot"></span>
-        Available for work
-      </div>
-      <h1>Abdullah<br>Bakr</h1>
-      <p class="hero-role">// AI/ML &amp; Deep Learning Engineer</p>
-      <p class="hero-desc">
-        Building real intelligent systems — from convolutional networks to
-        published open-source libraries. 3+ years in Python, 1+ year shipping
-        AI projects that people actually use.
-      </p>
-      <div class="hero-btns">
-        <a href="#projects" class="btn-p">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px">
-            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
-          </svg>
-          View Projects
-        </a>
-        <button onclick="openCV()" class="btn-s">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px">
-            <path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-          </svg>
-          View CV
-        </button>
-        <a href="https://www.linkedin.com/in/abdubakr" target="_blank" rel="noopener" class="btn-s">
-          <svg viewBox="0 0 24 24" fill="currentColor" style="width:13px;height:13px">
-            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-          </svg>
-          LinkedIn
-        </a>
-      </div>
-      <div class="scroll-cue">
-        <div class="scroll-arrow">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
-        </div>
-        <span>Scroll to explore</span>
-      </div>
-    </div>
-
-    <!-- Right: code card -->
-    <div class="hero-right">
-      <div class="code-card">
-        <div class="cc-hd">
-          <div class="dots"><span class="dr"></span><span class="dy"></span><span class="dg"></span></div>
-          <span class="cc-file">deepcsv.py</span>
-          <span class="cc-ver">● live</span>
-        </div>
-
-        <!-- Scrollable code body -->
-        <div class="cc-body cc-scroll" id="ccScrollBody">
-          <div class="cl"><span class="ln">1</span><span><span class="cm"># pip install deepcsv</span></span></div>
-          <div class="cl"><span class="ln">2</span><span></span></div>
-          <div class="cl"><span class="ln">3</span><span><span class="kw">from</span> <span class="cl2">deepcsv</span> <span class="kw">import</span> <span class="fn">process_file</span><span class="op">, </span><span class="fn">read_any</span><span class="op">, </span><span class="fn">clean_values</span><span class="op">, </span><span class="fn">auto_fix</span></span></div>
-          <div class="cl"><span class="ln">4</span><span></span></div>
-          <div class="cl"><span class="ln">5</span><span><span class="cm"># ─── process_file() ────────────────────────────</span></span></div>
-          <div class="cl"><span class="ln">6</span><span><span class="cm"># Converts string lists → NumPy arrays, fixes mixed types</span></span></div>
-          <div class="cl"><span class="ln">7</span><span><span class="fn">process_file</span><span class="op">(</span><span class="st">"data.csv"</span><span class="op">)</span></span></div>
-          <div class="cl"><span class="ln">8</span><span><span class="fn">process_file</span><span class="op">(</span><span class="st">"data.csv"</span><span class="op">, </span><span class="va">file_format</span><span class="op">=</span><span class="st">"parquet"</span><span class="op">)</span></span></div>
-          <div class="cl"><span class="ln">9</span><span></span></div>
-          <div class="cl"><span class="ln">10</span><span><span class="cm"># ─── process_all_files() ───────────────────────</span></span></div>
-          <div class="cl"><span class="ln">11</span><span><span class="cm"># Batch processes entire folder trees recursively</span></span></div>
-          <div class="cl"><span class="ln">12</span><span><span class="fn">process_all_files</span><span class="op">(</span><span class="st">"path/to/folder"</span><span class="op">, </span><span class="va">file_format</span><span class="op">=</span><span class="st">"csv"</span><span class="op">)</span></span></div>
-          <div class="cl"><span class="ln">13</span><span></span></div>
-          <div class="cl"><span class="ln">14</span><span><span class="cm"># ─── read_any() ────────────────────────────────</span></span></div>
-          <div class="cl"><span class="ln">15</span><span><span class="cm"># One universal reader — csv, xlsx, json, parquet…</span></span></div>
-          <div class="cl"><span class="ln">16</span><span><span class="va">df</span> <span class="op">=</span> <span class="fn">read_any</span><span class="op">(</span><span class="st">"data/users.csv"</span><span class="op">)</span></span></div>
-          <div class="cl"><span class="ln">17</span><span><span class="va">df</span> <span class="op">=</span> <span class="fn">read_any</span><span class="op">(</span><span class="st">"warehouse/orders.parquet"</span><span class="op">)</span></span></div>
-          <div class="cl"><span class="ln">18</span><span></span></div>
-          <div class="cl"><span class="ln">19</span><span><span class="cm"># ─── clean_values() ────────────────────────────</span></span></div>
-          <div class="cl"><span class="ln">20</span><span><span class="cm"># Cleans nulls, values, types with full control</span></span></div>
-          <div class="cl"><span class="ln">21</span><span><span class="fn">clean_values</span><span class="op">(</span><span class="va">df</span><span class="op">, </span><span class="va">cols</span><span class="op">=[</span><span class="st">"age"</span><span class="op">, </span><span class="st">"salary"</span><span class="op">])</span></span></div>
-          <div class="cl"><span class="ln">22</span><span><span class="fn">clean_values</span><span class="op">(</span><span class="va">df</span><span class="op">, </span><span class="va">finding_type</span><span class="op">=</span><span class="kw">str</span><span class="op">, </span><span class="va">cols</span><span class="op">=[</span><span class="st">"score"</span><span class="op">])</span></span></div>
-          <div class="cl"><span class="ln">23</span><span></span></div>
-          <div class="cl"><span class="ln">24</span><span><span class="cm"># ─── auto_fix() ────────────────────────────────</span></span></div>
-          <div class="cl"><span class="ln">25</span><span><span class="cm"># Detects & fixes mixed-type columns automatically</span></span></div>
-          <div class="cl"><span class="ln">26</span><span><span class="va">df</span> <span class="op">=</span> <span class="fn">auto_fix</span><span class="op">(</span><span class="st">"data.csv"</span><span class="op">)</span></span></div>
-          <div class="cl"><span class="ln">27</span><span><span class="va">df</span> <span class="op">=</span> <span class="fn">auto_fix</span><span class="op">(</span><span class="va">my_dataframe</span><span class="op">)</span></span></div>
-          <div class="cl"><span class="ln">28</span><span></span></div>
-          <div class="cl"><span class="ln">29</span><span><span class="cm"># Arrays restored. Types fixed. Done.</span></span></div>
-        </div>
-        <div class="cc-scroll-hint">↕ scroll to explore</div>
-
-        <!-- Badges row -->
-        <div class="cc-badges">
-          <a href="https://pypi.org/project/deepcsv/" target="_blank" rel="noopener" style="text-decoration:none;display:flex;align-items:center">
-            <img src="https://static.pepy.tech/personalized-badge/deepcsv?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads" alt="PyPI Downloads" style="height:22px;border-radius:5px">
-          </a>
-          <a href="https://pypi.org/project/deepcsv/" target="_blank" rel="noopener" style="text-decoration:none;display:flex;align-items:center">
-            <img src="https://img.shields.io/pypi/v/deepcsv?style=flat-square&color=3b82f6&label=version&labelColor=black" alt="PyPI Version" style="height:22px;border-radius:5px">
-          </a>
-          <div class="pypi-badge">
-            <span class="bl">python</span>
-            <span class="br-py">≥ 3.7</span>
-          </div>
-        </div>
-
-        <div class="cc-stats">
-          <div class="si"><span class="sn">PyPI</span><span class="sl">Published</span></div>
-          <div class="si"><span class="sn">MIT</span><span class="sl">License</span></div>
-          <div class="si"><span class="sn">Open</span><span class="sl">Source</span></div>
-        </div>
-      </div>
-    </div>
-
+  <div class="certs__foot" data-rv>
+    <button type="button" class="pill-btn pill-btn--light pill-btn--sm" id="allCerts">View all 11 certificates <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    <a class="pill-btn pill-btn--ghost pill-btn--sm" href="achievements.html">Achievements page</a>
   </div>
 </section>
 
-<div class="divl"></div>
+<!-- ================= ECOSYSTEM CARDS ================= -->
+<section class="eco" aria-label="Profiles">
+  <article class="eco__card eco--gh">
+    <div class="eco__top"><p class="eco__tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>GitHub ecosystem</p>
+      <a class="eco__go" href="https://github.com/abdubakr77" target="_blank" rel="noopener" aria-label="Open GitHub profile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></a></div>
+    <div class="eco__main">
+      <h3>Vision work,<br>now <span>open source.</span></h3>
+      <p>Every project on this page has public code: notebooks, training scripts and READMEs with the real numbers.</p>
+    </div>
+    <dl class="eco__stats"><div><dt>Public repos</dt><dd id="ghRepos">25</dd></div><div><dt>Followers</dt><dd id="ghFollowers">13</dd></div><div><dt>Since</dt><dd id="ghSince">2025</dd></div></dl>
+  </article>
+  <article class="eco__card eco--kg">
+    <div class="eco__top"><p class="eco__tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg>Kaggle</p>
+      <a class="eco__go" href="https://www.kaggle.com/abdullahbakr7" target="_blank" rel="noopener" aria-label="Open Kaggle profile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></a></div>
+    <div class="eco__main">
+      <h3>Notebooks<br>people <span>actually read.</span></h3>
+      <p>Public notebooks for my medical imaging, detection and classification projects, each one runnable end to end.</p>
+    </div>
+    <dl class="eco__stats"><div><dt>Tier</dt><dd>Expert</dd></div><div><dt>Category</dt><dd>Notebooks</dd></div><div><dt>Linked here</dt><dd>12</dd></div></dl>
+  </article>
+  <article class="eco__card eco--py">
+    <div class="eco__top"><p class="eco__tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 8l-9-5-9 5 9 5 9-5zM3 8v8l9 5 9-5V8M12 13v8"/></svg>PyPI profile &middot; AbduBakr</p>
+      <a class="eco__go" href="https://pypi.org/user/AbduBakr/" target="_blank" rel="noopener" aria-label="Open my PyPI profile"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></a></div>
+    <div class="eco__main">
+      <h3>Packages people<br><span>pip install.</span></h3>
+      <p>Publishing on PyPI since March 2026, with <span id="pypiRel2">26</span> releases so far, from 0.1.0 to the current version.</p>
+    </div>
+    <dl class="eco__stats"><div><dt>Packages</dt><dd>1</dd></div><div><dt>Total downloads</dt><dd>17.5K+</dd></div><div><dt>Releases</dt><dd id="pypiRel">26</dd></div><div><dt>Latest</dt><dd id="pypiVer">0.8.0</dd></div></dl>
+  </article>
+</section>
 
-<!-- ════════════════════════════════════════════
-     ABOUT
-     ════════════════════════════════════════════ -->
-<section id="about" class="sec">
-  <div class="inner">
-    <div class="about-grid">
-
-      <div class="about-text fade-in">
-        <div style="margin-bottom:36px">
-          <p class="stag">About Me</p>
-          <h2 class="sh">Building Systems<br>That Actually Work.</h2>
-        </div>
-        <p>I'm <strong>Abdullah Bakr</strong>, an AI/ML &amp; Deep Learning Engineer from Egypt. I build real, working intelligent systems, not just notebooks gathering dust on Kaggle.</p>
-        <p>I've trained convolutional networks reaching <strong>~98% accuracy</strong> on image classification, published an open-source data cleaning library <strong>DeepCSV</strong> on PyPI, and built end-to-end ML regression pipelines — all documented publicly on GitHub and Kaggle.</p>
-        <p>My foundation is strong: <strong>3+ years with Python</strong>, solid mathematical background in linear algebra, calculus, and statistics, and hands-on experience with the full AI stack from data wrangling to model deployment.</p>
-        <p>Currently open to <strong>freelance projects, internships</strong>, and <strong>full-time roles</strong> in AI/ML.</p>
-        <div class="highlight-box">
-          <p>"I write code, train models, and ship things people can actually use."</p>
-        </div>
-      </div>
-
-      <div class="fade-in">
-        <p class="stag" style="margin-bottom:18px">Core Skills</p>
-        <div class="skills-list">
-          <div class="sk-row">
-            <div class="sk-icon">🐍</div>
-            <div style="flex:1"><div class="sk-name">Python</div><div class="sk-desc">Primary language — scripting, ML pipelines, open-source libs</div></div>
-            <div class="sk-dot" style="background:var(--green)"></div>
-          </div>
-          <div class="sk-row">
-            <div class="sk-icon">🧠</div>
-            <div style="flex:1"><div class="sk-name">Deep Learning</div><div class="sk-desc">Neural networks, CNNs, training loops, regularization</div></div>
-            <div class="sk-dot" style="background:var(--green)"></div>
-          </div>
-          <div class="sk-row">
-            <div class="sk-icon">👁️</div>
-            <div style="flex:1"><div class="sk-name">Computer Vision</div><div class="sk-desc">Image classification, data augmentation, OpenCV</div></div>
-            <div class="sk-dot" style="background:var(--green)"></div>
-          </div>
-          <div class="sk-row">
-            <div class="sk-icon">⚡</div>
-            <div style="flex:1"><div class="sk-name">TensorFlow / Keras</div><div class="sk-desc">Model building, custom layers, callbacks, evaluation</div></div>
-            <div class="sk-dot" style="background:var(--green)"></div>
-          </div>
-          <div class="sk-row">
-            <div class="sk-icon">🔥</div>
-            <div style="flex:1"><div class="sk-name">PyTorch</div><div class="sk-desc">Tensor ops, custom training loops, experimentation</div></div>
-            <div class="sk-dot" style="background:var(--acc2)"></div>
-          </div>
-          <div class="sk-row">
-            <div class="sk-icon">📊</div>
-            <div style="flex:1"><div class="sk-name">ML / Data Science</div><div class="sk-desc">Regression, classification, feature engineering, EDA</div></div>
-            <div class="sk-dot" style="background:var(--green)"></div>
-          </div>
-        </div>
-      </div>
-
+<!-- ================= BOX ================= -->
+<section class="boxsec" aria-labelledby="box-h">
+  <h2 id="box-h" class="boxsec__h"><span>TRAINING</span><em>models that see.</em></h2>
+  <div class="boxsec__scene" aria-hidden="true">
+    <div class="role-pill" id="rolePill"><span class="role-pill__ic"><svg viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg></span><span><b id="roleT">Computer Vision Engineer</b><small id="roleS">Detection, segmentation, classification</small></span></div>
+    <div class="openbox">
+      <div class="openbox__back"></div>
+      <div class="openbox__flap openbox__flap--l"></div>
+      <div class="openbox__flap openbox__flap--r"></div>
+      <div class="openbox__front"></div>
     </div>
   </div>
 </section>
 
-<div class="divl"></div>
-
-<!-- ════════════════════════════════════════════
-     PROJECTS
-     ════════════════════════════════════════════ -->
-<section id="projects" class="sec">
-  <div class="inner">
-    <div class="proj-header fade-in">
-      <p class="stag">Projects</p>
-      <h2 class="sh">What I've Built</h2>
-      <p class="ssub">Real-world projects across computer vision, machine learning, open-source tooling, and more — browse by category or filter by tech stack.</p>
-    </div>
-
-    <!-- ── FILTER SYSTEM ───────────────────────────── -->
-    <div class="filter-system fade-in">
-
-      <!-- Main Category Tabs -->
-      <div class="cat-tabs-wrap">
-        <!-- tabs injected by JS -->
-      </div>
-
-      <!-- Sub-filter Chips -->
-      <div class="sub-filter-row hidden">
-        <!-- chips injected by JS -->
-      </div>
-
-    </div>
-
-    <!-- Results bar -->
-    <div class="results-bar fade-in">
-      <span class="results-count">Showing <em>—</em> projects</span>
-    </div>
-
-    <!-- Grid -->
-    <div class="proj-grid-wrap">
-      <div class="proj-grid">
-
-      <!-- Project 1: Cats vs Dogs -->
-      <div class="pcard fade-in" data-pid="cats-dogs">
-        <div class="pimg pimg-cv" style="height:200px;padding:0;overflow:hidden">
-          <img src="assets/images/projects/img_cats_dogs.png" alt="Cats vs Dogs Classifier" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block">
-          <div class="pimg-blur-overlay"></div>
-          <span class="pimg-label">Computer Vision</span>
-          <span class="pimg-acc">~98% Acc</span>
-        </div>
-        <div class="pbody">
-          <div class="pnum">01 / 12</div>
-          <span class="ptag t-cv">Computer Vision · Deep Learning</span>
-          <h3 class="ptitle">Cats vs Dogs Image Classifier</h3>
-          <p class="pdesc">Custom CNN achieving ~98% accuracy on binary image classification. Built with TensorFlow/Keras — data augmentation, dropout regularization, batch normalization, and hyperparameter tuning.</p>
-          <div class="pmeta">
-            <span class="mb mb-h">~98% Accuracy</span>
-            <span class="mb">TensorFlow</span><span class="mb">Keras</span><span class="mb">CNN</span>
-          </div>
-          <div class="plinks">
-            <a href="https://github.com/abdubakr77/Cats-vs-Dogs-Image-Classification-98-Acc" target="_blank" rel="noopener" class="plink">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              GitHub
-            </a>
-            <a href="https://www.kaggle.com/code/abdullahbakr7/cats-vs-dogs-image-classification-98-acc" target="_blank" rel="noopener" class="plink">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.311z"/></svg>
-              Kaggle
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 2: DeepCSV -->
-      <div class="pcard fade-in" data-pid="deepcsv">
-        <div class="pimg pimg-ml" style="height:200px;padding:0;overflow:hidden">
-          <img src="assets/images/projects/img_deepcsv.png" alt="DeepCSV" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block">
-          <div class="pimg-blur-overlay"></div>
-          <span class="pimg-label">Open Source</span>
-          <span class="pimg-acc" style="background:rgba(52,211,153,0.2);border-color:rgba(52,211,153,0.4)">PyPI ✓</span>
-        </div>
-        <div class="pbody">
-          <div class="pnum">02 / 12</div>
-          <span class="ptag t-ml">Open Source · PyPI Package</span>
-          <h3 class="ptitle">DeepCSV — Automatic Data Cleaner</h3>
-          <p class="pdesc">Python library published on PyPI. Auto-walks directories, converts stringified lists to NumPy arrays, fixes mixed-type columns, and saves as Parquet — built for real ML data prep.</p>
-          <div class="pmeta">
-            <span class="mb mb-h">pip install deepcsv</span>
-            <span class="mb">Pandas</span><span class="mb">NumPy</span><span class="mb">PyArrow</span>
-          </div>
-          <div class="plinks">
-            <a href="https://github.com/abdubakr77/deepcsv" target="_blank" rel="noopener" class="plink">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              GitHub
-            </a>
-            <a href="https://www.kaggle.com/code/abdullahbakr7/deepcsv-automatic-data-cleaner" target="_blank" rel="noopener" class="plink">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.311z"/></svg>
-              Kaggle
-            </a>
-            <a href="https://pypi.org/project/deepcsv/" target="_blank" rel="noopener" class="plink">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.959.533a4.03 4.03 0 0 0-1.917 0C9.62.82 8.5 1.86 8.5 3.16v3.29h4.999V6.9H6.1a2.5 2.5 0 0 0-2.499 2.499v3.001a2.5 2.5 0 0 0 2.499 2.499h.9v-1.6a2.5 2.5 0 0 1 2.499-2.499H14.9a1.599 1.599 0 0 0 1.599-1.6V3.16c0-1.3-1.12-2.34-2.54-2.627zM11 4.5a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8z M17.9 6.9h-.9v1.6a2.5 2.5 0 0 1-2.499 2.499H9.099A1.599 1.599 0 0 0 7.5 12.6V17.84c0 1.3 1.12 2.34 2.54 2.627a4.03 4.03 0 0 0 1.917 0C13.38 20.18 14.5 19.14 14.5 17.84v-3.29H9.501V14.1H17.9a2.5 2.5 0 0 0 2.499-2.499V8.6A2.5 2.5 0 0 0 17.9 6.9zm-4.9 10.1a.9.9 0 1 1 0 1.8.9.9 0 0 1 0-1.8z"/></svg>
-              PyPI
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 3: Weather -->
-      <div class="pcard fade-in" data-pid="weather">
-        <div class="pimg pimg-reg" style="height:200px;padding:0;overflow:hidden">
-          <img src="assets/images/projects/img_weather.png" alt="Weather Temperature Predictor" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block">
-          <div class="pimg-blur-overlay"></div>
-          <span class="pimg-label">Regression Model</span>
-          <span class="pimg-acc" style="background:rgba(245,158,11,0.2);border-color:rgba(245,158,11,0.4)">ML Pipeline</span>
-        </div>
-        <div class="pbody">
-          <div class="pnum">03 / 12</div>
-          <span class="ptag t-reg">Regression · Machine Learning</span>
-          <h3 class="ptitle">Weather Temperature Predictor</h3>
-          <p class="pdesc">End-to-end regression pipeline predicting weather temperatures from historical meteorological data. Feature engineering, model comparison (Linear, Ridge, RF), cross-validation, full evaluation.</p>
-          <div class="pmeta">
-            <span class="mb mb-h">Regression Pipeline</span>
-            <span class="mb">Scikit-learn</span><span class="mb">Pandas</span><span class="mb">Matplotlib</span>
-          </div>
-          <div class="plinks">
-            <a href="https://github.com/abdubakr77/Weather-Temperature-Prediction" target="_blank" rel="noopener" class="plink">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              GitHub
-            </a>
-            <a href="https://www.kaggle.com/code/abdullahbakr7/weather-temperature-regression-pred" target="_blank" rel="noopener" class="plink">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.311z"/></svg>
-              Kaggle
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 4: Intel Image Classification -->
-      <div class="pcard fade-in" data-pid="intel">
-        <div class="pimg pimg-intel" style="height:200px;padding:0;overflow:hidden">
-          <img src="assets/images/projects/img_intel.png" alt="Intel Image Classification" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block">
-          <div class="pimg-blur-overlay"></div>
-          <span class="pimg-label">Transfer Learning</span>
-          <span class="pimg-acc" style="background:rgba(168,85,247,0.2);border-color:rgba(168,85,247,0.4)">~92.5% Acc</span>
-        </div>
-        <div class="pbody">
-          <div class="pnum">04 / 12</div>
-          <span class="ptag t-intel">Computer Vision · Transfer Learning</span>
-          <h3 class="ptitle">Intel Image Classification</h3>
-          <p class="pdesc">Multi-class scene classification using Transfer Learning with InceptionV3 on the Intel Image dataset (6 categories: Buildings, Forest, Glacier, Mountain, Sea, Street). Achieved ~92.5% validation accuracy with a frozen pretrained base and custom classification head.</p>
-          <div class="pmeta">
-            <span class="mb mb-h">~24K Images</span>
-            <span class="mb">TensorFlow</span><span class="mb">InceptionV3</span><span class="mb">Keras</span>
-          </div>
-          <div class="plinks">
-            <a href="https://github.com/abdubakr77/intel-image-classification-cnn" target="_blank" rel="noopener" class="plink">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              GitHub
-            </a>
-            <a href="https://www.kaggle.com/code/abdullahbakr7/intel-image-classification-inceptionv3-93-acc" target="_blank" rel="noopener" class="plink">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.311z"/></svg>
-              Kaggle
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 5: Garbage Classification -->
-      <div class="pcard fade-in" data-pid="garbage">
-        <div class="pimg" style="height:200px;padding:0;overflow:hidden;background:linear-gradient(135deg,#0d1f10,#0f2a1a)">
-          <img src="assets/images/projects/img_garbage.png" alt="Garbage Classification" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block">
-          <div class="pimg-blur-overlay"></div>
-          <span class="pimg-label">Transfer Learning</span>
-          <span class="pimg-acc" style="background:rgba(16,185,129,0.2);border-color:rgba(16,185,129,0.4)">~93% Acc</span>
-        </div>
-        <div class="pbody">
-          <div class="pnum">05 / 12</div>
-          <span class="ptag t-cv">Computer Vision · Classification</span>
-          <h3 class="ptitle">Garbage Classification (Inception V3)</h3>
-          <p class="pdesc">High-accuracy image classification model for waste sorting using Inception V3 architecture. Classifies garbage into categories (cardboard, glass, metal, paper, plastic, trash) to support automated recycling systems.</p>
-          <div class="pmeta">
-            <span class="mb mb-h">~93% Accuracy</span>
-            <span class="mb">PyTorch</span><span class="mb">InceptionV3</span><span class="mb">~25K Images</span>
-          </div>
-          <div class="plinks">
-            <a href="https://github.com/abdubakr77/garbage-classification-inception-v3" target="_blank" rel="noopener" class="plink">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              GitHub
-            </a>
-            <a href="https://www.kaggle.com/code/abdullahbakr7/garbage-classification-inception-v3-93-accuracy" target="_blank" rel="noopener" class="plink">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.311z"/></svg>
-              Kaggle
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 6: Breast Cancer Classification -->
-      <div class="pcard fade-in" data-pid="cancer-vgg">
-        <div class="pimg" style="height:200px;padding:0;overflow:hidden;background:linear-gradient(135deg,#1a0a1a,#2a0d1a);position:relative">
-          <img src="assets/images/projects/img_cancer.jpg" alt="Breast Cancer Classification" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block">
-          <div class="pimg-blur-overlay"></div>
-          <span class="pimg-label">Medical Imaging</span>
-          <span class="pimg-acc" style="background:rgba(239,68,68,0.2);border-color:rgba(239,68,68,0.4);color:#fca5a5">92% Acc</span>
-        </div>
-        <div class="pbody">
-          <div class="pnum">06 / 12</div>
-          <span class="ptag" style="background:rgba(239,68,68,0.08);color:#fca5a5;border:1px solid rgba(239,68,68,0.2)">Medical AI · Deep Learning</span>
-          <h3 class="ptitle">Breast Cancer Classification (VGG19-BN)</h3>
-          <p class="pdesc">Deep learning model for breast cancer classification using VGG19 with batch normalization on ultrasound images (benign / malignant / normal). Achieved 92% test accuracy with a confusion matrix showing strong generalization.</p>
-          <div class="pmeta">
-            <span class="mb mb-h" style="color:#fca5a5;background:rgba(239,68,68,0.07);border-color:rgba(239,68,68,0.2)">92% Test Accuracy</span>
-            <span class="mb">PyTorch</span><span class="mb">VGG19-BN</span><span class="mb">Medical Imaging</span>
-          </div>
-          <div class="plinks">
-            <a href="https://github.com/abdubakr77/cancer-classification" target="_blank" rel="noopener" class="plink">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              GitHub
-            </a>
-            <a href="https://www.kaggle.com/code/abdullahbakr7/breast-cancer-classification-vgg19-bn" target="_blank" rel="noopener" class="plink">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.311z"/></svg>
-              Kaggle
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 7: Breast Cancer Classification (Transfer Learning) -->
-      <div class="pcard fade-in" data-pid="cancer-tl">
-        <div class="pimg" style="height:200px;padding:0;overflow:hidden;background:linear-gradient(135deg,#1a0a1a,#2a0d1a);position:relative">
-          <img src="assets/images/projects/img_cancer_tl.png" alt="Breast Cancer Classification Transfer Learning" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block">
-          <div class="pimg-blur-overlay"></div>
-          <span class="pimg-label">Medical Imaging</span>
-          <span class="pimg-acc" style="background:rgba(239,68,68,0.2);border-color:rgba(239,68,68,0.4);color:#fca5a5">98.5% Val Acc</span>
-        </div>
-        <div class="pbody">
-          <div class="pnum">07 / 12</div>
-          <span class="ptag" style="background:rgba(239,68,68,0.08);color:#fca5a5;border:1px solid rgba(239,68,68,0.2)">Medical AI · Transfer Learning</span>
-          <h3 class="ptitle">Breast Cancer Classification (Transfer Learning)</h3>
-          <p class="pdesc">Comparative study of transfer learning models (ResNet50, VGG16, EfficientNetB4) for breast cancer classification on ultrasound images. Best model (ResNet50) achieved 98.5% validation accuracy with 2-class prediction (benign / malignant).</p>
-          <div class="pmeta">
-            <span class="mb mb-h" style="color:#fca5a5;background:rgba(239,68,68,0.07);border-color:rgba(239,68,68,0.2)">98.5% Val Accuracy</span>
-            <span class="mb">TensorFlow</span><span class="mb">ResNet50</span><span class="mb">Medical Imaging</span>
-          </div>
-          <div class="plinks">
-            <a href="https://github.com/abdubakr77/cancer-classification-TensorFlow/" target="_blank" rel="noopener" class="plink">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              GitHub
-            </a>
-            <a href="https://www.kaggle.com/code/abdullahbakr7/breast-cancer-classification-transfer-learning" target="_blank" rel="noopener" class="plink">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.311z"/></svg>
-              Kaggle
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 7: NIH Chest X-Ray Research -->
-      <div class="pcard pcard-research fade-in" data-pid="nih-xray" style="position:relative">
-        <div class="p-research-badge">📄 Research Paper</div>
-        <div class="pimg" style="height:200px;padding:0;overflow:hidden;position:relative;background:linear-gradient(135deg,#04111f,#071a2e)">
-          <!-- Animated research visual — no real image yet -->
-          <div class="research-xray-vis">
-            <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0">
-              <defs>
-                <radialGradient id="xrayGlow" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stop-color="rgba(96,165,250,0.18)"/>
-                  <stop offset="100%" stop-color="rgba(96,165,250,0)"/>
-                </radialGradient>
-              </defs>
-              <!-- Chest X-ray silhouette outline -->
-              <g stroke="rgba(147,197,253,0.22)" stroke-width="0.7" fill="none">
-                <!-- Lung left -->
-                <ellipse cx="140" cy="100" rx="52" ry="68" stroke="rgba(147,197,253,0.15)" />
-                <path d="M 105 60 Q 88 100 105 145 Q 125 155 140 145" />
-                <path d="M 140 42 Q 162 55 175 100 Q 165 145 140 152"/>
-                <!-- Lung right -->
-                <ellipse cx="260" cy="100" rx="52" ry="68" stroke="rgba(147,197,253,0.15)" />
-                <path d="M 295 60 Q 312 100 295 145 Q 275 155 260 145" />
-                <path d="M 260 42 Q 238 55 225 100 Q 235 145 260 152"/>
-                <!-- Spine -->
-                <line x1="200" y1="30" x2="200" y2="172"/>
-                <rect x="194" y="45" width="12" height="8" rx="1" opacity="0.5"/>
-                <rect x="194" y="58" width="12" height="8" rx="1" opacity="0.5"/>
-                <rect x="194" y="71" width="12" height="8" rx="1" opacity="0.5"/>
-                <rect x="194" y="84" width="12" height="8" rx="1" opacity="0.5"/>
-                <rect x="194" y="97" width="12" height="8" rx="1" opacity="0.5"/>
-                <rect x="194" y="110" width="12" height="8" rx="1" opacity="0.5"/>
-                <rect x="194" y="123" width="12" height="8" rx="1" opacity="0.5"/>
-                <rect x="194" y="136" width="12" height="8" rx="1" opacity="0.5"/>
-                <!-- Ribs left -->
-                <path d="M 196 55 Q 155 52 128 65" opacity="0.4"/>
-                <path d="M 196 68 Q 152 66 122 82" opacity="0.4"/>
-                <path d="M 196 81 Q 150 80 118 98" opacity="0.4"/>
-                <path d="M 196 94 Q 150 94 118 112" opacity="0.4"/>
-                <path d="M 196 107 Q 152 108 122 124" opacity="0.4"/>
-                <!-- Ribs right -->
-                <path d="M 204 55 Q 245 52 272 65" opacity="0.4"/>
-                <path d="M 204 68 Q 248 66 278 82" opacity="0.4"/>
-                <path d="M 204 81 Q 250 80 282 98" opacity="0.4"/>
-                <path d="M 204 94 Q 250 94 282 112" opacity="0.4"/>
-                <path d="M 204 107 Q 248 108 278 124" opacity="0.4"/>
-                <!-- Heart -->
-                <path d="M 185 90 Q 183 78 196 80 Q 200 78 204 80 Q 217 78 215 90 Q 215 105 200 116 Q 185 105 185 90 Z" stroke="rgba(239,100,100,0.35)" fill="rgba(239,100,100,0.06)"/>
-              </g>
-              <!-- Grad-CAM heatmap hints -->
-              <circle cx="148" cy="108" r="22" fill="url(#xrayGlow)" opacity="0.7" class="gradcam-pulse"/>
-              <circle cx="252" cy="95" r="18" fill="url(#xrayGlow)" opacity="0.5" class="gradcam-pulse" style="animation-delay:0.8s"/>
-              <!-- Scan line animation -->
-              <line x1="30" y1="0" x2="30" y2="200" stroke="rgba(96,165,250,0.12)" stroke-width="1" class="scan-line"/>
-            </svg>
-          </div>
-          <span class="pimg-label" style="z-index:3">Medical Imaging · Research</span>
-          <span class="pimg-acc" style="background:rgba(99,102,241,0.2);border-color:rgba(99,102,241,0.4);color:#c7d2fe;z-index:3">112K+ Images</span>
-        </div>
-        <div class="pbody">
-          <div class="pnum">08 / 12</div>
-          <span class="ptag" style="background:rgba(99,102,241,0.08);color:#c7d2fe;border:1px solid rgba(99,102,241,0.22)">Medical AI · Multi-Label · Research</span>
-          <h3 class="ptitle">NIH Chest X-Ray Disease Classification</h3>
-          <p class="pdesc">Multi-label classification of 14 thoracic diseases from 112K+ chest X-ray images (NIH ChestX-Ray14). Benchmarking DenseNet-121, ResNet-50, EfficientNet-B4, and ViT-Base against a proposed Swin Transformer, with Grad-CAM explainability. Targeting peer-reviewed publication.</p>
-          <div class="pmeta">
-            <span class="mb" style="color:#c7d2fe;background:rgba(99,102,241,0.07);border-color:rgba(99,102,241,0.2)">⚗ In Research</span>
-            <span class="mb">PyTorch</span><span class="mb">Swin Transformer</span><span class="mb">Grad-CAM</span>
-          </div>
-          <!-- Research models row -->
-          <div class="research-models">
-            <span class="rm-pill rm-baseline">DenseNet-121</span>
-            <span class="rm-pill rm-baseline">ResNet-50</span>
-            <span class="rm-pill rm-baseline">EfficientNet-B4</span>
-            <span class="rm-pill rm-baseline">ViT-Base</span>
-            <span class="rm-pill rm-proposed">Swin Transformer ✦</span>
-          </div>
-          <div class="plinks" style="margin-top:14px">
-            <span class="plink plink-disabled" title="Repository will be public upon paper submission">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              GitHub — Soon
-            </span>
-            <span class="plink plink-disabled" title="Coming after experiments complete">
-              <svg viewBox="0 0 24 24" fill="currentColor" style="width:11px;height:11px"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
-              Paper — Upcoming
-            </span>
-          </div>
-        </div>
-      </div>
- 
-      <!-- Project 8: Synthetic Image Attribution -->
-      <div class="pcard fade-in" data-pid="sia">
-        <div class="pimg" style="height:200px;padding:0;overflow:hidden;position:relative">
-          <img src="assets/images/projects/cover.png" alt="Synthetic Image Attribution" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block">
-          <div class="pimg-blur-overlay"></div>
-          <span class="pimg-label">Computer Vision · Forensics</span>
-          <span class="pimg-acc" style="background:rgba(168,85,247,0.2);border-color:rgba(168,85,247,0.4);color:#d8b4fe">95%+ Acc</span>
-        </div>
-        <div class="pbody">
-          <div class="pnum">09 / 12</div>
-          <span class="ptag t-cv">Computer Vision · AI Forensics · ICANN 2026</span>
-          <h3 class="ptitle">Synthetic Image Attribution</h3>
-          <p class="pdesc">Dual-stream EfficientNet-B4 pipeline that fingerprints AI-generated faces across 10 text-to-image models. RGB stream + SRM forensic noise filters + TTA — built for the ICANN 2026 DLMMDD Workshop Challenge.</p>
-          <div class="pmeta">
-            <span class="mb mb-h">95%+ Leaderboard</span>
-            <span class="mb">PyTorch</span><span class="mb">EfficientNet-B4</span><span class="mb">SRM</span><span class="mb">TTA</span>
-          </div>
-          <div class="plinks">
-            <a href="https://github.com/abdubakr77/synthetic-image-attribution" target="_blank" rel="noopener" class="plink">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              GitHub
-            </a>
-            <a href="https://www.kaggle.com/code/abdullahbakr7/sia-dualstream-srm-tta-95-accuracy/" target="_blank" rel="noopener" class="plink">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.311z"/></svg>
-              Kaggle
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 9: Iris Flower Classification -->
-      <div class="pcard fade-in" data-pid="iris">
-        <div class="pimg" style="height:200px;padding:0;overflow:hidden;position:relative">
-          <img src="assets/images/projects/Iris_classification_Thumb.png" alt="Iris Flower Classification" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block">
-          <div class="pimg-blur-overlay"></div>
-          <span class="pimg-label">ML / Classification</span>
-          <span class="pimg-acc">~99.8% Acc</span>
-        </div>
-        <div class="pbody">
-          <div class="pnum">10 / 12</div>
-          <span class="ptag t-ml">ML · Classification · Feature Engineering</span>
-          <h3 class="ptitle">Iris Flower Classification Showdown</h3>
-          <p class="pdesc">End-to-end classifier benchmark on the Iris dataset — feature engineering from 4→14 features, SelectKBest selection, and head-to-head comparison of Logistic Regression, Ridge, Random Forest, and Gradient Boosting.</p>
-          <div class="pmeta">
-            <span class="mb mb-h">~99.8% Setosa</span>
-            <span class="mb">Scikit-learn</span><span class="mb">Feature Eng.</span><span class="mb">SelectKBest</span>
-          </div>
-          <div class="plinks">
-            <a href="https://github.com/abdubakr77/Iris-Flower-Classification" target="_blank" rel="noopener" class="plink">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              GitHub
-            </a>
-            <a href="https://www.kaggle.com/code/abdullahbakr7/iris-raw-data-to-classifier-showdown" target="_blank" rel="noopener" class="plink">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.311z"/></svg>
-              Kaggle
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 10: FaceAge Classifier -->
-      <div class="pcard fade-in" data-pid="faceage">
-        <div class="pimg" style="height:200px;padding:0;overflow:hidden;position:relative">
-          <img src="assets/images/projects/FaceAge_Thumb.jpg" alt="FaceAge Classifier" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;display:block">
-          <div class="pimg-blur-overlay"></div>
-          <span class="pimg-label">Computer Vision · Transfer Learning</span>
-          <span class="pimg-acc">~70% Acc</span>
-        </div>
-        <div class="pbody">
-          <div class="pnum">11 / 12</div>
-          <span class="ptag t-cv">Computer Vision · Age Estimation</span>
-          <h3 class="ptitle">FaceAge Classifier</h3>
-          <p class="pdesc">Age group classification from ~32K face images using ResNet50 & DenseNet121. Three age classes (14–24, 25–40, 41–70) with full fine-tuning, AdamW, and early stopping. DenseNet121 edges out at ~70% accuracy.</p>
-          <div class="pmeta">
-            <span class="mb mb-h">~70% DenseNet121</span>
-            <span class="mb">PyTorch</span><span class="mb">ResNet50</span><span class="mb">DenseNet121</span>
-          </div>
-          <div class="plinks">
-            <a href="https://github.com/abdubakr77/FaceAge-Classifier" target="_blank" rel="noopener" class="plink">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              GitHub
-            </a>
-            <a href="https://www.kaggle.com/code/abdullahbakr7/faceage-classifier-resnet-densenet-70-acc" target="_blank" rel="noopener" class="plink">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.311z"/></svg>
-              Kaggle
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 11: Drowsiness Detection -->
-      <div class="pcard fade-in" data-pid="drowsiness">
-        <div class="pimg" style="height:200px;padding:0;overflow:hidden;position:relative">
-          <img src="assets/images/projects/ResNet_test_set_predictions.png" alt="Drowsiness Detection" style="width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 0.4s ease;display:block">
-          <div class="pimg-blur-overlay"></div>
-          <span class="pimg-label">Computer Vision · Transfer Learning</span>
-          <span class="pimg-acc" style="background:rgba(16,185,129,0.2);border-color:rgba(16,185,129,0.4);color:#6ee7b7">AUC 0.9997</span>
-        </div>
-        <div class="pbody">
-          <div class="pnum">12 / 12</div>
-          <span class="ptag t-cv">Computer Vision · Safety · Binary Classification</span>
-          <h3 class="ptitle">Drowsiness Detection — Eye State Classifier</h3>
-          <p class="pdesc">Binary classification of infrared eye images (Awake vs Sleepy) on the MRL Eye Dataset (~85K images). ResNet50 hits AUC 0.9997, InceptionV3 hits 0.9993 — both trained with mixed precision and early stopping.</p>
-          <div class="pmeta">
-            <span class="mb mb-h" style="color:#6ee7b7;background:rgba(16,185,129,0.07);border-color:rgba(16,185,129,0.25)">AUC 0.9997</span>
-            <span class="mb">PyTorch</span><span class="mb">ResNet50</span><span class="mb">InceptionV3</span><span class="mb">85K imgs</span>
-          </div>
-          <div class="plinks">
-            <a href="https://github.com/abdubakr77/drowsiness-detection-eye-state-classification" target="_blank" rel="noopener" class="plink">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-              GitHub
-            </a>
-            <a href="https://www.kaggle.com/code/abdullahbakr7/mrl-eye-drowsiness-classifier-99-9-auc" target="_blank" rel="noopener" class="plink">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.311z"/></svg>
-              Kaggle
-            </a>
-          </div>
-        </div>
-      </div>
-
-      </div><!-- /.proj-grid -->
-
-      <!-- Empty State -->
-      <div class="proj-empty">
-        <div class="pe-icon">🔍</div>
-        <div class="pe-title">No projects found</div>
-        <div class="pe-sub">Try selecting a different category or clearing the filter.</div>
-      </div>
-
-    </div><!-- /.proj-grid-wrap -->
-
-    <!-- Pagination -->
-    <div class="proj-pagination"></div>
-
+<!-- ================= GALLERY ZOOM ================= -->
+<section class="gallery" aria-labelledby="gal-h">
+  <div class="gallery__head">
+    <h2 id="gal-h">Model outputs</h2>
+    <p>Real predictions from my own runs: boxes, masks and attention maps.</p>
   </div>
-</section>
-
-<div class="divl"></div>
-
-<!-- ════════════════════════════════════════════
-     BACKGROUND: Education + Certs + Languages
-     ════════════════════════════════════════════ -->
-<section id="background" class="sec" style="padding-top:120px;padding-bottom:120px">
-  <div class="inner">
-    <div class="bg-grid">
-
-      <!-- LEFT: Education + Certifications -->
-      <div>
-        <!-- Education -->
-        <div class="fade-in" style="margin-bottom:52px">
-          <p class="stag">Education</p>
-          <h2 class="sh" style="font-size:clamp(26px,3vw,38px)">Academic Journey</h2>
-
-          <!-- MIS Degree Card -->
-          <div class="edu-card" style="margin-top:24px">
-            <div class="edu-icon edu-icon-logo"><img src="college_logo.png" alt="Science Valley Academy" class="college-logo-img"></div>
-            <div class="edu-content">
-              <div class="edu-degree">B.Sc. in Management Information Systems <span class="edu-tag">MIS</span></div>
-              <div class="edu-inst">Science Valley Academy</div>
-              <div class="edu-meta">
-                <span class="edu-status active-badge">● Enrolled</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="skills-list" style="margin-top:16px">
-            <div class="sk-row">
-              <div class="sk-icon">📐</div>
-              <div style="flex:1">
-                <div class="sk-name">Mathematics for AI</div>
-                <div class="sk-desc">Linear algebra, calculus, probability &amp; statistics — backbone of ML</div>
-              </div>
-            </div>
-            <div class="sk-row">
-              <div class="sk-icon">💻</div>
-              <div style="flex:1">
-                <div class="sk-name">CS Fundamentals</div>
-                <div class="sk-desc">Algorithms, data structures, Python engineering — 3+ years applied</div>
-              </div>
-            </div>
-            <div class="sk-row">
-              <div class="sk-icon">🤖</div>
-              <div style="flex:1">
-                <div class="sk-name">AI &amp; Machine Learning</div>
-                <div class="sk-desc">Supervised learning, neural networks, and deep learning pipelines</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Certifications -->
-        <div class="fade-in">
-          <p class="stag">Certifications</p>
-          <h2 class="sh" style="font-size:clamp(26px,3vw,38px);margin-bottom:6px">Verified Learning</h2>
-          <p style="font-family:var(--fm);font-size:10px;color:var(--text3);margin-bottom:20px;letter-spacing:.05em">
-            Click any certificate to view it
-          </p>
- 
-          <div class="cert-grid">
- 
-            <!-- 1. AI for Everyone -->
-            <div class="cert-card" onclick="openCert('AI for Everyone (AI4E)', 'assets/images/certs/Attendance_Certificate.pdf')">
-              <div class="cert-img-wrap">
-                <img src="assets/images/certs/AI_for_Everyone_AI4E_.jpg" alt="AI for Everyone"
-                     onerror="this.parentElement.style.background='linear-gradient(135deg,#0d1f3c,#1a1040)';this.style.display='none'">
-                <div class="cert-blur-overlay"></div>
-              </div>
-              <div class="cert-body">
-                <div class="cert-issuer">ITI / Mahara-Tech · AI Academy</div>
-                <div class="cert-name">AI for Everyone (AI4E)</div>
-                <div class="cert-view">↗ View Certificate</div>
-              </div>
-            </div>
- 
-            <!-- 2. Python Programming Basics -->
-            <div class="cert-card" onclick="openCert('Python Programming Basics', 'assets/images/certs/Course_Certificate_En.pdf')">
-              <div class="cert-img-wrap">
-                <img src="assets/images/certs/Python_Programming_Basics.jpg" alt="Python Programming"
-                     onerror="this.parentElement.style.background='linear-gradient(135deg,#0a2a1a,#0a1f2e)';this.style.display='none'">
-                <div class="cert-blur-overlay"></div>
-              </div>
-              <div class="cert-body">
-                <div class="cert-issuer">ITI / Mahara-Tech · Cybersecurity Academy</div>
-                <div class="cert-name">Python Programming Basics</div>
-                <div class="cert-view">↗ View Certificate</div>
-              </div>
-            </div>
- 
-            <!-- 3. Boost Your Productivity with AI (Google) — NEW -->
-            <div class="cert-card" onclick="openCert('Boost Your Productivity with AI', 'assets/images/certs/Boost_Productivity_AI_Google.pdf')">
-              <div class="cert-img-wrap">
-                <img src="assets/images/certs/Boost_Productivity_AI_Google.jpg" alt="Boost Your Productivity with AI"
-                     onerror="this.parentElement.style.background='linear-gradient(135deg,#1a2a4a,#0d1f3c)';this.style.display='none'">
-                <div class="cert-blur-overlay"></div>
-              </div>
-              <div class="cert-body">
-                <div class="cert-issuer">Google · Maharat من Google</div>
-                <div class="cert-name">Boost Your Productivity with AI</div>
-                <div class="cert-view">↗ View Certificate</div>
-              </div>
-            </div>
- 
-            <!-- 4. Intro to Modern AI — Cisco -->
-            <div class="cert-card" onclick="openCert('Introduction to Modern AI', 'assets/images/certs/IntrotoModernAI.pdf')">
-              <div class="cert-img-wrap">
-                <img src="assets/images/certs/introduction-to-modern-ai.jpg" alt="Introduction to Modern AI"
-                     onerror="this.parentElement.style.background='linear-gradient(135deg,#0a1a2e,#0d2a20)';this.style.display='none'">
-                <div class="cert-blur-overlay"></div>
-              </div>
-              <div class="cert-body">
-                <div class="cert-issuer">Cisco Networking Academy</div>
-                <div class="cert-name">Introduction to Modern AI</div>
-                <div class="cert-view">↗ View Certificate</div>
-              </div>
-            </div>
- 
-            <!-- 5. Time & Stress Management — Edraak -->
-            <div class="cert-card" onclick="openCert('Time &amp; Stress Management', 'https://programs.edraak.org/learn/verify-certificate/3ef81f4aaef747fca57199a199dc89d9/?lang=en')">
-              <div class="cert-img-wrap">
-                <img src="assets/images/certs/time-stress-management.jpg" alt="Time and Stress Management"
-                     onerror="this.parentElement.style.background='linear-gradient(135deg,#1a100a,#2a1020)';this.style.display='none'">
-                <div class="cert-blur-overlay"></div>
-              </div>
-              <div class="cert-body">
-                <div class="cert-issuer">Edraak</div>
-                <div class="cert-name">Time &amp; Stress Management</div>
-                <div class="cert-view">↗ Verify on Edraak</div>
-              </div>
-            </div>
- 
-            <!-- 6. Python & AI Course — Black Horse -->
-            <div class="cert-card" onclick="openCert('Python &amp; AI Course', 'assets/images/certs/Python_AI_Course.pdf')">
-              <div class="cert-img-wrap">
-                <img src="assets/images/certs/Python_AI_Course.png" alt="Python and AI Course"
-                     onerror="this.parentElement.style.background='linear-gradient(135deg,#0d1f1a,#0d1a30)';this.style.display='none'">
-                <div class="cert-blur-overlay"></div>
-              </div>
-              <div class="cert-body">
-                <div class="cert-issuer">Black Horse Courses · Eng. Omar Hany</div>
-                <div class="cert-name">Python &amp; AI Course</div>
-                <div class="cert-view">↗ View Certificate</div>
-              </div>
-            </div>
- 
-            <!-- 7. Deep Learning for Computer Vision — Mahara-Tech -->
-            <div class="cert-card" onclick="openCert('Deep Learning for Computer Vision', 'assets/images/certs/Completion_Certificate_Deep_Learning_CV.pdf')">
-              <div class="cert-img-wrap">
-                <img src="assets/images/certs/Completion_Certificate_Deep_Learning_CV.png" alt="Deep Learning for Computer Vision"
-                     onerror="this.parentElement.style.background='linear-gradient(135deg,#0d1f3c,#1a0a2a)';this.style.display='none'">
-                <div class="cert-blur-overlay"></div>
-              </div>
-              <div class="cert-body">
-                <div class="cert-issuer">ITI / Mahara-Tech · AI Academy</div>
-                <div class="cert-name">Deep Learning for Computer Vision</div>
-                <div class="cert-view">↗ View Certificate</div>
-              </div>
-            </div>
-
-
-            <!-- 9. AWS AI Practitioner Challenge — Udacity -->
-            <div class="cert-card" onclick="openCert('AWS AI Practitioner Challenge', 'https://www.udacity.com/certificate/e/6e93ba3c-28a5-11f1-bd20-3fb9ced1e7dc')">
-              <div class="cert-img-wrap">
-                <img src="assets/images/certs/AWS_AI_Practitioner_Challenge.jpg" alt="AWS AI Practitioner Challenge"
-                     onerror="this.parentElement.style.background='linear-gradient(135deg,#0a1628,#0d2040)';this.style.display='none'">
-                <div class="cert-blur-overlay"></div>
-              </div>
-              <div class="cert-body">
-                <div class="cert-issuer">Udacity · AWS AI &amp; ML Scholars</div>
-                <div class="cert-name">AWS AI Practitioner Challenge</div>
-                <div class="cert-view">↗ View &amp; Verify</div>
-              </div>
-            </div>
-
-          </div><!-- /cert-grid -->
-        </div>
-      </div><!-- /left -->
-
-      <!-- RIGHT: Languages + Stats -->
-      <div>
-        <div class="fade-in" style="margin-bottom:52px">
-          <p class="stag">Languages</p>
-          <h2 class="sh" style="font-size:clamp(26px,3vw,38px);margin-bottom:24px">Speaking In</h2>
-          <div class="lang-grid">
-            <div class="lang-card">
-              <span class="lang-flag">🇪🇬</span>
-              <div><div class="lang-name">Arabic</div><div class="lang-level">Native</div></div>
-            </div>
-            <div class="lang-card">
-              <span class="lang-flag">🇺🇸</span>
-              <div><div class="lang-name">English</div><div class="lang-level">Intermediate</div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="fade-in">
-          <p class="stag">By the Numbers</p>
-          <h2 class="sh" style="font-size:clamp(26px,3vw,38px);margin-bottom:24px">At a Glance</h2>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-            <div class="stat-card"><div class="stat-val counter" data-target="12" data-suffix="" style="color:var(--acc2)">0</div><div class="stat-lbl">Projects Built</div></div>
-            <div class="stat-card"><div class="stat-val counter" data-target="99.9" data-suffix="%" style="color:var(--green2)">0</div><div class="stat-lbl">Best Accuracy</div></div>
-            <div class="stat-card"><div class="stat-val counter" data-target="9" data-suffix="" style="color:var(--amber)">0</div><div class="stat-lbl">Certificates</div></div>
-            <div class="stat-card"><div class="stat-val counter" data-target="1" data-suffix="" style="color:var(--cyan2)">0</div><div class="stat-lbl">PyPI Library</div></div>
-          </div>
-        </div>
-      </div><!-- /right -->
-
+  <div class="gallery__pin">
+    <div class="gz" id="gz">
+      <img class="gz__img" src="assets/img/dental-hires.webp" srcset="assets/img/dental-1600.webp 1600w, assets/img/dental-hires.webp 2950w" sizes="100vw" width="2950" height="1316" alt="Dental panoramic X-ray with the four quadrants detected by my YOLO model, all at 0.99 confidence" loading="lazy">
+      <div class="gz__raw" aria-hidden="true"><img src="assets/img/dental-hires.webp" srcset="assets/img/dental-1600.webp 1600w, assets/img/dental-hires.webp 2950w" sizes="100vw" width="2950" height="1316" alt="" loading="lazy"></div>
+      <span class="gz__line" aria-hidden="true"></span>
+      <div class="gz__hud" aria-hidden="true">
+        <span class="gz__c gz__c--tl"></span><span class="gz__c gz__c--tr"></span><span class="gz__c gz__c--bl"></span><span class="gz__c gz__c--br"></span>
+        <p class="gz__tag"><i class="dot"></i>YOLO &middot; stage 1 &middot; quadrant detection</p>
+        <p class="gz__stat"><span><b id="gzFound">0</b>/4 quadrants</span><span>mean conf <b id="gzConf">0.00</b></span></p>
+        <p class="gz__hint">Move your cursor over the X-ray to look closer</p>
+      </div>
+      <a class="gz__btn" href="gallery.html">Open the gallery <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+      <span class="gz__lens" aria-hidden="true"></span>
+    </div>
+    <div class="gallery__grid">
+      <figure class="gi gi--1"><img width="1600" height="800" src="assets/img/proj-chest.webp" alt="Chest X-ray with Grad-CAM attention" loading="lazy"></figure>
+      <figure class="gi gi--2"><img width="476" height="356" src="assets/img/proj-drone.webp" alt="Drone detected in an outdoor scene" loading="lazy"></figure>
+      <figure class="gi gi--3"><img width="1920" height="557" src="assets/img/drone-val.webp" alt="Drone detection on validation images" loading="lazy"></figure>
+      <figure class="gi gi--4"><img width="1172" height="878" src="assets/img/skin-segmentation.webp" alt="Skin lesion segmentation" loading="lazy"></figure>
+      <div class="gi gi--center" aria-hidden="true"></div>
+      <figure class="gi gi--5"><img width="1400" height="764" src="assets/img/sia-cover.webp" alt="Synthetic image attribution" loading="lazy"></figure>
+      <figure class="gi gi--6"><img width="900" height="785" src="assets/img/thumbs/resnet-test-set-predictions.webp" alt="Eye state predictions" loading="lazy"></figure>
     </div>
   </div>
 </section>
 
-<div class="divl"></div>
-
-<!-- ════════════════════════════════════════════
-     SKILLS / TOOLS
-     ════════════════════════════════════════════ -->
-<section id="skills" class="sec">
-  <div class="inner">
-    <div class="fade-in">
-      <p class="stag">Tech Stack</p>
-      <h2 class="sh">Tools &amp; Technologies</h2>
-    </div>
-    <div class="tools-grid">
-      <div class="tc tc-anim"><span class="tc-e">🐍</span><span class="tc-n">Python</span></div>
-      <div class="tc tc-anim"><span class="tc-e">🧠</span><span class="tc-n">TensorFlow</span></div>
-      <div class="tc tc-anim"><span class="tc-e">⚡</span><span class="tc-n">Keras</span></div>
-      <div class="tc tc-anim"><span class="tc-e">🔥</span><span class="tc-n">PyTorch</span></div>
-      <div class="tc tc-anim"><span class="tc-e">👁️</span><span class="tc-n">OpenCV</span></div>
-      <div class="tc tc-anim"><span class="tc-e">📊</span><span class="tc-n">Scikit-learn</span></div>
-      <div class="tc tc-anim"><span class="tc-e">🐼</span><span class="tc-n">Pandas</span></div>
-      <div class="tc tc-anim"><span class="tc-e">🔢</span><span class="tc-n">NumPy</span></div>
-      <div class="tc tc-anim"><span class="tc-e">📈</span><span class="tc-n">Matplotlib</span></div>
-      <div class="tc tc-anim"><span class="tc-e">📦</span><span class="tc-n">PyArrow</span></div>
-      <div class="tc tc-anim"><span class="tc-e">🐙</span><span class="tc-n">Git / GitHub</span></div>
-      <div class="tc tc-anim"><span class="tc-e">📓</span><span class="tc-n">Jupyter</span></div>
-      <div class="tc tc-anim"><span class="tc-e">💻</span><span class="tc-n">VS Code</span></div>
-      <div class="tc tc-anim"><span class="tc-e">🏅</span><span class="tc-n">Kaggle</span></div>
-      <div class="tc tc-anim"><span class="tc-e">🏗️</span><span class="tc-n">PyPI</span></div>
-    </div>
+<!-- ================= MORE PROJECTS (book carousel) ================= -->
+<section class="more" id="more" aria-labelledby="more-h">
+  <div class="more__head">
+    <div><h2 id="more-h">More Projects</h2><p>Studies &middot; Kaggle notebooks &middot; Architecture comparisons</p></div>
+    <a class="more__all" href="https://github.com/abdubakr77?tab=repositories" target="_blank" rel="noopener">Browse all repositories <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+  </div>
+  <div class="books">
+    <button type="button" class="books__nav books__nav--prev" id="bookPrev" aria-label="Previous project"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
+    <div class="books__view"><ul class="books__track" id="books"></ul></div>
+    <button type="button" class="books__nav books__nav--next" id="bookNext" aria-label="Next project"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></button>
   </div>
 </section>
 
-<div class="divl"></div>
-
-<!-- ════════════════════════════════════════════
-     CONTACT
-     ════════════════════════════════════════════ -->
-<section id="contact" class="sec">
-  <div class="inner">
-    <div class="contact-grid">
-
-      <div class="fade-in">
-        <p class="stag">Contact</p>
-        <h2 class="sh">Let's Build<br>Something.</h2>
-        <p class="ssub">Open to freelance projects, internships, and full-time opportunities in AI/ML.</p>
-        <div class="cinfo">
-          <a href="mailto:abdubakora1232@gmail.com" class="citem">
-            <div class="cicon ci-b">📧</div>
-            <div><div class="clabel">Email</div><div class="cval">abdubakora1232@gmail.com</div></div>
-          </a>
-          <a href="tel:+201553996442" class="citem">
-            <div class="cicon ci-g">📞</div>
-            <div><div class="clabel">Phone</div><div class="cval">+20 155 399 6442</div></div>
-          </a>
-          <a href="https://www.linkedin.com/in/abdubakr" target="_blank" rel="noopener" class="citem">
-            <div class="cicon ci-b">
-              <svg viewBox="0 0 24 24" fill="white" width="18" height="18"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            </div>
-            <div><div class="clabel">LinkedIn</div><div class="cval">linkedin.com/in/abdubakr</div></div>
-          </a>
-          <a href="https://github.com/abdubakr77" target="_blank" rel="noopener" class="citem">
-            <div class="cicon ci-c">
-              <svg viewBox="0 0 24 24" fill="white" width="18" height="18"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-            </div>
-            <div><div class="clabel">GitHub</div><div class="cval">github.com/abdubakr77</div></div>
-          </a>
-          <a href="https://www.kaggle.com/abdullahbakr7" target="_blank" rel="noopener" class="citem">
-            <div class="cicon ci-o">
-              <svg viewBox="0 0 24 24" fill="white" width="18" height="18"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.311z"/></svg>
-            </div>
-            <div><div class="clabel">Kaggle</div><div class="cval">kaggle.com/abdullahbakr7</div></div>
-          </a>
-        </div>
-      </div>
-
-      <div class="fade-in">
-        <p class="stag" style="margin-bottom:22px;margin-top:4px">Send a Message</p>
-        <form action="https://formsubmit.co/abdubakora1232@gmail.com" method="POST" class="cform" id="contactForm">
-          <input type="hidden" name="_subject" value="New message from your portfolio!">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_template" value="table">
-          <div>
-            <label class="flabel">Your Name</label>
-            <input type="text" name="name" class="finput" placeholder="John Doe" required>
-          </div>
-          <div>
-            <label class="flabel">Email Address</label>
-            <input type="email" name="email" class="finput" placeholder="john@example.com" required>
-          </div>
-          <div>
-            <label class="flabel">Subject</label>
-            <input type="text" name="subject" class="finput" placeholder="Freelance project / Job opportunity …" required>
-          </div>
-          <div>
-            <label class="flabel">Message</label>
-            <textarea name="message" class="ftextarea" placeholder="Tell me about your project or opportunity…" required></textarea>
-          </div>
-          <button type="submit" class="fsubmit" id="fsubmit">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px">
-              <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
-            </svg>
-            Send Message
-          </button>
-          <div class="fok" id="fok">✓ Message sent! I'll get back to you soon.</div>
-        </form>
-      </div>
-
+<!-- ================= TAPES + CTA ================= -->
+<section class="cta" id="contact" aria-labelledby="cta-h">
+  <div class="tapes" aria-hidden="true">
+    <div class="tape tape--a"><div class="tape__track"><span>PYTORCH &bull; TENSORFLOW &bull; YOLO &bull; SWIN TRANSFORMER &bull; OPENCV &bull; SCIKIT-LEARN &bull; PANDAS &bull; STREAMLIT &bull;</span><span>PYTORCH &bull; TENSORFLOW &bull; YOLO &bull; SWIN TRANSFORMER &bull; OPENCV &bull; SCIKIT-LEARN &bull; PANDAS &bull; STREAMLIT &bull;</span></div></div>
+    <div class="tape tape--b"><div class="tape__track"><span>COMPUTER VISION ENGINEER &bull; MEDICAL IMAGING &bull; ML ENGINEER &bull; KAGGLE NOTEBOOKS EXPERT &bull; OPEN SOURCE &bull; RESEARCH &bull;</span><span>COMPUTER VISION ENGINEER &bull; MEDICAL IMAGING &bull; ML ENGINEER &bull; KAGGLE NOTEBOOKS EXPERT &bull; OPEN SOURCE &bull; RESEARCH &bull;</span></div></div>
+  </div>
+  <div class="cta__in" data-rv>
+    <h2 id="cta-h">Let's Build Something<br><span class="cta__word" id="ctaWord">Reliable</span> Together</h2>
+    <p>Open to internships, junior roles and freelance work in computer vision and medical imaging.<br>Send me the problem, I'll send back a plan.</p>
+    <div class="cta__btns">
+      <a class="pill-btn pill-btn--light" href="mailto:abdullah.bakr.official@gmail.com"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Hire Me</a>
+      <a class="pill-btn pill-btn--ghost" href="resume.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l9 5-9 5-9-5 9-5zM3 12l9 5 9-5M3 17l9 5 9-5"/></svg>View My Resume</a>
     </div>
+    <button type="button" class="cta__msg" data-open-form>or send a message here</button>
+    <p class="cta__mail"><a href="mailto:abdullah.bakr.official@gmail.com">abdullah.bakr.official@gmail.com</a><button type="button" class="copy" id="copyEmail" aria-label="Copy email address"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8.5" y="8.5" width="11" height="11" rx="2"/><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"/></svg></button><span class="copied" id="copied" role="status" aria-live="polite"></span></p>
   </div>
 </section>
-
 </main>
 
-<!-- ── FOOTER ────────────────────────────────── -->
-<footer>
-  <div class="foot">
-    <p class="fcopy">© 2026 Abdullah Bakr · Built with passion for AI</p>
-    <ul class="flinks">
-      <li><a href="https://github.com/abdubakr77" target="_blank" rel="noopener">GitHub</a></li>
-      <li><a href="https://www.kaggle.com/abdullahbakr7" target="_blank" rel="noopener">Kaggle</a></li>
-      <li><a href="https://pypi.org/user/AbduBakr/" target="_blank" rel="noopener">PyPI</a></li>
-      <li><a href="https://www.linkedin.com/in/abdubakr" target="_blank" rel="noopener">LinkedIn</a></li>
-      <li><a href="mailto:abdubakora1232@gmail.com">Email</a></li>
-    </ul>
+<footer class="foot">
+  <div class="foot__bar">
+    <p>&copy; <span id="year">2026</span> Abdullah Bakr. All rights reserved.</p>
+    <div class="foot__ic">
+      <a href="https://github.com/abdubakr77" target="_blank" rel="noopener" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a>
+      <a href="https://www.linkedin.com/in/abdubakr" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"/></svg></a>
+      <a href="https://www.kaggle.com/abdullahbakr7" target="_blank" rel="noopener" aria-label="Kaggle"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></a>
+      <a href="https://orcid.org/0009-0009-1638-4356" target="_blank" rel="noopener" aria-label="ORCID"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 10v7M9 7v.01M12.5 10h2a3.5 3.5 0 0 1 0 7h-2z"/></svg></a>
+      <button type="button" class="foot__more" id="footMore" aria-expanded="false" aria-controls="footLinks">More <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></button>
+    </div>
+  </div>
+  <div class="foot__links" id="footLinks" hidden>
+    <a href="Abdullah_Bakr_CV.pdf" target="_blank" rel="noopener">CV (PDF)</a>
+    <a href="https://www.researchsquare.com/article/rs-10932750/latest" target="_blank" rel="noopener">Chest X-ray preprint</a>
+    <a href="https://pypi.org/project/deepcsv/" target="_blank" rel="noopener">deepcsv on PyPI</a>
+    <a href="tel:+201553996442">+20 155 399 6442</a>
   </div>
 </footer>
 
-<script src="main.js"></script>
-<script src="projects-filter.js"></script>
+<button type="button" class="totop" id="toTop" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+
+<!-- project dialog -->
+<dialog data-lenis-prevent class="dlg dlg--proj" id="projDlg" aria-labelledby="projTitle">
+  <button type="button" class="dlg__x" data-close aria-label="Close project details"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  <div class="dlg__body" id="projBody"></div>
+</dialog>
+
+<!-- certificate dialog -->
+<dialog data-lenis-prevent class="dlg dlg--cert" id="certDlg" aria-labelledby="certTitle">
+  <div class="dlg__head"><h3 id="certTitle">Certificate</h3><div><a class="mini-link" id="certVerify" href="#" target="_blank" rel="noopener" hidden>Verify</a><button type="button" class="dlg__x dlg__x--in" data-close aria-label="Close certificate"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div></div>
+  <img id="certImg" alt="">
+</dialog>
+
+<!-- all certificates dialog -->
+<dialog data-lenis-prevent class="dlg dlg--list" id="listDlg" aria-labelledby="listTitle">
+  <div class="dlg__head"><h3 id="listTitle">All certificates</h3><button type="button" class="dlg__x dlg__x--in" data-close aria-label="Close list"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <ul class="clist">
+    <li><span>Deep Learning for Computer Vision</span><small>ITI, MaharaTech</small></li>
+    <li><span>AWS AI Practitioner Challenge</span><small>Udacity</small><a class="mini-link" href="https://www.udacity.com/certificate/e/6e93ba3c-28a5-11f1-bd20-3fb9ced1e7dc" target="_blank" rel="noopener">Verify</a></li>
+    <li><span>Build with AI, Masr edition</span><small>Google for Developers</small></li>
+    <li><span>HCIA-AI V4.0</span><small>Huawei</small></li>
+    <li><span>AI Fluency</span><small>Anthropic</small></li>
+    <li><span>AI for Everyone (AI4E)</span><small>ITI, MaharaTech</small></li>
+    <li><span>Introduction to Modern AI</span><small>Cisco Networking Academy</small></li>
+    <li><span>Python Programming Basics</span><small>ITI, MaharaTech</small></li>
+    <li><span>Boost Your Productivity with AI</span><small>Google, Maharat</small></li>
+    <li><span>Python and AI course</span><small>Black Horse Courses</small></li>
+    <li><span>Time and Stress Management</span><small>Edraak</small><a class="mini-link" href="https://programs.edraak.org/learn/verify-certificate/3ef81f4aaef747fca57199a199dc89d9/?lang=en" target="_blank" rel="noopener">Verify</a></li>
+  </ul>
+</dialog>
+
+<!-- contact form dialog -->
+<dialog data-lenis-prevent class="dlg dlg--form" id="formDlg" aria-labelledby="formTitle">
+  <div class="dlg__head"><h3 id="formTitle">Send a message</h3><button type="button" class="dlg__x dlg__x--in" data-close aria-label="Close form"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <form class="form" id="contactForm" action="https://formsubmit.co/abdullah.bakr.official@gmail.com" method="POST" novalidate>
+    <input type="hidden" name="_subject" value="New message from abdubakr77.github.io">
+    <input type="hidden" name="_template" value="table">
+    <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <label class="field"><span>Your name</span><input id="f-name" name="name" type="text" autocomplete="name" required></label>
+    <label class="field"><span>Your email</span><input id="f-email" name="email" type="email" autocomplete="email" required></label>
+    <label class="field"><span>What are you working on?</span><textarea id="f-msg" name="message" rows="5" required></textarea></label>
+    <button class="pill-btn pill-btn--light" type="submit" id="sendBtn">Send message</button>
+    <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+  </form>
+</dialog>
+
+<script src="assets/js/vendor/gsap.min.js" defer></script>
+<script src="assets/js/vendor/ScrollTrigger.min.js" defer></script>
+<script src="assets/js/vendor/lenis.min.js" defer></script>
+<script src="assets/js/core.js" defer></script>
+<script src="assets/js/data.js" defer></script>
+<script src="assets/js/main.js" defer></script>
 </body>
 </html>
